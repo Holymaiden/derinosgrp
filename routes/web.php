@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'master', 'namespace' => 'Master'], function () {
+        Route::get('/user-management', 'UserController@index')->name('user-management');
+        Route::get('/user-list', 'UserController@paginated')->name('user-list');
+        Route::post('/user-list', 'UserController@store')->name('user-list.store');
+        Route::get('/user-list/{id}', 'UserController@show')->name('user-list.show');
+        Route::put('/user-list/{id}', 'UserController@update')->name('user-list.update');
+        Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
+    });
+});
