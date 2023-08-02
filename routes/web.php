@@ -18,9 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+
+    Route::group(['prefix' => 'master', 'namespace' => 'Master'], function () {
+        Route::get('/user-management', 'UserController@index')->name('user-management');
+        Route::get('/user-list', 'UserController@paginated')->name('user-list');
+        Route::post('/user-list', 'UserController@store')->name('user-list.store');
+        Route::get('/user-list/{id}', 'UserController@show')->name('user-list.show');
+        Route::put('/user-list/{id}', 'UserController@update')->name('user-list.update');
+        Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +37,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
