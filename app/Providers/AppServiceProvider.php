@@ -25,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
         date_default_timezone_set('Asia/Makassar');
 
         // Initialize Model
-        $models = array();
+        $models = array(
+            'User'
+        );
 
         // Initialize Service
         foreach ($models as $model) {

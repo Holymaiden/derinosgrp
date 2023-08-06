@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
+    protected $title = 'Dashboard';
+
     public function index()
     {
-        return view('content.dashboard.index');
+        $title = $this->title;
+        return view('content.dashboard.index', compact('title'));
     }
 }
