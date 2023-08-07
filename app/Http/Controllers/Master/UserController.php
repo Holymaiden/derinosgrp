@@ -14,7 +14,7 @@ class UserController extends Controller
   public function __construct(UserContract $userContract)
   {
     $this->userContract = $userContract;
-    $this->title = 'User';
+    $this->title = 'Users';
   }
   /**
    * Redirect to user-management view.
@@ -23,7 +23,7 @@ class UserController extends Controller
   public function index()
   {
     $title = $this->title;
-    return view('content.master.user.index', compact('title'));
+    return view('content.users.index', compact('title'));
   }
 
   /**
@@ -34,9 +34,13 @@ class UserController extends Controller
   public function paginated(Request $request)
   {
     try {
-      return $this->userContract->paginated($request);
+      $datas = $this->userContract->paginated($request);
+      $data = $datas['data'];
+      $view = view('content.users.data', compact('data'))->with('i', ($request->input('page', 1) -
+        1) * $request->input('length'))->render();
+      return response()->json(['html' => $view, 'total_data' => $datas['total_data'], 'total_page' => $datas['total_page'], 'message' => 'Success!'], 200);
     } catch (\Exception $e) {
-      return response()->json(['message' => $e->getMessage()], 500);
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
     }
   }
 

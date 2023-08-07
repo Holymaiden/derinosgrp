@@ -24,10 +24,9 @@ class UserService extends BaseRepository implements UserContract
     public function paginated(Request $request)
     {
         $columns = [
-            1 => 'id',
-            2 => 'name',
-            3 => 'email',
-            4 => 'email_verified_at',
+            0 => 'id',
+            1 => 'name',
+            2 => 'role',
         ];
 
         $search = [];
@@ -37,36 +36,17 @@ class UserService extends BaseRepository implements UserContract
         $totalFiltered = $totalData;
 
         $limit = $request->input('length');
-        $start = $request->input('start');
-        $order = $columns[$request->input('order.0.column')];
-        $dir = $request->input('order.0.dir');
-        $withRole = $request->input('withRole');
 
-        if ($withRole) {
-            $selectedRole = $request->input('role');
-            $this->model->whereHas('role', function ($query) use ($selectedRole) {
-                $query->where('name', 'LIKE', "%$selectedRole%");
-            });
-        }
-
-        if (empty($request->input('search.value'))) {
-            $users = $this->model->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir)
-                ->get();
+        if (empty($request->input('search'))) {
+            $users = $this->model->paginate($limit);
         } else {
-            $search = $request->input('search.value');
+            $search = $request->input('search');
 
-            $users = $this->model->where('id', 'LIKE', "%{$search}%")
-                ->orWhere('name', 'LIKE', "%{$search}%")
+            $users = $this->model->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('email', 'LIKE', "%{$search}%")
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir)
-                ->get();
+                ->paginate($limit);
 
-            $totalFiltered = $this->model->where('id', 'LIKE', "%{$search}%")
-                ->orWhere('name', 'LIKE', "%{$search}%")
+            $totalFiltered = $this->model->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('email', 'LIKE', "%{$search}%")
                 ->count();
         }
@@ -75,36 +55,25 @@ class UserService extends BaseRepository implements UserContract
 
         if (!empty($users)) {
             // providing a dummy id instead of database ids
-            $ids = $start;
-
             foreach ($users as $user) {
                 $nestedData['id'] = $user->id;
-                $nestedData['fake_id'] = ++$ids;
                 $nestedData['name'] = $user->name;
                 $nestedData['email'] = $user->email;
-                $nestedData['email_verified_at'] = $user->email_verified_at;
                 if ($user->role)
                     $nestedData['role'] = $user->role->name;
+                else
+                    $nestedData['role'] = 'Admin';
 
                 $data[] = $nestedData;
             }
         }
 
-        if ($data) {
-            return response()->json([
-                'draw' => intval($request->input('draw')),
-                'recordsTotal' => intval($totalData),
-                'recordsFiltered' => intval($totalFiltered),
-                'code' => 200,
-                'data' => $data,
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'Internal Server Error',
-                'code' => 500,
-                'data' => [],
-            ]);
-        }
+        return [
+            'total_page' => $users->lastPage(),
+            'total_data' => $totalFiltered ?? 0,
+            'code' => 200,
+            'data' => $data,
+        ];
     }
 
     /**
@@ -124,11 +93,11 @@ class UserService extends BaseRepository implements UserContract
 
             // Check if data is created
             if (!$users) {
-                return response()->json(['message' => "User Gagal Dibuat"], 400);
+                return response()->json(['message' => "User Gagal Dibuat", 'code' => 400], 400);
             }
 
             // user created
-            return response()->json(['message' => "User Berhasil Dibuat"], 201);
+            return response()->json(['message' => "User Berhasil Dibuat", 'code' => 201], 201);
         } else {
             // user already exist
             return response()->json(['message' => "User Sudah Ada"], 409);
