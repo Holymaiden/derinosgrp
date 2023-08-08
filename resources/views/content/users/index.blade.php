@@ -162,7 +162,7 @@
                                 <!--end::Svg Icon-->Export</button>
                             <!--end::Export-->
                             <!--begin::Add user-->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" data-id="create-0">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                 <span class="svg-icon svg-icon-2">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

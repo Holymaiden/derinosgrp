@@ -58,10 +58,50 @@ $(document).ready(function () {
 
     load_data();
 
-    // Create
+    // Initiate modal
     var form_modal = $("#form-create-edit");
     var modal = $("#kt_modal_add_user");
 
+    // Show modal
+    modal.on("show.bs.modal", function (e) {
+        var method = $(e.relatedTarget).data("id").split("-")[0];
+
+        if (method == "create") {
+            form_modal.attr("action", "POST");
+            form_modal.trigger("reset");
+        } else if ((method = "update")) {
+            form_modal.attr("action", "PUT");
+            form_modal.trigger("reset");
+
+            var id = $(e.relatedTarget).data("id").split("-")[1];
+
+            $.ajax({
+                url: url_name + "/" + id,
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    data = data.data;
+                    $("#input-id").val(data.id);
+                    $("#input-name").val(data.name);
+                    $("#input-email").val(data.email);
+                },
+                error: function (data) {
+                    var errorsString = "";
+                    $.each(data.responseJSON.message, function (key, value) {
+                        errorsString += value + "<br>";
+                    });
+                    Swal.fire({
+                        title: "Error!",
+                        html: errorsString,
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                    });
+                },
+            });
+        }
+    });
+
+    // Create and Edit
     form_modal.on("submit", function (e) {
         e.preventDefault();
         var cek_method = $(this).attr("action");
@@ -99,7 +139,7 @@ $(document).ready(function () {
                 },
             });
         } else if (cek_method == "put" || cek_method == "PUT") {
-            var id = $("#id").val();
+            var id = $("#input-id").val();
             $.ajax({
                 url: url_name + "/" + id,
                 method: "PUT",
@@ -140,5 +180,60 @@ $(document).ready(function () {
                 confirmButtonText: "Ok",
             });
         }
+    });
+
+    // Delete
+    $("body").on("click", "#btn-delete", function (e) {
+        var id = $(this).data("id");
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will delete this data!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    url: url_name + "/" + id,
+                    method: "DELETE",
+                    data: {
+                        _token: $('input[name="_token"]').val(),
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code >= 200) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: data.message,
+                                icon: "success",
+                                confirmButtonText: "Ok",
+                            }).then((result) => {
+                                load_data();
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        var errorsString = "";
+                        $.each(
+                            data.responseJSON.message,
+                            function (key, value) {
+                                errorsString += value + "<br>";
+                            }
+                        );
+                        Swal.fire({
+                            title: "Error!",
+                            html: errorsString,
+                            icon: "error",
+                            confirmButtonText: "Ok",
+                        });
+                    },
+                });
+            }
+        });
     });
 });

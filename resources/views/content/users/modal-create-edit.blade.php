@@ -27,7 +27,7 @@
                                 <!--begin::Form-->
                                 <form id="form-create-edit" class="form" action="POST">
                                         @csrf
-                                        <input type="hidden" name="id" />
+                                        <input type="hidden" name="id" id="input-id" />
                                         <input type="hidden" name="_method" value="POST" />
                                         <!--begin::Scroll-->
                                         <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
@@ -37,7 +37,7 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Full Name</label>
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
-                                                        <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" />
+                                                        <input type="text" name="name" id="input-name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" />
                                                         <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->
@@ -47,7 +47,7 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Email</label>
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
-                                                        <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" />
+                                                        <input type="email" name="email" id="input-email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" />
                                                         <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->

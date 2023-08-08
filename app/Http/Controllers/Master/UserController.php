@@ -91,9 +91,10 @@ class UserController extends Controller
   {
     try {
       $users = $this->userContract->find($id);
-      return response()->json($users);
+
+      return response()->json(['message' => 'Success!', 'code' => 200, 'data' => $users], 200); // ['data' => $users
     } catch (\Exception $e) {
-      return response()->json(['message' => $e->getMessage()], 500);
+      return response()->json(['message' => "User Tidak Ditemukan"], 500);
     }
   }
 
@@ -137,11 +138,10 @@ class UserController extends Controller
 
       // if fail
       if ($validatedData->fails()) {
-        return response()->json(['message' => $validatedData->errors()], 500);
+        return response()->json(['message' => $validatedData->errors(), 'code' => 500], 500);
       }
 
-      $users = $this->userContract->update($request->all(), $id);
-      return response()->json($users);
+      return $users = $this->userContract->update($request->all(), $id);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }
@@ -157,7 +157,13 @@ class UserController extends Controller
   {
     try {
       $users = $this->userContract->delete($id);
-      return response()->json($users);
+
+      if ($users == 0) {
+        return response()->json(['message' => 'User not found!', 'code' => 404], 404);
+      }
+
+
+      return response()->json(['message' => 'User has been deleted!', 'code' => 200], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }

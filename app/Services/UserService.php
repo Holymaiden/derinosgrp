@@ -118,14 +118,16 @@ class UserService extends BaseRepository implements UserContract
         } else {
             $dataNew['password'] = Hash::make($request['password']);
         }
+        $dataNew['name'] = $request['name'];
+        $dataNew['email'] = $request['email'];
 
         $update = $this->model->find($id)->update($dataNew);
 
         // Check if data is updated
         if (!$update) {
-            return response()->json(['message' => "User Gagal Diupdate"], 400);
+            return response()->json(['message' => "User Gagal Diupdate", 'code' => 400], 400);
         }
 
-        return response()->json(['message' => "User Berhasil Diupdate"], 200);
+        return response()->json(['message' => "User Berhasil Diupdate", 'code' => 200], 200);
     }
 }
