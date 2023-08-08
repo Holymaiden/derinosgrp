@@ -61,15 +61,18 @@ $(document).ready(function () {
     // Initiate modal
     var form_modal = $("#form-create-edit");
     var modal = $("#kt_modal_add_user");
+    var modal_title = $("#kt_modal_add_user .form-title-modal");
 
     // Show modal
     modal.on("show.bs.modal", function (e) {
         var method = $(e.relatedTarget).data("id").split("-")[0];
 
         if (method == "create") {
+            modal_title.html("Add");
             form_modal.attr("action", "POST");
             form_modal.trigger("reset");
         } else if ((method = "update")) {
+            modal_title.html("Edit");
             form_modal.attr("action", "PUT");
             form_modal.trigger("reset");
 
