@@ -88,6 +88,9 @@
         </div>
         <!--end::Scrolltop-->
 
+        <!--begin::Modal - Pilih Perumahan-->
+        @include('_layouts.modal-perumahan')
+        <!--end::Modal - Pilih Perumahan-->
 
         <!--begin::Javascript-->
         <script>
@@ -100,6 +103,14 @@
         @stack('javascript-vendor')
         <!--end::Vendors Javascript-->
         <!--begin::Custom Javascript(used by this page)-->
+        <script>
+                $(document).ready(function() {
+                        var modal_perumahan = $('#kt_modal_pilih_perumahan');
+                        if (!"{{ Auth::user()}}") {
+                                modal_perumahan.modal('show');
+                        }
+                });
+        </script>
         @stack('javascript-custom')
         <!--end::Custom Javascript-->
         <!--end::Javascript-->
