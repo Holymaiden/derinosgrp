@@ -18,7 +18,21 @@ var KTAccountSettingsSigninMethods = (function () {
             o.classList.toggle("d-none"),
                 a.classList.toggle("d-none"),
                 i.classList.toggle("d-none");
+        },
+        errswl = function (
+            message = "Sorry, looks like there are some errors detected, please try again."
+        ) {
+            swal.fire({
+                html: message,
+                icon: "error",
+                buttonsStyling: !1,
+                confirmButtonText: "Ok, got it!",
+                customClass: {
+                    confirmButton: "btn font-weight-bold btn-light-primary",
+                },
+            });
         };
+
     return {
         init: function () {
             var m;
@@ -51,10 +65,10 @@ var KTAccountSettingsSigninMethods = (function () {
                 t &&
                     ((m = FormValidation.formValidation(t, {
                         fields: {
-                            emailaddress: {
+                            email: {
                                 validators: {
                                     notEmpty: { message: "Email is required" },
-                                    emailAddress: {
+                                    email: {
                                         message:
                                             "The value is not a valid email address",
                                     },
@@ -82,31 +96,42 @@ var KTAccountSettingsSigninMethods = (function () {
                                 console.log("click"),
                                 m.validate().then(function (e) {
                                     "Valid" == e
-                                        ? swal
-                                              .fire({
-                                                  text: "Sent password reset. Please check your email",
-                                                  icon: "success",
-                                                  buttonsStyling: !1,
-                                                  confirmButtonText:
-                                                      "Ok, got it!",
-                                                  customClass: {
-                                                      confirmButton:
-                                                          "btn font-weight-bold btn-light-primary",
-                                                  },
-                                              })
-                                              .then(function () {
-                                                  t.reset(), m.resetForm(), d();
-                                              })
-                                        : swal.fire({
-                                              text: "Sorry, looks like there are some errors detected, please try again.",
-                                              icon: "error",
-                                              buttonsStyling: !1,
-                                              confirmButtonText: "Ok, got it!",
-                                              customClass: {
-                                                  confirmButton:
-                                                      "btn font-weight-bold btn-light-primary",
+                                        ? $.ajax({
+                                              url: "profile/email",
+                                              type: "PUT",
+                                              data: $(
+                                                  "#kt_signin_change_email"
+                                              ).serialize(),
+                                              success: function (data) {
+                                                  swal.fire({
+                                                      text: "Email successfully updated. Please check your email for verification.",
+                                                      icon: "success",
+                                                      buttonsStyling: !1,
+                                                      confirmButtonText:
+                                                          "Ok, got it!",
+                                                      customClass: {
+                                                          confirmButton:
+                                                              "btn font-weight-bold btn-light-primary",
+                                                      },
+                                                  }).then(function () {
+                                                      t.reset(),
+                                                          m.resetForm(),
+                                                          d();
+                                                  });
                                               },
-                                          });
+                                              error: function (data) {
+                                                  var errorsString = "";
+                                                  $.each(
+                                                      data.responseJSON.message,
+                                                      function (key, value) {
+                                                          errorsString +=
+                                                              value + "<br>";
+                                                      }
+                                                  );
+                                                  errswl(errorsString);
+                                              },
+                                          })
+                                        : errswl();
                                 });
                         })),
                 (function (t) {
@@ -125,7 +150,7 @@ var KTAccountSettingsSigninMethods = (function () {
                                         },
                                     },
                                 },
-                                newpassword: {
+                                password: {
                                     validators: {
                                         notEmpty: {
                                             message: "New Password is required",
@@ -141,7 +166,7 @@ var KTAccountSettingsSigninMethods = (function () {
                                         identical: {
                                             compare: function () {
                                                 return n.querySelector(
-                                                    '[name="newpassword"]'
+                                                    '[name="password"]'
                                                 ).value;
                                             },
                                             message:
@@ -165,34 +190,47 @@ var KTAccountSettingsSigninMethods = (function () {
                                     console.log("click"),
                                     e.validate().then(function (t) {
                                         "Valid" == t
-                                            ? swal
-                                                  .fire({
-                                                      text: "Sent password reset. Please check your email",
-                                                      icon: "success",
-                                                      buttonsStyling: !1,
-                                                      confirmButtonText:
-                                                          "Ok, got it!",
-                                                      customClass: {
-                                                          confirmButton:
-                                                              "btn font-weight-bold btn-light-primary",
-                                                      },
-                                                  })
-                                                  .then(function () {
-                                                      n.reset(),
-                                                          e.resetForm(),
-                                                          c();
-                                                  })
-                                            : swal.fire({
-                                                  text: "Sorry, looks like there are some errors detected, please try again.",
-                                                  icon: "error",
-                                                  buttonsStyling: !1,
-                                                  confirmButtonText:
-                                                      "Ok, got it!",
-                                                  customClass: {
-                                                      confirmButton:
-                                                          "btn font-weight-bold btn-light-primary",
+                                            ? $.ajax({
+                                                  url: "profile/password",
+                                                  type: "PUT",
+                                                  data: $(
+                                                      "#kt_signin_change_password"
+                                                  ).serialize(),
+                                                  success: function (data) {
+                                                      swal.fire({
+                                                          text: "Password successfully updated.",
+                                                          icon: "success",
+                                                          buttonsStyling: !1,
+                                                          confirmButtonText:
+                                                              "Ok, got it!",
+                                                          customClass: {
+                                                              confirmButton:
+                                                                  "btn font-weight-bold btn-light-primary",
+                                                          },
+                                                      }).then(function () {
+                                                          n.reset(),
+                                                              e.resetForm(),
+                                                              c();
+                                                      });
                                                   },
-                                              });
+                                                  error: function (data) {
+                                                      var errorsString = "";
+                                                      $.each(
+                                                          data.responseJSON
+                                                              .message,
+                                                          function (
+                                                              key,
+                                                              value
+                                                          ) {
+                                                              errorsString +=
+                                                                  value +
+                                                                  "<br>";
+                                                          }
+                                                      );
+                                                      errswl(errorsString);
+                                                  },
+                                              })
+                                            : errswl();
                                     });
                             }));
                 })();

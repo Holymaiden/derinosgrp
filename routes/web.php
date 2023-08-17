@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,12 +28,12 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::put('/user-list/{id}', 'UserController@update')->name('user-list.update');
         Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
     });
-});
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {
+        Route::get('/', 'ProfileController@index')->name('profile');
+        Route::put('/email', 'ProfileController@updateEmail')->name('profile.email');
+        Route::put('/password', 'ProfileController@updatePassword')->name('profile.password');
+    });
 });
 
 require __DIR__ . '/auth.php';
