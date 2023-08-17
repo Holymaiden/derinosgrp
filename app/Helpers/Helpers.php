@@ -24,4 +24,10 @@ class Helpers
                 }
                 return $data;
         }
+
+        public static function getPerumahan()
+        {
+                $data = DB::table('master_perumahan')->select('id', 'nama_perumahan', 'alamat')->get();
+                return isset($data) ? $data : null;
+        }
 }

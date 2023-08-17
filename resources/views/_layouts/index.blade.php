@@ -106,9 +106,21 @@
         <script>
                 $(document).ready(function() {
                         var modal_perumahan = $('#kt_modal_pilih_perumahan');
-                        if (!"{{ Auth::user()}}") {
+                        if (localStorage.getItem('perumahan') == null) {
                                 modal_perumahan.modal('show');
                         }
+                        modal_perumahan.on('shown.bs.modal', function() {
+                                if (localStorage.getItem('perumahan') != null) {
+                                        $('input[name="offer_type"][value="' + localStorage.getItem('perumahan') + '"]').prop('checked', true);
+                                }
+                        });
+
+                        var form_perumahan = $('#kt_modal_pilih_perumahan_form');
+                        form_perumahan.on('submit', function(e) {
+                                e.preventDefault();
+                                var perumahan = $('input[name="offer_type"]:checked').val();
+                                localStorage.setItem('perumahan', perumahan);
+                        });
                 });
         </script>
         @stack('javascript-custom')
