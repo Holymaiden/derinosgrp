@@ -23,12 +23,6 @@ class UserService extends BaseRepository implements UserContract
 
     public function paginated(Request $request)
     {
-        $columns = [
-            0 => 'id',
-            1 => 'name',
-            2 => 'role',
-        ];
-
         $search = [];
 
         $totalData = User::count();
@@ -121,8 +115,7 @@ class UserService extends BaseRepository implements UserContract
         $dataNew['name'] = $request['name'];
         $dataNew['email'] = $request['email'];
 
-        $update = $this->model->find($id)->update($dataNew);
-
+        $update = $dataOld->update($dataNew);
         // Check if data is updated
         if (!$update) {
             return response()->json(['message' => "User Gagal Diupdate", 'code' => 400], 400);
