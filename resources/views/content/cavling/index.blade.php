@@ -30,7 +30,7 @@
     <script src="{{ asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
     <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
-    <script src="{{ asset('assets/js/master/user-crud.js') }}"></script>
+    <script src="{{ asset('assets/js/master/cavling-crud.js') }}"></script>
 @endpush
 
 @section('content')
@@ -234,7 +234,7 @@
                                 <style type="text/css">
                                     <![CDATA[
                                     .str0 {
-                                        stroke: #1FFF1F;
+                                        stroke: #AACB73;
                                         stroke-width: 17.64
                                     }
 
@@ -246,228 +246,228 @@
                                         fill: #FEFEFE
                                     }
 
-                                    .fil49 {
-                                        fill: #FFFCDB
+                                    .c16 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil44 {
-                                        fill: #B6B49E
+                                    .c21 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil18 {
-                                        fill: #5F5C50
+                                    .c1 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil48 {
-                                        fill: #FFF9B1
+                                    .c17 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil45 {
-                                        fill: #B6B281
+                                    .c20 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil47 {
-                                        fill: #FFF582
+                                    .c18 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil46 {
-                                        fill: #DED572
+                                    .c19 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil55 {
-                                        fill: #FFF000
+                                    .b8 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil25 {
-                                        fill: #897870
+                                    .b2 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil50 {
-                                        fill: #B39B77
+                                    .c15 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil20 {
-                                        fill: #DAB96B
+                                    .c13 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil24 {
-                                        fill: #F4B3B3
+                                    .b3 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil23 {
-                                        fill: #F5B06E
+                                    .c10 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil51 {
-                                        fill: #D59961
+                                    .c14 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil22 {
-                                        fill: #F6AE45
+                                    .c11 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil21 {
-                                        fill: #EF8641
+                                    .c12 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil59 {
-                                        fill: #F08519
+                                    .b4 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil57 {
-                                        fill: #E40082
+                                    .b6 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil0 {
-                                        fill: #E61D4C
+                                    .jalan {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil56 {
-                                        fill: #E62129
+                                    .b7 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil31 {
-                                        fill: #B8CEDA
+                                    .r1 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil32 {
-                                        fill: #98AAB4
+                                    .r2 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil1 {
-                                        fill: #75838A
+                                    .b20 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil2 {
-                                        fill: #50585D
+                                    .b19 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil10 {
-                                        fill: #D5EAD8
+                                    .c9 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil27 {
-                                        fill: #B9CCBC
+                                    .masjid {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil12 {
-                                        fill: #99A99C
+                                    .c7 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil15 {
-                                        fill: #BBC99A
+                                    .c4 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil13 {
-                                        fill: #9AA780
+                                    .c6 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil17 {
-                                        fill: #D9E483
+                                    .c2 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil14 {
-                                        fill: #BCC774
+                                    .c5 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil26 {
-                                        fill: #D2CDE6
+                                    .b1 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil58 {
-                                        fill: #B04B87
+                                    .b5 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil41 {
-                                        fill: #A0D9F6
+                                    .a1 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil5 {
-                                        fill: #769C9B
+                                    .b16 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil3 {
-                                        fill: #5B7877
+                                    .b18 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil11 {
-                                        fill: #A6D4AE
+                                    .c8 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil16 {
-                                        fill: #ACCE22
+                                    .c3 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil39 {
-                                        fill: #7789A4
+                                    .a3 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil36 {
-                                        fill: #9288B1
+                                    .a6 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil38 {
-                                        fill: #5E5872
+                                    .a4 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil8 {
-                                        fill: #62C3D0
+                                    .b13 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil9 {
-                                        fill: #56AAB7
+                                    .b12 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil6 {
-                                        fill: #5BA997
+                                    .b15 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil4 {
-                                        fill: #4B8D7F
+                                    .b17 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil7 {
-                                        fill: #5FA776
+                                    .b14 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil34 {
-                                        fill: #758FC8
+                                    .a8 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil37 {
-                                        fill: #566892
+                                    .a5 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil35 {
-                                        fill: #7C6FB0
+                                    .a7 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil52 {
-                                        fill: #714588
+                                    .b11 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil53 {
-                                        fill: #00A2E9
+                                    .b10 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil54 {
-                                        fill: #009B4C
+                                    .b9 {
+                                        fill: #F6F4EB
                                     }
 
-                                    .fil40 {
-                                        fill: #008FD7
+                                    .a2 {
+                                        fill: #F6F4EB
                                     }
 
                                     .fil33 {
-                                        fill: #1FFF1F
+                                        fill: #AACB73
                                     }
 
                                     .fil30 {
-                                        fill: #1FFF1F
+                                        fill: #AACB73
                                     }
 
                                     .fil29 {
-                                        fill: #25FF25
+                                        fill: #AACB73
                                     }
 
                                     .fil60 {
@@ -489,26 +489,45 @@
                             </defs>
                             <g id="Layer_x0020_1">
                                 <metadata id="CorelCorpID_0Corel-Layer" />
-                                <polygon class="fil0 str0"
+                                <polygon class="jalan str0"
                                     points="19332,1527 19652,1425 19584,1248 19892,1524 19796,1340 20009,1239 26965,13949 26779,14026 26847,14197 26526,13925 26603,14097 26284,14202 " />
-                                <polygon class="fil1 str0" points="958,8391 1816,8391 1816,10336 958,10336 " />
-                                <polygon class="fil2 str0" points="1841,8391 2699,8391 2699,10336 1841,10336 " />
-                                <polygon class="fil3 str0" points="2728,8391 3586,8391 3586,10336 2728,10336 " />
-                                <polygon class="fil4 str0" points="3635,8391 4493,8391 4493,10336 3635,10336 " />
-                                <polygon class="fil5 str0" points="4527,8391 5385,8391 5385,10336 4527,10336 " />
-                                <polygon class="fil6 str0" points="5439,8391 6297,8391 6297,10336 5439,10336 " />
-                                <polygon class="fil7 str0" points="6321,8391 7179,8391 7179,10336 6321,10336 " />
-                                <polygon class="fil8 str0" points="7233,8391 8091,8391 8091,10336 7233,10336 " />
-                                <polygon class="fil9 str0" points="8115,8391 8973,8391 8973,10336 8115,10336 " />
-                                <polygon class="fil10 str0" points="958,10358 1816,10358 1816,12303 958,12303 " />
-                                <polygon class="fil11 str0" points="1841,10358 2699,10358 2699,12303 1841,12303 " />
-                                <polygon class="fil12 str0" points="2728,10358 3586,10358 3586,12303 2728,12303 " />
-                                <polygon class="fil13 str0" points="3635,10358 4493,10358 4493,12303 3635,12303 " />
-                                <polygon class="fil14 str0" points="4527,10358 5385,10358 5385,12303 4527,12303 " />
-                                <polygon class="fil15 str0" points="5439,10358 6297,10358 6297,12303 5439,12303 " />
-                                <polygon class="fil16 str0" points="6321,10358 7179,10358 7179,12303 6321,12303 " />
-                                <polygon class="fil17 str0" points="7233,10358 8091,10358 8091,12303 7233,12303 " />
-                                <polygon class="fil18 str0" points="8115,10358 8973,10358 8973,12303 8115,12303 " />
+                                <polygon  data-id="b20" class="b20 str0"
+                                    points="958,8391 1816,8391 1816,10336 958,10336 " />
+                                <polygon  data-id="b19" class="b19 str0"
+                                    points="1841,8391 2699,8391 2699,10336 1841,10336 " />
+                                <polygon  data-id="b18" class="b18 str0"
+                                    points="2728,8391 3586,8391 3586,10336 2728,10336 " />
+                                <polygon  data-id="b17" class="b17 str0"
+                                    points="3635,8391 4493,8391 4493,10336 3635,10336 " />
+                                <polygon  data-id="b16" class="b16 str0"
+                                    points="4527,8391 5385,8391 5385,10336 4527,10336 " />
+                                <polygon  data-id="b15" class="b15 str0"
+                                    points="5439,8391 6297,8391 6297,10336 5439,10336 " />
+                                <polygon  data-id="b14" class="b14 str0"
+                                    points="6321,8391 7179,8391 7179,10336 6321,10336 " />
+                                <polygon  data-id="b13" class="b13 str0"
+                                    points="7233,8391 8091,8391 8091,10336 7233,10336 " />
+                                <polygon  data-id="b12" class="b12 str0"
+                                    points="8115,8391 8973,8391 8973,10336 8115,10336 " />
+                                <polygon  data-id="c9" class="c9 str0"
+                                    points="958,10358 1816,10358 1816,12303 958,12303 " />
+                                <polygon  data-id="c8" class="c8 str0"
+                                    points="1841,10358 2699,10358 2699,12303 1841,12303 " />
+                                <polygon  data-id="c7" class="c7 str0"
+                                    points="2728,10358 3586,10358 3586,12303 2728,12303 " />
+                                <polygon  data-id="c6" class="c6 str0"
+                                    points="3635,10358 4493,10358 4493,12303 3635,12303 " />
+                                <polygon  data-id="c5" class="c5 str0"
+                                    points="4527,10358 5385,10358 5385,12303 4527,12303 " />
+                                <polygon  data-id="c4" class="c4 str0"
+                                    points="5439,10358 6297,10358 6297,12303 5439,12303 " />
+                                <polygon  data-id="c3" class="c3 str0"
+                                    points="6321,10358 7179,10358 7179,12303 6321,12303 " />
+                                <polygon  data-id="c2" class="c2 str0"
+                                    points="7233,10358 8091,10358 8091,12303 7233,12303 " />
+                                <polygon  data-id="c1" class="c1 str0"
+                                    points="8115,10358 8973,10358 8973,12303 8115,12303 " />
+
                                 <polygon class="fil19 str0" points="880,13245 1738,13245 1738,15190 880,15190 " />
                                 <polygon class="fil19 str0" points="1769,13245 2628,13245 2628,15190 1769,15190 " />
                                 <polygon class="fil19 str0" points="2668,13245 3526,13245 3526,15190 2668,15190 " />
@@ -517,10 +536,16 @@
                                 <polygon class="fil19 str0" points="5346,13245 6204,13245 6204,15190 5346,15190 " />
                                 <polygon class="fil19 str0" points="6273,13245 7131,13245 7131,15190 6273,15190 " />
                                 <polygon class="fil19 str0" points="7134,13245 7992,13245 7992,15190 7134,15190 " />
-                                <polygon class="fil20 str0" points="8053,13245 8911,13245 8911,15190 8053,15190 " />
-                                <polygon class="fil21 str0" points="8929,13245 9787,13245 9787,15190 8929,15190 " />
-                                <polygon class="fil22 str0" points="9842,13245 10700,13245 10700,15190 9842,15190 " />
-                                <polygon class="fil23 str0" points="10739,13245 11597,13245 11597,15190 10739,15190 " />
+
+                                <polygon  data-id="c13" class="c13 str0"
+                                    points="8053,13245 8911,13245 8911,15190 8053,15190 " />
+                                <polygon  data-id="c12" class="c12 str0"
+                                    points="8929,13245 9787,13245 9787,15190 8929,15190 " />
+                                <polygon  data-id="c11" class="c11 str0"
+                                    points="9842,13245 10700,13245 10700,15190 9842,15190 " />
+                                <polygon  data-id="c10" class="c10 str0"
+                                    points="10739,13245 11597,13245 11597,15190 10739,15190 " />
+
                                 <polygon class="fil19 str0" points="1424,5479 2283,5479 2283,7424 1424,7424 " />
                                 <polygon class="fil19 str0" points="2334,5479 3192,5479 3192,7424 2334,7424 " />
                                 <polygon class="fil19 str0" points="3233,5479 4091,5479 4091,7424 3233,7424 " />
@@ -529,10 +554,15 @@
                                 <polygon class="fil19 str0" points="5899,5479 6757,5479 6757,7424 5899,7424 " />
                                 <polygon class="fil19 str0" points="6826,5479 7684,5479 7684,7424 6826,7424 " />
                                 <polygon class="fil19 str0" points="7707,5479 8565,5479 8565,7424 7707,7424 " />
-                                <polygon class="fil24 str0" points="8605,5479 9463,5479 9463,7424 8605,7424 " />
-                                <polygon class="fil25 str0" points="9502,5479 10360,5479 10360,7424 9502,7424 " />
-                                <polygon class="fil26 str0" points="10400,5479 11258,5479 11258,7424 10400,7424 " />
-                                <polygon class="fil27 str0" points="9007,8399 10800,8399 10800,12273 9007,12273 " />
+
+                                <polygon  data-id="b3" class="b3 str0"
+                                    points="8605,5479 9463,5479 9463,7424 8605,7424 " />
+                                <polygon  data-id="b2" class="b2 str0"
+                                    points="9502,5479 10360,5479 10360,7424 9502,7424 " />
+                                <polygon  data-id="b1" class="b1 str0"
+                                    points="10400,5479 11258,5479 11258,7424 10400,7424 " />
+
+                                <polygon class="masjid str0" points="9007,8399 10800,8399 10800,12273 9007,12273 " />
                                 <line class="fil19 str0" x1="19729" y1="8475" x2="22957" y2="8121" />
                                 <polygon class="fil28 str0" points="19729,8475 19860,8725 20161,8692 20023,8438 " />
                                 <polygon class="fil29 str0"
@@ -542,42 +572,71 @@
                                 <polygon class="fil30 str0"
                                     points="11258,5479 11527,5480 11714,6546 11712,7424 11258,7424 " />
                                 <polygon class="fil19 str0" points="11688,8518 11714,6590 18870,5808 18874,7728 " />
-                                <polygon class="fil31 str0" points="18911,5817 21525,5523 21944,6278 18900,6694 " />
-                                <polygon class="fil32 str0" points="18904,6729 18893,7563 22361,7076 21948,6311 " />
+
+                                <polygon class="r1 str0" points="18911,5817 21525,5523 21944,6278 18900,6694 " />
+                                <polygon class="r2 str0" points="18904,6729 18893,7563 22361,7076 21948,6311 " />
+
                                 <polygon class="fil33 str0" points="18890,7579 18891,7730 22462,7205 22391,7083 " />
                                 <polyline class="fil19 str0"
                                     points="12613,6491 12628,8415 13523,8316 13523,6392 14412,6295 14398,8220 15281,8123 15292,6199 16217,6098 16207,8021 17112,7922 17093,6002 18005,5902 17989,7825 " />
-                                <polygon class="fil34 str0"
+                                <polygon class="a8 str0"
                                     points="11703,7424 11688,8518 12628,8415 12613,6491 11714,6590 11712,7424 " />
-                                <polygon class="fil35 str0" points="12613,6491 12628,8415 13523,8316 13523,6392 " />
-                                <polygon class="fil36 str0" points="13523,6392 13523,8316 14398,8220 14412,6295 " />
-                                <polygon class="fil37 str0" points="14412,6295 14398,8220 15281,8123 15292,6199 " />
-                                <polygon class="fil38 str0" points="15292,6199 15281,8123 16207,8021 16217,6098 " />
-                                <polygon class="fil39 str0" points="16217,6098 16207,8021 17112,7922 17093,6002 " />
-                                <polygon class="fil40 str0" points="17093,6002 17112,7922 17989,7825 18005,5902 " />
-                                <polygon class="fil41 str0" points="18005,5902 17989,7825 18874,7728 18870,5808 " />
+
+                                <polygon  data-id="a7" class="a7 str0"
+                                    points="12613,6491 12628,8415 13523,8316 13523,6392 " />
+                                <polygon  data-id="a6" class="a6 str0"
+                                    points="13523,6392 13523,8316 14398,8220 14412,6295 " />
+                                <polygon  data-id="a5" class="a5 str0"
+                                    points="14412,6295 14398,8220 15281,8123 15292,6199 " />
+                                <polygon  data-id="a4" class="a4 str0"
+                                    points="15292,6199 15281,8123 16207,8021 16217,6098 " />
+                                <polygon  data-id="a3" class="a3 str0"
+                                    points="16217,6098 16207,8021 17112,7922 17093,6002 " />
+                                <polygon  data-id="a2" class="a2 str0"
+                                    points="17093,6002 17112,7922 17989,7825 18005,5902 " />
+                                <polygon  data-id="a1" class="a1 str0"
+                                    points="18005,5902 17989,7825 18874,7728 18870,5808 " />
+
                                 <path class="fil42"
                                     d="M21191 4109l10 14c-10,6 -15,12 -17,17 -2,5 -2,11 1,17 3,4 6,7 9,9 4,2 8,3 12,2 4,0 10,-3 17,-6l90 -48 9 17 -89 47c-11,6 -20,9 -27,10 -8,0 -14,-2 -21,-6 -6,-4 -11,-10 -15,-17 -6,-12 -7,-22 -4,-32 4,-9 12,-17 25,-24zm8 105l157 -18 10 19 -103 122 -10 -20 32 -36 -29 -55 -47 7 -10 -19zm73 10l24 44 29 -33c9,-9 16,-17 22,-23 -9,2 -19,4 -29,6l-46 6zm-2 126l131 -69 9 17 -115 61 33 64 -15 8 -43 -81zm46 88l158 -19 10 19 -103 122 -10 -20 31 -36 -29 -55 -47 7 -10 -18zm74 9l23 45 29 -33c9,-10 17,-18 23,-24 -10,3 -19,5 -29,6l-46 6zm-2 127l131 -69 9 18 -66 122 102 -54 9 17 -131 69 -9 -18 66 -123 -102 54 -9 -16zm62 117l157 -18 10 19 -103 122 -10 -20 32 -36 -29 -55 -47 7 -10 -19zm73 10l24 44 29 -32c9,-10 16,-18 22,-24 -9,3 -19,5 -29,6l-46 6zm-2 126l131 -68 10 17 -67 123 103 -54 8 17 -130 68 -10 -17 67 -123 -103 54 -9 -17z" />
                                 <path class="fil42"
                                     d="M23609 8502l10 14c-9,6 -15,11 -17,16 -2,6 -2,11 2,17 2,5 5,8 8,10 4,2 8,3 12,2 4,-1 10,-3 17,-7l90 -47 10 17 -90 47c-10,6 -20,9 -27,9 -7,1 -14,-1 -20,-5 -7,-4 -12,-10 -16,-18 -6,-11 -7,-22 -4,-31 4,-10 12,-18 25,-24zm8 105l157 -19 10 19 -102 122 -11 -19 32 -36 -29 -55 -47 6 -10 -18zm74 9l23 45 29 -33c9,-10 17,-18 23,-24 -10,3 -20,5 -29,6l-46 6zm-3 126l131 -68 9 17 -115 61 34 64 -16 8 -43 -82zm47 88l157 -18 10 19 -103 122 -10 -20 31 -36 -29 -55 -47 7 -9 -19zm73 10l24 44 29 -32c9,-10 16,-18 22,-24 -9,3 -19,5 -29,6l-46 6zm-2 126l131 -68 9 17 -66 123 102 -54 9 17 -131 68 -9 -17 67 -123 -103 54 -9 -17zm62 118l157 -19 10 19 -102 123 -11 -20 32 -36 -29 -55 -47 6 -10 -18zm74 9l23 45 29 -33c9,-10 16,-17 23,-23 -10,2 -20,4 -29,6l-46 5zm-2 127l130 -69 10 18 -67 123 103 -54 9 16 -131 69 -10 -18 67 -122 -103 54 -8 -17z" />
                                 <path class="fil43"
                                     d="M9539 10410l0 -148 29 0 35 105c3,9 5,17 7,21 2,-5 4,-13 8,-23l35 -103 27 0 0 148 -19 0 0 -124 -43 124 -18 0 -43 -126 0 126 -18 0zm156 0l56 -148 22 0 60 148 -22 0 -17 -45 -63 0 -16 45 -20 0zm42 -61l51 0 -16 -41c-4,-12 -8,-23 -10,-31 -2,10 -5,19 -9,29l-16 43zm105 13l19 -1c0,7 2,13 6,18 3,5 8,8 14,11 7,3 15,5 23,5 8,0 14,-1 20,-3 6,-3 10,-6 13,-10 2,-4 4,-8 4,-12 0,-5 -2,-9 -4,-12 -3,-4 -7,-7 -14,-9 -3,-2 -12,-4 -26,-7 -13,-4 -23,-7 -28,-10 -7,-3 -13,-8 -16,-13 -4,-6 -5,-12 -5,-19 0,-7 2,-14 6,-21 4,-6 10,-11 19,-14 8,-4 17,-6 27,-6 11,0 20,2 29,6 8,3 14,8 19,15 5,7 7,15 7,24l-19 1c-1,-9 -4,-16 -10,-21 -6,-5 -14,-7 -26,-7 -11,0 -20,2 -25,6 -6,5 -8,10 -8,16 0,5 1,10 5,13 4,3 14,7 30,11 16,3 27,6 32,9 9,4 15,9 19,15 5,6 7,13 7,21 0,8 -3,15 -7,22 -5,7 -11,13 -20,16 -8,4 -17,6 -28,6 -13,0 -24,-2 -34,-6 -9,-4 -16,-9 -21,-17 -5,-8 -8,-17 -8,-27zm134 6l18 -3c0,12 2,19 6,24 4,4 9,6 16,6 5,0 9,-1 12,-4 4,-2 6,-5 8,-9 1,-4 2,-10 2,-18l0 -102 19 0 0 101c0,12 -1,22 -4,28 -3,7 -8,12 -14,16 -7,3 -14,5 -23,5 -13,0 -23,-4 -30,-11 -7,-7 -10,-19 -10,-33zm117 42l0 -148 19 0 0 148 -19 0zm54 0l0 -148 51 0c11,0 20,1 26,2 8,2 16,6 22,11 7,6 13,15 17,25 4,10 6,22 6,35 0,11 -1,21 -4,30 -3,9 -6,16 -10,21 -4,6 -9,11 -14,14 -4,3 -10,6 -17,7 -7,2 -15,3 -24,3l-53 0zm19 -18l32 0c10,0 17,-1 23,-2 5,-2 10,-5 13,-8 5,-5 8,-11 11,-19 2,-8 4,-17 4,-28 0,-16 -3,-28 -8,-36 -5,-8 -11,-14 -18,-17 -6,-2 -14,-3 -26,-3l-31 0 0 113z" />
-                                <polygon class="fil44 str0" points="1738,15190 1738,13245 880,13245 880,15190 " />
-                                <polygon class="fil45 str0" points="1769,13245 1769,15190 2628,15190 2628,13245 " />
-                                <polygon class="fil46 str0" points="2668,13245 2668,15190 3526,15190 3526,13245 " />
-                                <polygon class="fil47 str0" points="3585,13245 3585,15190 4443,15190 4443,13245 " />
-                                <polygon class="fil48 str0" points="4474,13245 4474,15190 5332,15190 5332,13245 " />
-                                <polygon class="fil49 str0" points="5346,13245 5346,15190 6204,15190 6204,13245 " />
-                                <polygon class="fil50 str0" points="6273,13245 6273,15190 7131,15190 7131,13245 " />
-                                <polygon class="fil51 str0" points="7134,13245 7134,15190 7992,15190 7992,13245 " />
-                                <polygon class="fil52" points="1424,5479 1424,7424 2283,7424 2283,5479 " />
-                                <polygon class="fil53" points="2334,5479 2334,7424 3192,7424 3192,5479 " />
-                                <polygon class="fil54" points="3233,5479 3233,7424 4091,7424 4091,5479 " />
-                                <polygon class="fil55" points="4109,5479 4109,7424 4967,7424 4967,5479 " />
-                                <polygon class="fil56" points="5010,5479 5010,7424 5868,7424 5868,5479 " />
-                                <polygon class="fil57" points="5899,5479 5899,7424 6757,7424 6757,5479 " />
-                                <polygon class="fil58" points="6826,5479 6826,7424 7684,7424 7684,5479 " />
-                                <polygon class="fil59" points="8565,5479 7707,5479 7707,7424 8565,7424 " />
+
+                                <polygon  data-id="c21" class="c21 str0"
+                                    points="1738,15190 1738,13245 880,13245 880,15190 " />
+                                <polygon  data-id="c20" class="c20 str0"
+                                    points="1769,13245 1769,15190 2628,15190 2628,13245 " />
+                                <polygon  data-id="c19" class="c19 str0"
+                                    points="2668,13245 2668,15190 3526,15190 3526,13245 " />
+                                <polygon  data-id="c18" class="c18 str0"
+                                    points="3585,13245 3585,15190 4443,15190 4443,13245 " />
+                                <polygon  data-id="c17" class="c17 str0"
+                                    points="4474,13245 4474,15190 5332,15190 5332,13245 " />
+                                <polygon  data-id="c16" class="c16 str0"
+                                    points="5346,13245 5346,15190 6204,15190 6204,13245 " />
+                                <polygon  data-id="c15" class="c15 str0"
+                                    points="6273,13245 6273,15190 7131,15190 7131,13245 " />
+                                <polygon  data-id="c14" class="c14 str0"
+                                    points="7134,13245 7134,15190 7992,15190 7992,13245 " />
+                                <polygon  data-id="b11" class="b11"
+                                    points="1424,5479 1424,7424 2283,7424 2283,5479 " />
+                                <polygon  data-id="b10" class="b10"
+                                    points="2334,5479 2334,7424 3192,7424 3192,5479 " />
+                                <polygon  data-id="b9" class="b9"
+                                    points="3233,5479 3233,7424 4091,7424 4091,5479 " />
+                                <polygon  data-id="b8" class="b8"
+                                    points="4109,5479 4109,7424 4967,7424 4967,5479 " />
+                                <polygon  data-id="b7" class="b7"
+                                    points="5010,5479 5010,7424 5868,7424 5868,5479 " />
+                                <polygon  data-id="b6" class="b6"
+                                    points="5899,5479 5899,7424 6757,7424 6757,5479 " />
+                                <polygon  data-id="b5" class="b5"
+                                    points="6826,5479 6826,7424 7684,7424 7684,5479 " />
+                                <polygon  data-id="b4" class="b4"
+                                    points="8565,5479 7707,5479 7707,7424 8565,7424 " />
+
                                 <line class="fil19 str0" x1="27262" y1="13823" x2="26963" y2="13950" />
                                 <line class="fil19 str0" x1="20298" y1="1109" x2="20002" y2="1243" />
                                 <path class="fil60"
