@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('tes');
+});
+
 Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
@@ -34,6 +38,13 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/customer-list/{id}', 'CustomerController@show')->name('customer-list.show');
         Route::put('/customer-list/{id}', 'CustomerController@update')->name('customer-list.update');
         Route::delete('/customer-list/{id}', 'CustomerController@destroy')->name('customer-list.destroy');
+
+        Route::get('/cavling', 'CavlingController@index')->name('cavling-management');
+        // Route::get('/user-list', 'UserController@paginated')->name('user-list');
+        // Route::post('/user-list', 'UserController@store')->name('user-list.store');
+        // Route::get('/user-list/{id}', 'UserController@show')->name('user-list.show');
+        // Route::put('/user-list/{id}', 'UserController@update')->name('user-list.update');
+        // Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
     });
 
     Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {
