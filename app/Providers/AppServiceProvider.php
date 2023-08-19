@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
 
         // Initialize Model
         $models = array(
-            'Master_Perumahan',
+            'Blok',
+            'Customer',
+            'MasterPerumahan',
             'User',
         );
 
