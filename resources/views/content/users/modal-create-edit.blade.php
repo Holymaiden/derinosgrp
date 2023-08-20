@@ -72,7 +72,7 @@
                                                                 <!--begin::Radio-->
                                                                 <div class="form-check form-check-custom form-check-solid">
                                                                         <!--begin::Input-->
-                                                                        <input class="form-check-input me-3" name="role" type="radio" value="admin" id="input-role" checked='checked' />
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="admin"/>
                                                                         <!--end::Input-->
                                                                         <!--begin::Label-->
                                                                         <label class="form-check-label" for="input-role">
@@ -85,7 +85,7 @@
                                                                 <!--begin::Radio-->
                                                                 <div class="form-check form-check-custom form-check-solid">
                                                                         <!--begin::Input-->
-                                                                        <input class="form-check-input me-3" name="role" type="radio" value="user" id="input-role" />
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="user"/>
                                                                         <!--end::Input-->
                                                                         <!--begin::Label-->
                                                                         <label class="form-check-label" for="input-role">

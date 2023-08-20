@@ -147,12 +147,10 @@ $(document).ready(function () {
                     $("#input-id").val(data.id);
                     $("#input-name").val(data.name);
                     $("#input-email").val(data.email);
-                    // Cekbox role
-                    var role = data.role;
-                    $.each(role, function (key, value) {
-                        // same value
-                        
-                    });
+                    $("input[name='role'][value='" + data.role + "']").prop(
+                        "checked",
+                        true
+                    );
                 },
                 error: function (data) {
                     var errorsString = "";
