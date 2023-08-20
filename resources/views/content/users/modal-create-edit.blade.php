@@ -72,16 +72,28 @@
                                                                 <!--begin::Radio-->
                                                                 <div class="form-check form-check-custom form-check-solid">
                                                                         <!--begin::Input-->
-                                                                        <input class="form-check-input me-3" name="user_role" type="radio" value="0" id="kt_modal_update_role_option_0" checked='checked' />
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="admin" id="input-role" checked='checked' />
                                                                         <!--end::Input-->
                                                                         <!--begin::Label-->
-                                                                        <label class="form-check-label" for="kt_modal_update_role_option_0">
+                                                                        <label class="form-check-label" for="input-role">
                                                                                 <div class="fw-bold text-gray-800">Administrator</div>
-                                                                                <div class="text-gray-600">Best for business owners and company administrators</div>
+                                                                                <div class="text-gray-600">Can access all system settings</div>
                                                                         </label>
                                                                         <!--end::Label-->
                                                                 </div>
                                                                 <!--end::Radio-->
+                                                                <!--begin::Radio-->
+                                                                <div class="form-check form-check-custom form-check-solid">
+                                                                        <!--begin::Input-->
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="user" id="input-role" />
+                                                                        <!--end::Input-->
+                                                                        <!--begin::Label-->
+                                                                        <label class="form-check-label" for="input-role">
+                                                                                <div class="fw-bold text-gray-800">User</div>
+                                                                                <div class="text-gray-600">Just a user with no specific permissions</div>
+                                                                        </label>
+                                                                        <!--end::Label-->
+                                                                </div>
                                                         </div>
                                                         <!--end::Roles-->
                                                 </div>

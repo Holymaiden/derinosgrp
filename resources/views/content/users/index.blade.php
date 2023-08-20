@@ -21,6 +21,9 @@
 @endpush
 
 @push('javascript-custom')
+<script src="{{ asset('assets/js/master/user/table.js') }}"></script>
+<script src="{{ asset('assets/js/master/user/export.js') }}"></script>
+<script src="{{ asset('assets/js/master/user/validation.js') }}"></script>
 <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
 <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
@@ -28,9 +31,6 @@
 <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
 <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
 <script src="{{ asset('assets/js/master/user/user-crud.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/table.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/export.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/validation.js') }}"></script>
 @endpush
 
 @section('content')

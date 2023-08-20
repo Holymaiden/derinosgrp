@@ -18,7 +18,7 @@
         <!--end::User=-->
         <!--begin::Role=-->
         <td>
-                <div class="badge badge-light fw-bold">Administrator</div>
+                <div class="badge badge-light fw-bold">{{ ucfirst($v['role']) }}</div>
         </td>
         <!--end::Role=-->
         <!--begin::Action=-->

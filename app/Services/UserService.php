@@ -53,10 +53,7 @@ class UserService extends BaseRepository implements UserContract
                 $nestedData['id'] = $user->id;
                 $nestedData['name'] = $user->name;
                 $nestedData['email'] = $user->email;
-                if ($user->role)
-                    $nestedData['role'] = $user->role->name;
-                else
-                    $nestedData['role'] = 'Admin';
+                $nestedData['role'] = $user->role;
 
                 $data[] = $nestedData;
             }
@@ -82,7 +79,8 @@ class UserService extends BaseRepository implements UserContract
             $users =  $this->model->create([
                 'name' => $request['name'],
                 'email' => $request['email'],
-                'password' => Hash::make($request['password'])
+                'password' => Hash::make($request['password']),
+                'role' => $request['role'],
             ]);
 
             // Check if data is created
@@ -114,6 +112,7 @@ class UserService extends BaseRepository implements UserContract
         }
         $dataNew['name'] = $request['name'];
         $dataNew['email'] = $request['email'];
+        $dataNew['role'] = $request['role'];
 
         $update = $dataOld->update($dataNew);
         // Check if data is updated

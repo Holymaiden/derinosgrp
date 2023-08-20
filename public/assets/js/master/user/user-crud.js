@@ -63,6 +63,66 @@ $(document).ready(function () {
     var modal = $("#kt_modal_add_user");
     var modal_title = $("#kt_modal_add_user .form-title-modal");
 
+    // Modal Close
+    modal.on("click", '[data-kt-users-modal-action="close"]', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            text: "Are you sure you would like to cancel?",
+            icon: "warning",
+            showCancelButton: !0,
+            buttonsStyling: !1,
+            confirmButtonText: "Yes, cancel it!",
+            cancelButtonText: "No, return",
+            customClass: {
+                confirmButton: "btn btn-primary",
+                cancelButton: "btn btn-active-light",
+            },
+        }).then(function (t) {
+            t.value
+                ? (modal.modal("hide"), form_modal.trigger("reset"))
+                : "cancel" === t.dismiss &&
+                  Swal.fire({
+                      text: "Your form has not been cancelled!.",
+                      icon: "error",
+                      buttonsStyling: !1,
+                      confirmButtonText: "Ok, got it!",
+                      customClass: {
+                          confirmButton: "btn btn-primary",
+                      },
+                  });
+        });
+    });
+
+    // Modal Cancel
+    modal.on("click", '[data-kt-users-modal-action="cancel"]', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            text: "Are you sure you would like to cancel?",
+            icon: "warning",
+            showCancelButton: !0,
+            buttonsStyling: !1,
+            confirmButtonText: "Yes, cancel it!",
+            cancelButtonText: "No, return",
+            customClass: {
+                confirmButton: "btn btn-primary",
+                cancelButton: "btn btn-active-light",
+            },
+        }).then(function (t) {
+            t.value
+                ? (modal.modal("hide"), form_modal.trigger("reset"))
+                : "cancel" === t.dismiss &&
+                  Swal.fire({
+                      text: "Your form has not been cancelled!.",
+                      icon: "error",
+                      buttonsStyling: !1,
+                      confirmButtonText: "Ok, got it!",
+                      customClass: {
+                          confirmButton: "btn btn-primary",
+                      },
+                  });
+        });
+    });
+
     // Show modal
     modal.on("show.bs.modal", function (e) {
         var method = $(e.relatedTarget).data("id").split("-")[0];
@@ -87,6 +147,12 @@ $(document).ready(function () {
                     $("#input-id").val(data.id);
                     $("#input-name").val(data.name);
                     $("#input-email").val(data.email);
+                    // Cekbox role
+                    var role = data.role;
+                    $.each(role, function (key, value) {
+                        // same value
+                        
+                    });
                 },
                 error: function (data) {
                     var errorsString = "";
