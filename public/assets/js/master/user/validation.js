@@ -1,7 +1,7 @@
 "use strict";
 var KTUsersAddUser = (function () {
     const t = document.getElementById("kt_modal_add_user"),
-        e = t.querySelector("#kt_modal_add_user_form"),
+        e = t.querySelector("#form-create-edit"),
         n = new bootstrap.Modal(t);
     return {
         init: function () {
@@ -22,6 +22,21 @@ var KTUsersAddUser = (function () {
                                     message:
                                         "The value is not a valid email address",
                                 },
+                            },
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: { message: "Password is required" },
+                                stringLength: {
+                                    min: 8,
+                                    message:
+                                        "Password must be at least 8 characters long",
+                                },
+                            },
+                        },
+                        role: {
+                            validators: {
+                                notEmpty: { message: "Role is required" },
                             },
                         },
                     },

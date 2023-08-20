@@ -72,7 +72,7 @@
                                                                 <!--begin::Radio-->
                                                                 <div class="form-check form-check-custom form-check-solid">
                                                                         <!--begin::Input-->
-                                                                        <input class="form-check-input me-3" name="role" type="radio" value="admin"/>
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="admin" />
                                                                         <!--end::Input-->
                                                                         <!--begin::Label-->
                                                                         <label class="form-check-label" for="input-role">
@@ -82,10 +82,18 @@
                                                                         <!--end::Label-->
                                                                 </div>
                                                                 <!--end::Radio-->
+                                                        </div>
+                                                        <!--end::Input row-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="mb-7">
+                                                        <!--begin::Input row-->
+                                                        <div class="d-flex fv-row">
                                                                 <!--begin::Radio-->
                                                                 <div class="form-check form-check-custom form-check-solid">
                                                                         <!--begin::Input-->
-                                                                        <input class="form-check-input me-3" name="role" type="radio" value="user"/>
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="user" />
                                                                         <!--end::Input-->
                                                                         <!--begin::Label-->
                                                                         <label class="form-check-label" for="input-role">
@@ -94,7 +102,9 @@
                                                                         </label>
                                                                         <!--end::Label-->
                                                                 </div>
+                                                                <!--end::Radio-->
                                                         </div>
+                                                        <!--end::Input row-->
                                                         <!--end::Roles-->
                                                 </div>
                                                 <!--end::Input group-->
