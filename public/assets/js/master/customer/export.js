@@ -1,7 +1,7 @@
 "use strict";
 var KTModalExportUsers = (function () {
-    const t = document.getElementById("kt_modal_export_users"),
-        e = t.querySelector("#kt_modal_export_users_form"),
+    const t = document.getElementById("kt_modal_export_customers"),
+        e = t.querySelector("#kt_modal_export_customers_form"),
         n = new bootstrap.Modal(t);
     return {
         init: function () {

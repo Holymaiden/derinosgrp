@@ -21,16 +21,15 @@
 @endpush
 
 @push('javascript-custom')
+<script src="{{ asset('assets/js/master/customer/table.js') }}"></script>
+<script src="{{ asset('assets/js/master/customer/export.js') }}"></script>
 <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
-<script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
+<script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>s
 <script src="{{ asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
 <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
 <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/customer-crud.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/table.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/export.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/validation.js') }}"></script>
+<script src="{{ asset('assets/js/master/customer/customer-crud.js') }}"></script>
 @endpush
 
 @section('content')

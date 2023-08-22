@@ -9,8 +9,9 @@ class Blok extends Model
 {
     use HasFactory;
 
-    protected $table = 'blok';
+    protected $table = 'bloks';
     protected $fillable = [
+        'perumahan_id',
         'customer_id',
         'kode',
         'panjang',

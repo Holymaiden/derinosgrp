@@ -5,16 +5,17 @@ namespace App\Services;
 use App\Models\Customer;
 use App\Services\BaseRepository;
 use App\Services\Contracts\CustomerContract;
+use App\Traits\Uploadable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 
 class CustomerService extends BaseRepository implements CustomerContract
 {
+    use Uploadable;
     /**
      * @var
      */
-    protected $model;
+    protected $model, $path = 'uploads/customer/';
 
     public function __construct(Customer $customer)
     {
@@ -23,9 +24,10 @@ class CustomerService extends BaseRepository implements CustomerContract
 
     public function paginated(Request $request)
     {
-        $search = [];
+        $this->model = $this->model->where('perumahan_id', $request->input('perumahan'));
 
-        $totalData = Customer::count();
+        $search = [];
+        $totalData = Customer::where('perumahan_id', $request->input('perumahan'))->count();
 
         $totalFiltered = $totalData;
 
@@ -56,6 +58,7 @@ class CustomerService extends BaseRepository implements CustomerContract
         if (!empty($customers)) {
             // providing a dummy id instead of database ids
             foreach ($customers as $customer) {
+                $nestedData['id'] = $customer->id;
                 $nestedData['nama'] = $customer->nama;
                 $nestedData['nik'] = $customer->nik;
                 $nestedData['alamat'] = $customer->alamat;
@@ -89,8 +92,16 @@ class CustomerService extends BaseRepository implements CustomerContract
         $nik =  $this->model->where('nik', $request['nik'])->first();
 
         if (empty($nik)) {
+            // Upload KTP
+            if ($request['ktp'])
+                $request['ktp'] = $this->uploadFile($request['ktp'], $this->path . 'ktp/', null);
+
+            if ($request['kk'])
+                $request['kk'] = $this->uploadFile($request['kk'], $this->path . 'kk/', null);
+
             $customer =  $this->model->create([
-                'nama' => $request['nama'],
+                'perumahan_id' => $request['perumahan'],
+                'nama' => $request['name'],
                 'nik' => $request['nik'],
                 'alamat' => $request['alamat'],
                 'tempat_lahir' => $request['tempat_lahir'],
@@ -122,15 +133,22 @@ class CustomerService extends BaseRepository implements CustomerContract
     public function update(array $request, $id)
     {
         $dataNew = [];
+        $dataOld = $this->model->find($id);
 
-        $dataSameNik = $this->model->where('nik', $request['nik'])->first();
+        if ($dataOld->nik != $request['nik']) {
+            $dataSameNik = $this->model->where('nik', $request['nik'])->first();
 
-        if (empty($dataSameNik)) {
-            $dataNew['nik'] = $request['nik'];
-        } else {
-            return response()->json(['message' => "NIK Sudah Ada", 'code' => 409], 409);
+            if (!empty($dataSameNik))
+                return response()->json(['message' => "NIK Sudah Ada", 'code' => 409], 409);
         }
 
+        if ($request['ktp'])
+            $request['ktp'] = $this->uploadFile($request['ktp'], $this->path . 'ktp/', null);
+
+        if ($request['kk'])
+            $request['kk'] = $this->uploadFile($request['kk'], $this->path . 'kk/', null);
+
+        $dataNew['nik'] = $request['nik'];
         $dataNew['nama'] = $request['nama'];
         $dataNew['alamat'] = $request['alamat'];
         $dataNew['tempat_lahir'] = $request['tempat_lahir'];
@@ -139,10 +157,11 @@ class CustomerService extends BaseRepository implements CustomerContract
         $dataNew['telepon'] = $request['telepon'];
         $dataNew['email'] = $request['email'];
         $dataNew['pekerjaan'] = $request['pekerjaan'];
-        $dataNew['ktp'] = $request['ktp'];
-        $dataNew['kk'] = $request['kk'];
+        $dataNew['ktp'] = $request['ktp'] ?? $dataOld->ktp;
+        $dataNew['kk'] = $request['kk'] ?? $dataOld->kk;
 
-        $update = $this->model->find($id)->update($dataNew);
+        $update = $dataOld->update($dataNew);
+
         // Check if data is updated
         if (!$update) {
             return response()->json(['message' => "Customer Gagal Diupdate", 'code' => 400], 400);

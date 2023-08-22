@@ -1,4 +1,4 @@
-@foreach($data as $v)
+@forelse($data as $v)
 <!--begin::Table row-->
 <tr>
         <!--begin::Checkbox-->
@@ -15,7 +15,7 @@
         <td class="d-flex align-items-center">
                 <!--begin::User details-->
                 <div class="d-flex flex-column">
-                        <a href="../../demo1/dist/apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">{{ $v['nama'] }}</a>
+                        <div class="text-gray-800 text-hover-primary mb-1">{{ $v['nama'] }}</div>
                         <span>{{ $v['email'] }}</span>
                 </div>
                 <!--begin::User details-->
@@ -23,16 +23,16 @@
         <!--end::User=-->
         <!--begin::Telepon=-->
         <td>
-                <div class="badge badge-light fw-bold">{{ $v['telepon'] }}</div>
+                <div class="text-gray-800 text-hover-primary">{{ $v['telepon'] }}</div>
         </td>
         <!--end::Telepon=-->
         <!--begin::Alamat=-->
         <td>
-                <div class="badge badge-light fw-bold">{{ $v['alamat'] }}</div>
+                <div class="text-gray-800 text-hover-primary">{{ $v['alamat'] }}</div>
         </td>
         <!--begin::Action=-->
         <td class="text-end">
-                <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" data-id="update-{{ $v['id'] }}">
+                <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer" data-id="update-{{ $v['id'] }}">
                         <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                         <span class="svg-icon svg-icon-3">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,4 +57,8 @@
         <!--end::Action=-->
 </tr>
 <!--end::Table row-->
-@endforeach
+@empty
+<tr>
+        <td colspan="6" class="d-flex align-items-center">No data available</td>
+</tr>
+@endforelse

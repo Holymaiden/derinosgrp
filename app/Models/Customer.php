@@ -9,8 +9,11 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $table = 'customer';
+    protected $primaryKey = 'id';
+    protected $table = 'customers';
+
     protected $fillable = [
+        'perumahan_id',
         'nama',
         'nik',
         'alamat',
@@ -22,5 +25,10 @@ class Customer extends Model
         'pekerjaan',
         'ktp',
         'kk',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 }

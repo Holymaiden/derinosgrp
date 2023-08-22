@@ -1,4 +1,4 @@
-@foreach($data as $v)
+@forelse($data as $v)
 <!--begin::Table row-->
 <tr>
         <!--begin::Checkbox-->
@@ -48,4 +48,8 @@
         <!--end::Action=-->
 </tr>
 <!--end::Table row-->
-@endforeach
+@empty
+<tr>
+        <td colspan="4" class="d-flex align-items-center">No data available</td>
+</tr>
+@endforelse

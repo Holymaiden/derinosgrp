@@ -55,19 +55,27 @@ class CustomerController extends Controller
     try {
       // Message Validation
       $messages = [
-        'name.required' => 'Name is required!',
+        'nik.required' => 'NIK is required!',
+        'nik.unique' => 'NIK already exists!',
+        'nik.min' => 'NIK must be at least 16 characters!',
+        'nik.max' => 'NIK may not be greater than 16 characters!',
+        'name.required' => 'Full Name is required!',
         'email.required' => 'Email is required!',
-        'email.email' => 'Email is not valid!',
-        'email.unique' => 'Email is already exist!',
-        'password.required' => 'Password is required!',
-        'password.min' => 'Password must be at least 8 characters!',
+        'email.unique' => 'Email already exists!',
+        'email.email' => 'Email must be a valid email address!',
+        'telepon.required' => 'Telepon is required!',
+        'telepon.min' => 'Telepon must be at least 10 characters!',
+        'telepon.max' => 'Telepon may not be greater than 13 characters!',
+        'alamat.required' => 'Alamat is required!',
       ];
 
       // Validate the value...
       $validatedData = Validator::make($request->all(), [
+        'nik' => 'required|unique:customers|min:16|max:16',
         'name' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:8',
+        'email' => 'required|unique:customers|email',
+        'telepon' => 'required|min:10|max:13',
+        'alamat' => 'required',
       ], $messages);
 
       // if fail
@@ -75,7 +83,15 @@ class CustomerController extends Controller
         return response()->json(['message' => $validatedData->errors()], 500);
       }
 
-      return $this->customerContract->store($request->all());
+      $data = $request->all();
+
+      if ($request->hasFile('ktp'))
+        $data['ktp'] = $request->file('ktp');
+
+      if ($request->hasFile('kk'))
+        $data['kk'] = $request->file('kk');
+
+      return $this->customerContract->store($data);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }
@@ -90,11 +106,11 @@ class CustomerController extends Controller
   public function show($id)
   {
     try {
-      $users = $this->customerContract->find($id);
+      $customer = $this->customerContract->find($id);
 
-      return response()->json(['message' => 'Success!', 'code' => 200, 'data' => $users], 200); // ['data' => $users
+      return response()->json(['message' => 'Success!', 'code' => 200, 'data' => $customer], 200); // ['data' => $customer
     } catch (\Exception $e) {
-      return response()->json(['message' => "User Tidak Ditemukan"], 500);
+      return response()->json(['message' => "Customer Tidak Ditemukan"], 500);
     }
   }
 
@@ -108,8 +124,8 @@ class CustomerController extends Controller
   {
 
     try {
-      $users = $this->customerContract->find($id);
-      return response()->json($users);
+      $customer = $this->customerContract->find($id);
+      return response()->json($customer);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }
@@ -141,7 +157,15 @@ class CustomerController extends Controller
         return response()->json(['message' => $validatedData->errors(), 'code' => 500], 500);
       }
 
-      return $users = $this->customerContract->update($request->all(), $id);
+      $data = $request->all();
+
+      if ($request->hasFile('ktp'))
+        $data['ktp'] = $request->file('ktp');
+
+      if ($request->hasFile('kk'))
+        $data['kk'] = $request->file('kk');
+
+      return $this->customerContract->update($data, $id);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }
@@ -156,14 +180,14 @@ class CustomerController extends Controller
   public function destroy($id)
   {
     try {
-      $users = $this->customerContract->delete($id);
+      $customer = $this->customerContract->delete($id);
 
-      if ($users == 0) {
-        return response()->json(['message' => 'User not found!', 'code' => 404], 404);
+      if ($customer == 0) {
+        return response()->json(['message' => 'Customer not found!', 'code' => 404], 404);
       }
 
 
-      return response()->json(['message' => 'User has been deleted!', 'code' => 200], 200);
+      return response()->json(['message' => 'Customer has been deleted!', 'code' => 200], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }

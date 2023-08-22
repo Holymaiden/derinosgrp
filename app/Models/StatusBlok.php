@@ -9,7 +9,7 @@ class StatusBlok extends Model
 {
     use HasFactory;
 
-    protected $table = 'status_blok';
+    protected $table = 'status_bloks';
     protected $fillable = [
         'status',
         'warna',
