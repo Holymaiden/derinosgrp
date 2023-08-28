@@ -36,11 +36,11 @@ class Blok extends Model
 
     public function status_blok()
     {
-        return $this->hasOne('App\Models\Status', 'id', 'status_blok_id');
+        return $this->hasOne('App\Models\StatusBlok', 'id', 'status_blok_id');
     }
 
     public function status_bayar()
     {
-        return $this->hasOne('App\Models\Status', 'id', 'status_bayar_id');
+        return $this->hasOne('App\Models\StatusBlok', 'id', 'status_bayar_id');
     }
 }

@@ -78,9 +78,9 @@
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
 
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div class="menu-item">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
+                    <a class="menu-link @if ($title == 'Perumahan') echo active @endif" href="{{ route('perumahan-management') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -95,7 +95,7 @@
                             <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Perumahan</span>
-                    </span>
+                    </a>
                     <!--end:Menu link-->
                 </div>
                 <!--end:Menu item-->
