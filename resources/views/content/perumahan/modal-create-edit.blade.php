@@ -110,11 +110,10 @@
                                                                 <label class="required fw-semibold fs-6 mb-2">Bayar</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Select-->
-                                                                <select name="status_bayar_id" id="input-status-bayar-id" class="form-select form-select-solid mb-3 mb-lg-0">
+                                                                <select name="status_bayar" id="input-status-bayar" class="form-select form-select-solid mb-3 mb-lg-0">
                                                                         <option value="">Pilih Status</option>
-                                                                        @foreach(Helper::getData('status_bloks') as $status)
-                                                                        <option value="{{ $status->id }}">{{ $status->status }}</option>
-                                                                        @endforeach
+                                                                        <option value="ya">Ya</option>
+                                                                        <option value="tidak">Tidak</option>
                                                                 </select>
                                                                 <!--end::Select-->
                                                         </div>

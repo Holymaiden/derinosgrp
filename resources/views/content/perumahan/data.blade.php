@@ -43,7 +43,7 @@
         <!--end::status_blok=-->
         <!--begin::status_bayar=-->
         <td>
-                <span class="badge badge-{{$v['status_bayar_warna']}}"><i class="{{ $v['status_bayar_icon'] }} fs-4 me-2" style="color:#fff"></i>{{ $v['status_bayar'] }}</span>
+                <span class="badge badge-{{ $v['status_bayar'] == 'ya' ? 'success' : 'danger'}}">{{ ucfirst($v['status_bayar']) }}</span>
         </td>
         <!--end::status_bayar=-->
         <!--begin::keterangan=-->

@@ -44,6 +44,15 @@ class CavlingController extends Controller
     }
   }
 
+  public function getKode(Request $request)
+  {
+    try {
+      return $this->cavlingContract->getKode($request);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
+
   public function show(Request $request, $id)
   {
     try {

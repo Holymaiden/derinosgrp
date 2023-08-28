@@ -64,7 +64,7 @@ class PerumahanController extends Controller
         'harga_jual' => 'required|numeric',
         'keterangan' => 'required',
         'status_blok_id' => 'required',
-        'status_bayar_id' => 'required',
+        'status_bayar' => 'required',
         'perumahan' => 'required',
       ]);
 
@@ -134,7 +134,7 @@ class PerumahanController extends Controller
         'harga_jual' => 'required|numeric',
         'keterangan' => 'required',
         'status_blok_id' => 'required',
-        'status_bayar_id' => 'required',
+        'status_bayar' => 'required',
       ]);
 
       // if fail

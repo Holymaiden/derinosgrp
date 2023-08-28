@@ -11,4 +11,6 @@ interface CavlingContract
         public function findByCriteria(array $criteria);
 
         public function update(array $data, $id);
+
+        public function getKode(Request $request);
 }

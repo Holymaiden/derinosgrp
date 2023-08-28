@@ -179,7 +179,7 @@ $(document).ready(function () {
                     },
                 },
             },
-            status_bayar_id: {
+            status_bayar: {
                 validators: {
                     notEmpty: {
                         message: "Status bayar is required",
@@ -235,8 +235,8 @@ $(document).ready(function () {
                     $("#input-status-blok-id")
                         .val(data.status_blok_id)
                         .trigger("change");
-                    $("#input-status-bayar-id")
-                        .val(data.status_bayar_id)
+                    $("#input-status-bayar")
+                        .val(data.status_bayar)
                         .trigger("change");
                     $("#input-keterangan")
                         .val(data.keterangan)

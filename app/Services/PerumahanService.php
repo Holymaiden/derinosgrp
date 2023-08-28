@@ -21,7 +21,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
 
     public function paginated(Request $request)
     {
-        $this->model = $this->model->where('perumahan_id', $request->input('perumahan'))->with(['customer', 'status_blok', 'status_bayar']);
+        $this->model = $this->model->where('perumahan_id', $request->input('perumahan'))->with(['customer', 'status_blok']);
 
         $search = [];
         $totalData = Blok::where('perumahan_id', $request->input('perumahan'))->count();
@@ -65,9 +65,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 $nestedData['status_blok'] = $blok->status_blok->status;
                 $nestedData['status_blok_warna'] = $blok->status_blok->warna;
                 $nestedData['status_blok_icon'] = $blok->status_blok->icon;
-                $nestedData['status_bayar'] = $blok->status_bayar->status;
-                $nestedData['status_bayar_warna'] = $blok->status_bayar->warna;
-                $nestedData['status_bayar_icon'] = $blok->status_bayar->icon;
+                $nestedData['status_bayar'] = $blok->status_bayar;
                 $nestedData['keterangan'] = $blok->keterangan;
 
                 $data[] = $nestedData;
@@ -102,7 +100,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 'harga_permeter' => $request['harga_permeter'],
                 'harga_jual' => $request['harga_jual'],
                 'status_blok_id' => $request['status_blok_id'],
-                'status_bayar_id' => $request['status_bayar_id'],
+                'status_bayar' => $request['status_bayar'],
                 'keterangan' => $request['keterangan'],
             ]);
 
@@ -143,7 +141,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
         $dataNew['harga_permeter'] = $request['harga_permeter'];
         $dataNew['harga_jual'] = $request['harga_jual'];
         $dataNew['status_blok_id'] = $request['status_blok_id'];
-        $dataNew['status_bayar_id'] = $request['status_bayar_id'];
+        $dataNew['status_bayar'] = $request['status_bayar'];
         $dataNew['keterangan'] = $request['keterangan'];
 
         $update = $dataOld->update($dataNew);

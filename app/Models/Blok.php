@@ -20,7 +20,7 @@ class Blok extends Model
         'harga_permeter',
         'harga_jual',
         'status_blok_id',
-        'status_bayar_id',
+        'status_bayar',
         'keterangan',
     ];
 
@@ -37,10 +37,5 @@ class Blok extends Model
     public function status_blok()
     {
         return $this->hasOne('App\Models\StatusBlok', 'id', 'status_blok_id');
-    }
-
-    public function status_bayar()
-    {
-        return $this->hasOne('App\Models\StatusBlok', 'id', 'status_bayar_id');
     }
 }

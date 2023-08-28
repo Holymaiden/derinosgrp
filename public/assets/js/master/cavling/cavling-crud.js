@@ -43,14 +43,40 @@ $(document).ready(function () {
     function polygonClick() {
         //get tag polygon
         var polygon = document.querySelectorAll("polygon");
-        //get data-d ketika d clik
-        polygon.forEach(function (element) {
-            element.addEventListener("click", function () {
-                var id = element.getAttribute("data-id");
-                $("#input-id").val(id);
-                modal.modal("show");
-            });
+        $.ajax({
+            type: "GET",
+            url: "cavling-kode",
+            data: {
+                perumahan: localStorage.getItem("perumahan"),
+            },
+            dataType: "JSON",
+            success: function (response) {
+                var data = response.data;
+                let kode = [];
+                data.forEach(function (element) {
+                    kode.push(element.kode);
+                });
+                polygon.forEach(function (element) {
+                    var id = element.getAttribute("data-id");
+                    if (kode.includes(id)) {
+                        element.style.cursor = "pointer";
+                        element.addEventListener("click", function () {
+                            $("#input-id").val(id);
+                            modal.modal("show");
+                        });
+                    }
+                });
+            },
         });
+
+        //get data-d ketika d clik
+        // polygon.forEach(function (element) {
+        //     element.addEventListener("click", function () {
+        //         var id = element.getAttribute("data-id");
+        //         $("#input-id").val(id);
+        //         modal.modal("show");
+        //     });
+        // });
     }
 
     // Initiate modal
@@ -142,7 +168,17 @@ $(document).ready(function () {
                 $("#input-customer").val(data.customer_id).trigger("change");
             },
             error: function (data) {
-                modal_title.html("Add");
+                Swal.fire({
+                    text: data.responseJSON.message,
+                    icon: "error",
+                    buttonsStyling: !1,
+                    confirmButtonText: "Ok, got it!",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    },
+                }).then(function () {
+                    modal.modal("hide");
+                });
             },
         });
     });
