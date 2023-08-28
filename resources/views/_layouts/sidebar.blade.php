@@ -4,7 +4,7 @@
         <!--begin::Logo image-->
         <a href="{{ route('dashboard') }}">
             <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.png') }}" class="h-25px app-sidebar-logo-default" />
-            <img alt="Logo" src="{{ asset('assets/media/logos/default-small.svg') }}" class="h-20px app-sidebar-logo-minimize" />
+            <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.png') }}" class="h-20px app-sidebar-logo-minimize" />
         </a>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->

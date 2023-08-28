@@ -47,10 +47,10 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
 
         Route::get('/cavling', 'CavlingController@index')->name('cavling-management');
-        // Route::get('/user-list', 'UserController@paginated')->name('user-list');
-        // Route::post('/user-list', 'UserController@store')->name('user-list.store');
-        // Route::get('/user-list/{id}', 'UserController@show')->name('user-list.show');
-        // Route::put('/user-list/{id}', 'UserController@update')->name('user-list.update');
+        Route::get('/cavling-list', 'CavlingController@data')->name('cavling-list');
+        Route::get('/cavling-data', 'CavlingController@cavling')->name('cavling-list.data');
+        Route::get('/cavling-list/{id}', 'CavlingController@show')->name('cavling-list.show');
+        Route::put('/cavling-list', 'CavlingController@update')->name('cavling-list.update');
         // Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
     });
 

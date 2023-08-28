@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
-use App\Services\Contracts\UserContract;
+use App\Services\Contracts\CavlingContract;
 use Illuminate\Http\Request;
 
 class CavlingController extends Controller
 {
-    private $userContract, $title;
+  private $cavlingContract, $title;
 
-  public function __construct()
+  public function __construct(CavlingContract $cavlingContract)
   {
-    // $this->userContract = $userContract;
+    $this->cavlingContract = $cavlingContract;
     $this->title = 'Cavling';
   }
   /**
@@ -25,21 +25,45 @@ class CavlingController extends Controller
     return view('content.cavling.index', compact('title'));
   }
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-//   public function paginated(Request $request)
-//   {
-//     try {
-//       $datas = $this->userContract->paginated($request);
-//       $data = $datas['data'];
-//       $view = view('content.users.data', compact('data'))->with('i', ($request->input('page', 1) -
-//         1) * $request->input('length'))->render();
-//       return response()->json(['html' => $view, 'total_data' => $datas['total_data'], 'total_page' => $datas['total_page'], 'message' => 'Success!'], 200);
-//     } catch (\Exception $e) {
-//       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
-//     }
-//   }
+  public function data(Request $request)
+  {
+    try {
+      return $this->cavlingContract->data($request);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
+
+  public function cavling()
+  {
+    try {
+      $view = view('content.cavling.data')->render();
+      return response()->json(['html' => $view, 'message' => 'Success!'], 200);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
+
+  public function show(Request $request, $id)
+  {
+    try {
+      $data = $this->cavlingContract->findByCriteria(['kode' => $id, 'perumahan_id' => $request->perumahan]);
+      if (empty($data)) {
+        return response()->json(['message' => "Data Tidak Ditemukan"], 404);
+      }
+
+      return response()->json(['message' => "Data Ditemukan", 'data' => $data], 200);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
+
+  public function update(Request $request)
+  {
+    try {
+      return $this->cavlingContract->update($request->all(), $request->id);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
 }

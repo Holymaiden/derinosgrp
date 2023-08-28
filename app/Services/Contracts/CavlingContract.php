@@ -6,13 +6,9 @@ use Illuminate\Http\Request;
 
 interface CavlingContract
 {
-        public function paginated(Request $request);
+        public function data(Request $request);
 
-        public function store(array $request);
-
-        public function find($id);
+        public function findByCriteria(array $criteria);
 
         public function update(array $data, $id);
-
-        public function delete($id);
 }

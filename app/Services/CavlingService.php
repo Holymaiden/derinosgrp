@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\User;
+use App\Models\Blok;
 use App\Services\BaseRepository;
 use App\Services\Contracts\CavlingContract;
 use Illuminate\Http\Request;
@@ -16,92 +16,20 @@ class CavlingService extends BaseRepository implements CavlingContract
      */
     protected $model;
 
-    public function __construct(User $user)
+    public function __construct(Blok $blok)
     {
-        $this->model = $user->whereNotNull('id');
+        $this->model = $blok->whereNotNull('id');
     }
 
-    public function paginated(Request $request)
+    public function data(Request $request)
     {
-        // $columns = [
-        //     0 => 'id',
-        //     1 => 'name',
-        //     2 => 'role',
-        // ];
+        $data = $this->model->where('perumahan_id', $request->perumahan)->with(['status_blok', 'status_bayar'])->get();
 
-        // $search = [];
+        if (empty($data)) {
+            return response()->json(['message' => "Data Tidak Ditemukan"], 404);
+        }
 
-        // $totalData = User::count();
-
-        // $totalFiltered = $totalData;
-
-        // $limit = $request->input('length');
-
-        // if (empty($request->input('search'))) {
-        //     $users = $this->model->paginate($limit);
-        // } else {
-        //     $search = $request->input('search');
-
-        //     $users = $this->model->where('name', 'LIKE', "%{$search}%")
-        //         ->orWhere('email', 'LIKE', "%{$search}%")
-        //         ->paginate($limit);
-
-        //     $totalFiltered = $this->model->where('name', 'LIKE', "%{$search}%")
-        //         ->orWhere('email', 'LIKE', "%{$search}%")
-        //         ->count();
-        // }
-
-        // $data = [];
-
-        // if (!empty($users)) {
-        //     // providing a dummy id instead of database ids
-        //     foreach ($users as $user) {
-        //         $nestedData['id'] = $user->id;
-        //         $nestedData['name'] = $user->name;
-        //         $nestedData['email'] = $user->email;
-        //         if ($user->role)
-        //             $nestedData['role'] = $user->role->name;
-        //         else
-        //             $nestedData['role'] = 'Admin';
-
-        //         $data[] = $nestedData;
-        //     }
-        // }
-
-        // return [
-        //     'total_page' => $users->lastPage(),
-        //     'total_data' => $totalFiltered ?? 0,
-        //     'code' => 200,
-        //     'data' => $data,
-        // ];
-    }
-
-    /**
-     * Store Data
-     */
-    public function store(array $request)
-    {
-        // // create new one if email is unique
-        // $userEmail =  $this->model->where('email', $request['email'])->first();
-
-        // if (empty($userEmail)) {
-        //     $users =  $this->model->create([
-        //         'name' => $request['name'],
-        //         'email' => $request['email'],
-        //         'password' => Hash::make($request['password'])
-        //     ]);
-
-        //     // Check if data is created
-        //     if (!$users) {
-        //         return response()->json(['message' => "User Gagal Dibuat", 'code' => 400], 400);
-        //     }
-
-        //     // user created
-        //     return response()->json(['message' => "User Berhasil Dibuat", 'code' => 201], 201);
-        // } else {
-        //     // user already exist
-        //     return response()->json(['message' => "User Sudah Ada"], 409);
-        // }
+        return response()->json(['message' => "Data Ditemukan", 'data' => $data], 200);
     }
 
     /**
@@ -109,25 +37,24 @@ class CavlingService extends BaseRepository implements CavlingContract
      */
     public function update(array $request, $id)
     {
-        // $dataOld = $this->model->find($id);
+        // create new one if kode and perumahan_id is unique
+        $perumahan =  $this->model->where(['kode' => $request['id'], 'perumahan_id' => $request['perumahan']])->first();
 
-        // $dataNew = [];
+        if (!empty($perumahan)) {
+            $updatePerumahan =  $perumahan->update([
+                'status_blok_id' => $request['status'],
+                'customer_id' => $request['customer'],
+            ]);
 
-        // if ($request['password'] == '') {
-        //     $dataNew['password'] = $dataOld->password;
-        // } else {
-        //     $dataNew['password'] = Hash::make($request['password']);
-        // }
-        // $dataNew['name'] = $request['name'];
-        // $dataNew['email'] = $request['email'];
+            // Check if data is created
+            if (!$updatePerumahan) {
+                return response()->json(['message' => "Perumahan Gagal Diupdate", 'code' => 400], 400);
+            }
 
-        // $update = $this->model->find($id)->update($dataNew);
-
-        // // Check if data is updated
-        // if (!$update) {
-        //     return response()->json(['message' => "User Gagal Diupdate", 'code' => 400], 400);
-        // }
-
-        // return response()->json(['message' => "User Berhasil Diupdate", 'code' => 200], 200);
+            return response()->json(['message' => "Perumahan Berhasil Diupdate", 'code' => 200], 200);
+        } else {
+            // user already exist
+            return response()->json(['message' => "Terjadi Kesalahan"], 409);
+        }
     }
 }
