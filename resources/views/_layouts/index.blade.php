@@ -111,6 +111,9 @@
                         }
                         modal_perumahan.on('shown.bs.modal', function() {
                                 if (localStorage.getItem('perumahan') != null) {
+                                        // modify class of perumahan add class active
+                                        var label = $('input[name="offer_type"][value="' + localStorage.getItem('perumahan') + '"]').parent();
+                                        label.addClass('active');
                                         $('input[name="offer_type"][value="' + localStorage.getItem('perumahan') + '"]').prop('checked', true);
                                 }
                         });
@@ -120,7 +123,7 @@
                                 e.preventDefault();
                                 var perumahan = $('input[name="offer_type"]:checked').val();
                                 localStorage.setItem('perumahan', perumahan);
-                                modal_perumahan.modal('hide');
+                                window.location.reload();
                         });
                 });
         </script>
