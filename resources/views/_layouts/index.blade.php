@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:site_name" content="Derinos Group" />
         <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-        <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+        <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
         <!--begin::Fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
         <!--end::Fonts-->
