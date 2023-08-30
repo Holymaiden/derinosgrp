@@ -80,7 +80,7 @@ var KTSigninGeneral = (function () {
                                                           },
                                                       });
                                               })
-                                              .fail(function () {
+                                              .fail(function (data) {
                                                   Swal.fire({
                                                       text: "Email or password is incorrect. Please try again.",
                                                       icon: "error",

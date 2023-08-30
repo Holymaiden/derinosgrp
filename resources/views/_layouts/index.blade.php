@@ -120,6 +120,7 @@
                                 e.preventDefault();
                                 var perumahan = $('input[name="offer_type"]:checked').val();
                                 localStorage.setItem('perumahan', perumahan);
+                                modal_perumahan.modal('hide');
                         });
                 });
         </script>

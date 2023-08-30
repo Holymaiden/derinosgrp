@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -31,7 +32,6 @@ class AuthenticatedSessionController extends Controller
 
         if (Auth::user())
             return response()->json(['message' => 'Success!', 'code' => 200], 200);
-
 
         return response()->json(['message' => 'Unauthorized!', 'code' => 401], 401);
     }
