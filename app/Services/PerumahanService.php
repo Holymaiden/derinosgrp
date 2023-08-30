@@ -24,7 +24,20 @@ class PerumahanService extends BaseRepository implements PerumahanContract
         $this->model = $this->model->where('perumahan_id', $request->input('perumahan'))->with(['customer', 'status_blok']);
 
         $search = [];
-        $totalData = Blok::where('perumahan_id', $request->input('perumahan'))->count();
+        $filter_status = $request->input('status') ?? '';
+        $filter_bayar = $request->input('bayar') ?? '';
+
+        $totalData = Blok::where('perumahan_id', $request->input('perumahan'))->when($filter_status, function ($query) use ($filter_status) {
+            return $query->where('status_blok_id', $filter_status);
+        })->when($filter_bayar, function ($query) use ($filter_bayar) {
+            return $query->where('status_bayar', $filter_bayar);
+        })->count();
+
+        $this->model = $this->model->when($filter_status, function ($query) use ($filter_status) {
+            return $query->where('status_blok_id', $filter_status);
+        })->when($filter_bayar, function ($query) use ($filter_bayar) {
+            return $query->where('status_bayar', $filter_bayar);
+        });
 
         $totalFiltered = $totalData;
 

@@ -25,7 +25,7 @@
                         <!--begin::Modal body-->
                         <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_export_users_form" class="form" action="#">
+                                <form id="kt_modal_export_customers_form" class="form" action="#">
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-10">
                                                 <!--begin::Label-->

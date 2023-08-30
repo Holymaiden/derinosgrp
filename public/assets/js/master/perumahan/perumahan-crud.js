@@ -18,13 +18,29 @@ $(document).ready(function () {
     $pagination.twbsPagination(defaultOpts);
 
     // Search
-    var search = $("#kt_table_search");
-    search.on("keyup change", function () {
-        var search = $(this).val();
-        load_data(1, search);
+    var search_input = $("#kt_table_search");
+    var search = "";
+    search_input.on("keyup change", function () {
+        search = $(this).val();
+        load_data(1, search, 5, filter);
     });
 
-    function load_data(page = 1, search = "", length = 5) {
+    // filter
+    var filter = { status: "", bayar: "" };
+    var filter_btn = $("#apply-filter");
+    filter_btn.on("click", function (e) {
+        e.preventDefault();
+        filter.status = $("#filter_status").val();
+        filter.bayar = $("#filter_bayar").val();
+        load_data(1, search, 5, filter);
+    });
+
+    function load_data(
+        page = 1,
+        search = "",
+        length = 5,
+        filter = { status: "", bayar: "" }
+    ) {
         $.ajax({
             url: url_name,
             method: "GET",
@@ -32,6 +48,8 @@ $(document).ready(function () {
                 page: page,
                 search: search,
                 length: length,
+                status: filter.status,
+                bayar: filter.bayar,
                 perumahan: localStorage.getItem("perumahan"),
             },
             dataType: "json",
@@ -47,7 +65,7 @@ $(document).ready(function () {
                         visiblePages: 4,
                         initiateStartPageClick: false,
                         onPageClick: function (event, page) {
-                            load_data(page, search);
+                            load_data(page, search, length, filter);
                         },
                     })
                 );
