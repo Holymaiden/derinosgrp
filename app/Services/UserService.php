@@ -24,8 +24,15 @@ class UserService extends BaseRepository implements UserContract
     public function paginated(Request $request)
     {
         $search = [];
+        $filter_role = $request->input('role') ?? '';
 
-        $totalData = User::count();
+        $totalData = User::when($filter_role, function ($query) use ($filter_role) {
+            return $query->where('role', $filter_role);
+        })->count();
+
+        $this->model = $this->model->when($filter_role, function ($query) use ($filter_role) {
+            return $query->where('role', $filter_role);
+        });
 
         $totalFiltered = $totalData;
 

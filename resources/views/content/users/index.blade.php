@@ -128,20 +128,17 @@
                                     <!--begin::Input group-->
                                     <div class="mb-10">
                                         <label class="form-label fs-6 fw-semibold">Role:</label>
-                                        <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+                                        <select class="form-select form-select-solid fw-bold" id="filter_role" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
                                             <option></option>
-                                            <option value="Administrator">Administrator</option>
-                                            <option value="Analyst">Analyst</option>
-                                            <option value="Developer">Developer</option>
-                                            <option value="Support">Support</option>
-                                            <option value="Trial">Trial</option>
+                                            <option value="admin">Administrator</option>
+                                            <option value="user">User</option>
                                         </select>
                                     </div>
                                     <!--end::Input group-->
                                     <!--begin::Actions-->
                                     <div class="d-flex justify-content-end">
                                         <button type="reset" class="btn btn-light btn-active-light-primary fw-semibold me-2 px-6" data-kt-menu-dismiss="true" data-kt-user-table-filter="reset">Reset</button>
-                                        <button type="submit" class="btn btn-primary fw-semibold px-6" data-kt-menu-dismiss="true" data-kt-user-table-filter="filter">Apply</button>
+                                        <button type="submit" id="apply-filter" class="btn btn-primary fw-semibold px-6" data-kt-menu-dismiss="true" data-kt-user-table-filter="filter">Apply</button>
                                     </div>
                                     <!--end::Actions-->
                                 </div>
