@@ -6,7 +6,7 @@
                         <!--begin::Modal header-->
                         <div class="modal-header" id="kt_modal_shows_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bold"><span class="form-title-modal"></span> Customer</h2>
+                                <h2 class="fw-bold"><span class="form-title-modal"></span></h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
@@ -52,9 +52,6 @@
                                                         <!--end::Label-->
                                                         <!--begin::Select-->
                                                         <select name="customer" id="input-customer" class="form-select form-select-solid" data-control="select2" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
-                                                                @foreach(Helper::getData('customers') as $customer)
-                                                                <option value="{{ $customer->id }}">{{ $customer->nik }} - {{ $customer->nama }}</option>
-                                                                @endforeach
                                                         </select>
                                                         <!--end::Select-->
                                                 </div>

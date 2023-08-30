@@ -2,6 +2,7 @@ $(document).ready(function () {
     const url_name = "cavling-list";
 
     getCavlingData();
+    getCustomerData();
     function changeColorCss(id, color) {
         var element = document.querySelector(`[data-id="${id}"]`);
         element.style.fill = `var(--kt-${color})`;
@@ -77,6 +78,25 @@ $(document).ready(function () {
         //         modal.modal("show");
         //     });
         // });
+    }
+
+    function getCustomerData() {
+        $.ajax({
+            type: "GET",
+            url: "cavling-customer",
+            data: {
+                perumahan: localStorage.getItem("perumahan"),
+            },
+            dataType: "JSON",
+            success: function (response) {
+                var data = response.data;
+                data.forEach(function (element) {
+                    $("#input-customer").append(
+                        `<option value="${element.id}">${element.nik} - ${element.nama}</option>`
+                    );
+                });
+            },
+        });
     }
 
     // Initiate modal
@@ -162,8 +182,8 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (data) {
-                modal_title.html("Update");
                 data = data.data;
+                modal_title.html("Blok " + data.kode.toUpperCase());
                 $("#input-status").val(data.status_blok_id).trigger("change");
                 $("#input-customer").val(data.customer_id).trigger("change");
             },

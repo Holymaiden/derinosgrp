@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Services\Contracts\CavlingContract;
+use App\Services\Contracts\CustomerContract;
 use Illuminate\Http\Request;
 
 class CavlingController extends Controller
 {
-  private $cavlingContract, $title;
+  private $cavlingContract, $customerContract, $title;
 
-  public function __construct(CavlingContract $cavlingContract)
+  public function __construct(CavlingContract $cavlingContract, CustomerContract $customerContract)
   {
     $this->cavlingContract = $cavlingContract;
+    $this->customerContract = $customerContract;
     $this->title = 'Cavling';
   }
   /**
@@ -48,6 +50,16 @@ class CavlingController extends Controller
   {
     try {
       return $this->cavlingContract->getKode($request);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
+
+  public function getCustomer(Request $request)
+  {
+    try {
+      $data =  $this->customerContract->paginated($request);
+      return response()->json(['data' => $data['data']], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
     }

@@ -46,6 +46,7 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/cavling-list', 'CavlingController@data')->name('cavling-list');
         Route::get('/cavling-data', 'CavlingController@cavling')->name('cavling-list.data');
         Route::get('/cavling-kode', 'CavlingController@getKode')->name('cavling-list.kode');
+        Route::get('/cavling-customer', 'CavlingController@getCustomer')->name('cavling-list.customer');
         Route::get('/cavling-list/{id}', 'CavlingController@show')->name('cavling-list.show');
         Route::put('/cavling-list', 'CavlingController@update')->name('cavling-list.update');
         // Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
