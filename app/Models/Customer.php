@@ -25,10 +25,21 @@ class Customer extends Model
         'pekerjaan',
         'ktp',
         'kk',
+        'marketing_id',
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
+
+    public function perumahan()
+    {
+        return $this->hasOne('App\Models\MasterPerumahan', 'id', 'perumahan_id');
+    }
+
+    public function marketing()
+    {
+        return $this->hasOne('App\Models\Marketing', 'id', 'marketing_id');
+    }
 }

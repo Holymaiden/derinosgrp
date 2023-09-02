@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             'Blok',
             'Cavling',
             'Customer',
+            'Marketing',
             'MasterPerumahan',
             'Perumahan',
             'Properti',
