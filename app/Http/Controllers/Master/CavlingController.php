@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use App\Services\Contracts\CavlingContract;
 use App\Services\Contracts\CustomerContract;
+use App\Services\Contracts\MarketingContract;
 use Illuminate\Http\Request;
 
 class CavlingController extends Controller
 {
-  private $cavlingContract, $customerContract, $title;
+  private $cavlingContract, $customerContract, $marketingContract, $title;
 
-  public function __construct(CavlingContract $cavlingContract, CustomerContract $customerContract)
+  public function __construct(CavlingContract $cavlingContract, CustomerContract $customerContract, MarketingContract $marketingContract)
   {
     $this->cavlingContract = $cavlingContract;
     $this->customerContract = $customerContract;
+    $this->marketingContract = $marketingContract;
     $this->title = 'Cavling';
   }
   /**
@@ -59,6 +61,16 @@ class CavlingController extends Controller
   {
     try {
       $data =  $this->customerContract->paginated($request);
+      return response()->json(['data' => $data['data']], 200);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
+    }
+  }
+
+  public function getMarketing(Request $request)
+  {
+    try {
+      $data =  $this->marketingContract->paginated($request);
       return response()->json(['data' => $data['data']], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);

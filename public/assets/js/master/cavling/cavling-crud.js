@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     getCavlingData();
     getCustomerData();
+    getMarketingData();
     function changeColorCss(id, color) {
         var element = document.querySelector(`[data-id="${id}"]`);
         element.style.fill = `var(--kt-${color})`;
@@ -90,9 +91,31 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (response) {
                 var data = response.data;
+                $("#input-customer").append(
+                    `<option value="">Pilih Customer</option>`
+                );
                 data.forEach(function (element) {
                     $("#input-customer").append(
                         `<option value="${element.id}">${element.nik} - ${element.nama}</option>`
+                    );
+                });
+            },
+        });
+    }
+
+    function getMarketingData() {
+        $.ajax({
+            type: "GET",
+            url: "cavling-marketing",
+            dataType: "JSON",
+            success: function (response) {
+                var data = response.data;
+                $("#input-marketing").append(
+                    `<option value="">Pilih Marketing</option>`
+                );
+                data.forEach(function (element) {
+                    $("#input-marketing").append(
+                        `<option value="${element.id}">${element.nama}</option>`
                     );
                 });
             },

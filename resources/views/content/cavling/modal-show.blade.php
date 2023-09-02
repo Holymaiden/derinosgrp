@@ -51,7 +51,18 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Customer</label>
                                                         <!--end::Label-->
                                                         <!--begin::Select-->
-                                                        <select name="customer" id="input-customer" class="form-select form-select-solid" data-control="select2" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
+                                                        <select name="customer" id="input-customer" class="form-select form-select-solid" data-control="select2" data-placeholder="Select option" data-allow-clear="true" data-dropdown-parent="#kt_modal_show">
+                                                        </select>
+                                                        <!--end::Select-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row mb-7">
+                                                        <!--begin::Label-->
+                                                        <label class="required fw-semibold fs-6 mb-2">Marketing</label>
+                                                        <!--end::Label-->
+                                                        <!--begin::Select-->
+                                                        <select name="marketing" id="input-marketing" class="form-select form-select-solid" data-control="select2" data-placeholder="Select option" data-allow-clear="true" data-dropdown-parent="#kt_modal_show">
                                                         </select>
                                                         <!--end::Select-->
                                                 </div>
