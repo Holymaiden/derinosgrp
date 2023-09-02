@@ -3,12 +3,13 @@
 namespace App\Services\Contracts;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 
 interface CavlingContract
 {
         public function data(Request $request);
 
-        public function findByCriteria(array $criteria);
+        public function findByCriteria(array $criteria): ?Model;
 
         public function update(array $data, $id);
 

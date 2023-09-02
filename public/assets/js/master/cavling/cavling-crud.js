@@ -87,6 +87,7 @@ $(document).ready(function () {
             url: "cavling-customer",
             data: {
                 perumahan: localStorage.getItem("perumahan"),
+                length: 999,
             },
             dataType: "JSON",
             success: function (response) {
@@ -107,6 +108,9 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             url: "cavling-marketing",
+            data: {
+                length: 999,
+            },
             dataType: "JSON",
             success: function (response) {
                 var data = response.data;
@@ -209,6 +213,9 @@ $(document).ready(function () {
                 modal_title.html("Blok " + data.kode.toUpperCase());
                 $("#input-status").val(data.status_blok_id).trigger("change");
                 $("#input-customer").val(data.customer_id).trigger("change");
+                $("#input-marketing")
+                    .val(data.customer?.marketing_id)
+                    .trigger("change");
             },
             error: function (data) {
                 Swal.fire({
@@ -240,6 +247,13 @@ $(document).ready(function () {
                 validators: {
                     notEmpty: {
                         message: "Customer is required",
+                    },
+                },
+            },
+            marketing: {
+                validators: {
+                    notEmpty: {
+                        message: "Marketing is required",
                     },
                 },
             },

@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Models\Blok;
+use App\Models\Customer;
 use App\Services\BaseRepository;
 use App\Services\Contracts\CavlingContract;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 
 class CavlingService extends BaseRepository implements CavlingContract
@@ -19,6 +21,11 @@ class CavlingService extends BaseRepository implements CavlingContract
     public function __construct(Blok $blok)
     {
         $this->model = $blok->whereNotNull('id');
+    }
+
+    public function findByCriteria(array $criteria): ?Model
+    {
+        return $this->model->where($criteria)->with('customer')->first();
     }
 
     public function data(Request $request)
@@ -52,14 +59,21 @@ class CavlingService extends BaseRepository implements CavlingContract
         $perumahan =  $this->model->where(['kode' => $request['id'], 'perumahan_id' => $request['perumahan']])->first();
 
         if (!empty($perumahan)) {
-            $updatePerumahan =  $perumahan->update([
-                'status_blok_id' => $request['status'],
-                'customer_id' => $request['customer'],
-            ]);
+            DB::beginTransaction();
+            try {
+                $perumahan->update([
+                    'status_blok_id' => $request['status'],
+                    'customer_id' => $request['customer'],
+                ]);
 
-            // Check if data is created
-            if (!$updatePerumahan) {
-                return response()->json(['message' => "Perumahan Gagal Diupdate", 'code' => 400], 400);
+                Customer::where('id', $request['customer'])->update([
+                    'marketing_id' => $request['marketing'],
+                ]);
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return response()->json(['message' => "Terjadi Kesalahan"], 409);
             }
 
             return response()->json(['message' => "Perumahan Berhasil Diupdate", 'code' => 200], 200);
