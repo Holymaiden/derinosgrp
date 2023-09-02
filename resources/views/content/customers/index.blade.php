@@ -154,11 +154,11 @@
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                <th>No</th>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>No. HP</th>
-                                <th>Alamat</th>
+                                <th class="min-w-100px">No</th>
+                                <th class="min-w-100px">NIK</th>
+                                <th class="min-w-100px">Nama</th>
+                                <th class="min-w-100px">No. HP</th>
+                                <th class="min-w-100px">Alamat</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
                             <!--end::Table row-->
