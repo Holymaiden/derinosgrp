@@ -35,6 +35,12 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::put('/customer-list/{id}', 'CustomerController@update')->name('customer-list.update');
         Route::delete('/customer-list/{id}', 'CustomerController@destroy')->name('customer-list.destroy');
 
+        Route::get('/properti-management', 'PropertiController@index')->name('properti-management');
+        Route::get('/properti-list', 'PropertiController@paginated')->name('properti-list');
+        Route::post('/properti-list', 'PropertiController@store')->name('properti-list.store');
+        Route::get('/properti-list/{id}', 'PropertiController@show')->name('properti-list.show');
+        Route::put('/properti-list/{id}', 'PropertiController@update')->name('properti-list.update');
+
         Route::get('/user-management', 'UserController@index')->name('user-management');
         Route::get('/user-list', 'UserController@paginated')->name('user-list');
         Route::post('/user-list', 'UserController@store')->name('user-list.store');

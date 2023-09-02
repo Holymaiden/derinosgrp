@@ -80,7 +80,7 @@
                 <!--begin:Menu item-->
                 <div data-kt-menu="true" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
-                    <a class="menu-link @if ($title == 'Properti') echo active @endif" href="{{ route('perumahan-management') }}">
+                    <a class="menu-link @if ($title == 'Properti') echo active @endif" href="{{ route('properti-management') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
                             <span class="svg-icon svg-icon-2">
