@@ -45,10 +45,12 @@
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Logo-->
-            <a href="../../demo1/dist/index.html" class="d-block d-lg-none mx-auto py-20">
-                <img alt="Logo" src="{{ asset('assets/media/logos/default.svg') }}" class="theme-light-show h-25px" />
-                <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}" class="theme-dark-show h-25px" />
-            </a>
+            {{-- <a href="../../demo1/dist/index.html" class="d-block d-lg-none mx-auto py-20">
+                <img alt="Logo" src="{{ asset('assets/media/logos/default.svg') }}"
+                    class="theme-light-show h-25px" />
+                <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}"
+                    class="theme-dark-show h-25px" />
+            </a> --}}
             <!--end::Logo-->
             <!--begin::Aside-->
             <div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10">
@@ -64,7 +66,8 @@
                     <!--begin::Body-->
                     <div class="py-20">
                         <!--begin::Form-->
-                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST" action="{{ route('login') }}">
+                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST"
+                            action="{{ route('login') }}">
                             @csrf
                             <!--begin::Body-->
                             <div class="card-body">
@@ -74,20 +77,25 @@
                                     <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Sign In</h1>
                                     <!--end::Title-->
                                     <!--begin::Text-->
-                                    <div class="text-gray-400 fw-semibold fs-6" data-kt-translate="general-desc">Get unlimited access & earn money</div>
+                                    {{-- <div class="text-gray-400 fw-semibold fs-6" data-kt-translate="general-desc">Get
+                                        unlimited access & earn money</div> --}}
                                     <!--end::Link-->
                                 </div>
                                 <!--begin::Heading-->
                                 <!--begin::Input group=-->
                                 <div class="fv-row mb-8">
                                     <!--begin::Email-->
-                                    <input type="text" placeholder="Email" name="email" autocomplete="off" data-kt-translate="sign-in-input-email" class="form-control form-control-solid" />
+                                    <input type="text" placeholder="Email" name="email" autocomplete="off"
+                                        data-kt-translate="sign-in-input-email"
+                                        class="form-control form-control-solid" />
                                     <!--end::Email-->
                                 </div>
                                 <!--end::Input group=-->
                                 <div class="fv-row mb-7">
                                     <!--begin::Password-->
-                                    <input type="password" placeholder="Password" name="password" autocomplete="off" data-kt-translate="sign-in-input-password" class="form-control form-control-solid" />
+                                    <input type="password" placeholder="Password" name="password" autocomplete="off"
+                                        data-kt-translate="sign-in-input-password"
+                                        class="form-control form-control-solid" />
                                     <!--end::Password-->
                                 </div>
                                 <!--end::Input group=-->
@@ -127,7 +135,8 @@
             </div>
             <!--end::Aside-->
             <!--begin::Body-->
-            <div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat" style="background-image: url(assets/media/auth/bg11.png)"></div>
+            <div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat"
+                style="background-image: url(assets/media/auth/login-img.svg)"></div>
             <!--begin::Body-->
         </div>
         <!--end::Authentication - Sign-in-->
