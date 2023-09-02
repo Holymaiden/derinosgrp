@@ -216,6 +216,7 @@
                                 <th>Harga Jual</th>
                                 <th>Status</th>
                                 <th>Bayar</th>
+                                <th>Marketing</th>
                                 <th>Keterangan</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>

@@ -46,6 +46,11 @@
                 <span class="badge badge-{{ $v['status_bayar'] == 'ya' ? 'success' : 'danger'}}">{{ ucfirst($v['status_bayar']) }}</span>
         </td>
         <!--end::status_bayar=-->
+        <!--begin::marketing=-->
+        <td>
+                <div class="{{ $v['marketing']  ? 'text-gray-800 text-hover-primary' : 'badge badge-light'}}">{{ $v['marketing'] ? $v['marketing'] : 'Ready' }}</div>
+        </td>
+        <!--end::marketing=-->
         <!--begin::keterangan=-->
         <td>
                 <div class="text-gray-800 text-hover-primary">{{ $v['keterangan'] }}</div>

@@ -80,6 +80,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 $nestedData['status_blok_icon'] = $blok->status_blok->icon;
                 $nestedData['status_bayar'] = $blok->status_bayar;
                 $nestedData['keterangan'] = $blok->keterangan;
+                $nestedData['marketing'] = $blok->customer?->marketing?->nama;
 
                 $data[] = $nestedData;
             }

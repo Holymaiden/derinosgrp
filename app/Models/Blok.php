@@ -31,7 +31,7 @@ class Blok extends Model
 
     public function customer()
     {
-        return $this->hasOne('App\Models\Customer', 'id', 'customer_id');
+        return $this->hasOne('App\Models\Customer', 'id', 'customer_id')->with('marketing');
     }
 
     public function status_blok()
