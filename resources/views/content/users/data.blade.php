@@ -18,9 +18,14 @@
         <!--end::User=-->
         <!--begin::Role=-->
         <td>
-                <div class="badge badge-light fw-bold">{{ ucfirst($v['role']) }}</div>
+                <div class="badge badge-{{ $v['role'] == 'admin' ? 'warning' : 'primary' }} fw-bold">{{ ucfirst($v['role']) }}</div>
         </td>
         <!--end::Role=-->
+        <!--begin::Perumahan=-->
+        <td>
+                <div class="badge badge-light fw-bold">{{ $v['perumahan'] ? ucfirst($v['perumahan']) : 'Semua' }}</div>
+        </td>
+        <!--end::Perumahan=-->
         <!--begin::Action=-->
         <td class="text-end">
                 <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" data-id="update-{{ $v['id'] }}">

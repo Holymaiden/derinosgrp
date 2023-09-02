@@ -125,23 +125,8 @@ class UserController extends Controller
   public function update(Request $request, $id)
   {
     try {
-      // Message Validation
-      $messages = [
-        'password.required' => 'Password is required!',
-        'password.min' => 'Password must be at least 8 characters!',
-      ];
 
-      // Validate the value...
-      $validatedData = Validator::make($request->all(), [
-        'password' => 'required|min:8',
-      ], $messages);
-
-      // if fail
-      if ($validatedData->fails()) {
-        return response()->json(['message' => $validatedData->errors(), 'code' => 500], 500);
-      }
-
-      return $users = $this->userContract->update($request->all(), $id);
+      return $this->userContract->update($request->all(), $id);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }

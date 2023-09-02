@@ -23,7 +23,6 @@
 @push('javascript-custom')
 <script src="{{ asset('assets/js/master/user/table.js') }}"></script>
 <script src="{{ asset('assets/js/master/user/export.js') }}"></script>
-<script src="{{ asset('assets/js/master/user/validation.js') }}"></script>
 <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
 <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
@@ -200,6 +199,7 @@
                                 <th class="min-w-125px">No</th>
                                 <th class="min-w-125px">User</th>
                                 <th class="min-w-125px">Role</th>
+                                <th class="min-w-125px">Perumahan</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
                             <!--end::Table row-->

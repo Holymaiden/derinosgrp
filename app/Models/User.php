@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'perumahan_id',
     ];
 
     /**
@@ -42,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function perumahan()
+    {
+        return $this->hasOne('App\Models\MasterPerumahan', 'id', 'perumahan_id');
+    }
 }

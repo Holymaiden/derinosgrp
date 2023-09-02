@@ -24,16 +24,6 @@ var KTUsersAddUser = (function () {
                                 },
                             },
                         },
-                        password: {
-                            validators: {
-                                notEmpty: { message: "Password is required" },
-                                stringLength: {
-                                    min: 8,
-                                    message:
-                                        "Password must be at least 8 characters long",
-                                },
-                            },
-                        },
                         role: {
                             validators: {
                                 notEmpty: { message: "Role is required" },

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Services\BaseRepository;
 use App\Services\Contracts\UserContract;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,7 +33,7 @@ class UserService extends BaseRepository implements UserContract
 
         $this->model = $this->model->when($filter_role, function ($query) use ($filter_role) {
             return $query->where('role', $filter_role);
-        });
+        })->with('perumahan');
 
         $totalFiltered = $totalData;
 
@@ -61,6 +62,7 @@ class UserService extends BaseRepository implements UserContract
                 $nestedData['name'] = $user->name;
                 $nestedData['email'] = $user->email;
                 $nestedData['role'] = $user->role;
+                $nestedData['perumahan'] = $user->perumahan?->nama_perumahan;
 
                 $data[] = $nestedData;
             }
@@ -88,6 +90,7 @@ class UserService extends BaseRepository implements UserContract
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
                 'role' => $request['role'],
+                'perumahan_id' => $request['role'] == 'user' ? $request['perumahan'] : null,
             ]);
 
             // Check if data is created
@@ -120,6 +123,7 @@ class UserService extends BaseRepository implements UserContract
         $dataNew['name'] = $request['name'];
         $dataNew['email'] = $request['email'];
         $dataNew['role'] = $request['role'];
+        $dataNew['perumahan_id'] = $request['role'] == 'user' ? $request['perumahan'] : null;
 
         $update = $dataOld->update($dataNew);
         // Check if data is updated
