@@ -14,10 +14,10 @@
                                         <!--begin::Heading-->
                                         <div class="mb-13 text-center">
                                                 <!--begin::Title-->
-                                                <h1 class="mb-3">Pilih Perumahan</h1>
+                                                <h1 class="mb-3">Pilih Properti</h1>
                                                 <!--end::Title-->
                                                 <!--begin::Description-->
-                                                <div class="text-muted fw-semibold fs-5">Data Perumahan Yang Ingin Ditampilkan
+                                                <div class="text-muted fw-semibold fs-5">Data Properti Yang Ingin Ditampilkan
                                                 </div>
                                                 <!--end::Description-->
                                         </div>

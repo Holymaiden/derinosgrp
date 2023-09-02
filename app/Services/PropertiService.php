@@ -34,13 +34,11 @@ class PropertiService extends BaseRepository implements PropertiContract
         } else {
             $search = $request->input('search');
 
-            $propertis = $this->model->where('nik', 'LIKE', "%{$search}%")
-                ->orWhere('nama_perumahan', 'LIKE', "%{$search}%")
+            $propertis = $this->model->where('nama_perumahan', 'LIKE', "%{$search}%")
                 ->orWhere('alamat', 'LIKE', "%{$search}%")
                 ->paginate($limit);
 
-            $totalFiltered = $this->model->where('nik', 'LIKE', "%{$search}%")
-                ->orWhere('nama_perumahan', 'LIKE', "%{$search}%")
+            $totalFiltered = $this->model->where('nama_perumahan', 'LIKE', "%{$search}%")
                 ->orWhere('alamat', 'LIKE', "%{$search}%")
                 ->count();
         }
