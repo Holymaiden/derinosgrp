@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\MasterPerumahan', 'id', 'perumahan_id');
     }
+
+    public function hasRole($role)
+    {
+        return $this->role == $role;
+    }
 }
