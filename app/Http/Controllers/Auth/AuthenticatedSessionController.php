@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if (Auth::user())
-            return response()->json(['message' => 'Success!', 'code' => 200], 200);
+            return response()->json(['message' => 'Success!', 'code' => 200, 'p' => Auth::user()->perumahan_id], 200);
 
         return response()->json(['message' => 'Unauthorized!', 'code' => 401], 401);
     }

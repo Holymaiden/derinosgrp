@@ -51,7 +51,14 @@ var KTSigninGeneral = (function () {
                                               data: $(e).serialize(),
                                           })
                                               .done(function (data) {
-                                                  if (data.code >= 200)
+                                                  if (data.code >= 200) {
+                                                      if (data.p !== null)
+                                                          localStorage.setItem(
+                                                              "perumahan",
+                                                              JSON.stringify(
+                                                                  data.p
+                                                              )
+                                                          );
                                                       Swal.fire({
                                                           text: "You have successfully logged in!",
                                                           icon: "success",
@@ -67,7 +74,7 @@ var KTSigninGeneral = (function () {
                                                               (window.location.href =
                                                                   "/dashboard");
                                                       });
-                                                  else
+                                                  } else
                                                       Swal.fire({
                                                           text: "Sorry, looks like there are some errors detected, please try again.",
                                                           icon: "error",
