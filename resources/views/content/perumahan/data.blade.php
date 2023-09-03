@@ -28,12 +28,12 @@
         <!--end::Luas=-->
         <!--begin::harga_permeter=-->
         <td>
-                <div class="text-gray-800 text-hover-primary">Rp. {{ $v['harga_permeter'] }}</div>
+                <div class="text-gray-800 text-hover-primary">Rp. {{ number_format($v['harga_permeter'], 0, ',', '.') }}</div>
         </td>
         <!--end::harga_permeter=-->
         <!--begin::harga_jual=-->
         <td>
-                <div class="text-gray-800 text-hover-primary">Rp. {{ $v['harga_jual'] }}</div>
+                <div class="text-gray-800 text-hover-primary">Rp. {{ number_format($v['harga_jual'], 0, ',', '.') }}</div>
         </td>
         <!--end::harga_jual=-->
         <!--begin::status_blok=-->
