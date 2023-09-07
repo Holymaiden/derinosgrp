@@ -69,7 +69,6 @@ class CustomerService extends BaseRepository implements CustomerContract
                 $nestedData['email'] = $customer->email;
                 $nestedData['pekerjaan'] = $customer->pekerjaan;
                 $nestedData['ktp'] = $customer->ktp;
-                $nestedData['kk'] = $customer->kk;
 
                 $data[] = $nestedData;
             }
@@ -96,9 +95,6 @@ class CustomerService extends BaseRepository implements CustomerContract
             if ($request['ktp'])
                 $request['ktp'] = $this->uploadFile($request['ktp'], $this->path . 'ktp/', null);
 
-            if ($request['kk'])
-                $request['kk'] = $this->uploadFile($request['kk'], $this->path . 'kk/', null);
-
             $customer =  $this->model->create([
                 'perumahan_id' => $request['perumahan'],
                 'nama' => $request['name'],
@@ -111,7 +107,6 @@ class CustomerService extends BaseRepository implements CustomerContract
                 'email' => $request['email'],
                 'pekerjaan' => $request['pekerjaan'],
                 'ktp' => $request['ktp'],
-                'kk' => $request['kk'],
             ]);
 
             // Check if data is created
@@ -145,11 +140,8 @@ class CustomerService extends BaseRepository implements CustomerContract
         if ($request['ktp'])
             $request['ktp'] = $this->uploadFile($request['ktp'], $this->path . 'ktp/', null);
 
-        if ($request['kk'])
-            $request['kk'] = $this->uploadFile($request['kk'], $this->path . 'kk/', null);
-
         $dataNew['nik'] = $request['nik'];
-        $dataNew['nama'] = $request['nama'];
+        $dataNew['nama'] = $request['name'];
         $dataNew['alamat'] = $request['alamat'];
         $dataNew['tempat_lahir'] = $request['tempat_lahir'];
         $dataNew['tanggal_lahir'] = $request['tanggal_lahir'];
@@ -158,7 +150,6 @@ class CustomerService extends BaseRepository implements CustomerContract
         $dataNew['email'] = $request['email'];
         $dataNew['pekerjaan'] = $request['pekerjaan'];
         $dataNew['ktp'] = $request['ktp'] ?? $dataOld->ktp;
-        $dataNew['kk'] = $request['kk'] ?? $dataOld->kk;
 
         $update = $dataOld->update($dataNew);
 

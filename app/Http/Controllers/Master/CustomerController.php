@@ -53,43 +53,28 @@ class CustomerController extends Controller
   public function store(Request $request)
   {
     try {
-      // Message Validation
-      $messages = [
-        'nik.required' => 'NIK is required!',
-        'nik.unique' => 'NIK already exists!',
-        'nik.min' => 'NIK must be at least 16 characters!',
-        'nik.max' => 'NIK may not be greater than 16 characters!',
-        'name.required' => 'Full Name is required!',
-        'email.required' => 'Email is required!',
-        'email.unique' => 'Email already exists!',
-        'email.email' => 'Email must be a valid email address!',
-        'telepon.required' => 'Telepon is required!',
-        'telepon.min' => 'Telepon must be at least 10 characters!',
-        'telepon.max' => 'Telepon may not be greater than 13 characters!',
-        'alamat.required' => 'Alamat is required!',
-      ];
-
       // Validate the value...
       $validatedData = Validator::make($request->all(), [
-        'nik' => 'required|unique:customers|min:16|max:16',
         'name' => 'required',
-        'email' => 'required|unique:customers|email',
+        'nik' => 'required|min:16|max:16',
         'telepon' => 'required|min:10|max:13',
         'alamat' => 'required',
-      ], $messages);
+        'tempat_lahir' => 'required',
+        'tanggal_lahir' => 'required',
+        'jenis_kelamin' => 'required',
+        'email' => 'required|email',
+        'pekerjaan' => 'required',
+      ]);
 
       // if fail
       if ($validatedData->fails()) {
-        return response()->json(['message' => $validatedData->errors()], 500);
+        return response()->json(['message' => "Terjadi Kesalahan"], 500);
       }
 
       $data = $request->all();
 
       if ($request->hasFile('ktp'))
         $data['ktp'] = $request->file('ktp');
-
-      if ($request->hasFile('kk'))
-        $data['kk'] = $request->file('kk');
 
       return $this->customerContract->store($data);
     } catch (\Exception $e) {
@@ -141,29 +126,28 @@ class CustomerController extends Controller
   public function update(Request $request, $id)
   {
     try {
-      // Message Validation
-      $messages = [
-        'password.required' => 'Password is required!',
-        'password.min' => 'Password must be at least 8 characters!',
-      ];
-
       // Validate the value...
       $validatedData = Validator::make($request->all(), [
-        'password' => 'required|min:8',
-      ], $messages);
+        'name' => 'required',
+        'nik' => 'required|min:16|max:16',
+        'telepon' => 'required|min:10|max:13',
+        'alamat' => 'required',
+        'tempat_lahir' => 'required',
+        'tanggal_lahir' => 'required',
+        'jenis_kelamin' => 'required',
+        'email' => 'required|email',
+        'pekerjaan' => 'required',
+      ]);
 
       // if fail
       if ($validatedData->fails()) {
-        return response()->json(['message' => $validatedData->errors(), 'code' => 500], 500);
+        return response()->json(['message' => "Terjadi Kesalahan", 'code' => 500], 500);
       }
 
       $data = $request->all();
 
       if ($request->hasFile('ktp'))
         $data['ktp'] = $request->file('ktp');
-
-      if ($request->hasFile('kk'))
-        $data['kk'] = $request->file('kk');
 
       return $this->customerContract->update($data, $id);
     } catch (\Exception $e) {

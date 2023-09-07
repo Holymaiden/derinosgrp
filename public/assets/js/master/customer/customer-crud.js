@@ -201,22 +201,6 @@ $(document).ready(function () {
             },
             ktp: {
                 validators: {
-                    notEmpty: {
-                        message: "KTP is required",
-                    },
-                    file: {
-                        extension: "jpg,jpeg,png",
-                        type: "image/jpeg,image/png",
-                        message:
-                            "Please upload a valid file with jpg, jpeg, png extension",
-                    },
-                },
-            },
-            kk: {
-                validators: {
-                    notEmpty: {
-                        message: "KK is required",
-                    },
                     file: {
                         extension: "jpg,jpeg,png",
                         type: "image/jpeg,image/png",
@@ -317,7 +301,9 @@ $(document).ready(function () {
     function create_edit() {
         var cek_method = form_modal.attr("action");
         var form_data = new FormData(form_modal[0]);
+        form_data.append("ktp", $("#input-ktp")[0].files[0]);
         form_data.append("perumahan", localStorage.getItem("perumahan"));
+
         if (cek_method == "post" || cek_method == "POST") {
             $.ajax({
                 url: url_name,
