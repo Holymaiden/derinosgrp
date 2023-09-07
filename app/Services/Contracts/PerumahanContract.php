@@ -8,6 +8,8 @@ interface PerumahanContract
 {
         public function paginated(Request $request);
 
+        public function paginatedLaporan(Request $request);
+
         public function store(array $request);
 
         public function find($id);

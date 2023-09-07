@@ -69,6 +69,11 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::delete('/perumahan-list/{id}', 'PerumahanController@destroy')->name('perumahan-list.destroy');
     });
 
+    Route::group(['prefix' => 'laporan', 'namespace' => 'Laporan'], function () {
+        Route::get('/perumahan', 'PerumahanController@index')->name('laporan.perumahan-management');
+        Route::get('/perumahan-list', 'PerumahanController@paginated')->name('laporan.perumahan-list');
+    });
+
     Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {
         Route::get('/', 'ProfileController@index')->name('profile');
         Route::put('/email', 'ProfileController@updateEmail')->name('profile.email');
