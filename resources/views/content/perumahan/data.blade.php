@@ -26,11 +26,6 @@
                 <div class="text-gray-800 text-hover-primary">{{ $v['luas'] }}</div>
         </td>
         <!--end::Luas=-->
-        <!--begin::harga_permeter=-->
-        <td>
-                <div class="text-gray-800 text-hover-primary">Rp. {{ number_format($v['harga_permeter'], 0, ',', '.') }}</div>
-        </td>
-        <!--end::harga_permeter=-->
         <!--begin::harga_jual=-->
         <td>
                 <div class="text-gray-800 text-hover-primary">Rp. {{ number_format($v['harga_jual'], 0, ',', '.') }}</div>

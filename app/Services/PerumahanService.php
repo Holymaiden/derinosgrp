@@ -73,7 +73,6 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 $nestedData['panjang'] = $blok->panjang;
                 $nestedData['lebar'] = $blok->lebar;
                 $nestedData['luas'] = $blok->luas;
-                $nestedData['harga_permeter'] = $blok->harga_permeter;
                 $nestedData['harga_jual'] = $blok->harga_jual;
                 $nestedData['status_blok'] = $blok->status_blok->status;
                 $nestedData['status_blok_warna'] = $blok->status_blok->warna;
@@ -111,7 +110,6 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 'panjang' => $request['panjang'],
                 'lebar' => $request['lebar'],
                 'luas' => $request['luas'],
-                'harga_permeter' => $request['harga_permeter'],
                 'harga_jual' => $request['harga_jual'],
                 'status_blok_id' => $request['status_blok_id'],
                 'status_bayar' => $request['status_bayar'],
@@ -152,7 +150,6 @@ class PerumahanService extends BaseRepository implements PerumahanContract
         $dataNew['panjang'] = $request['panjang'];
         $dataNew['lebar'] = $request['lebar'];
         $dataNew['luas'] = $request['luas'];
-        $dataNew['harga_permeter'] = $request['harga_permeter'];
         $dataNew['harga_jual'] = $request['harga_jual'];
         $dataNew['status_blok_id'] = $request['status_blok_id'];
         $dataNew['status_bayar'] = $request['status_bayar'];

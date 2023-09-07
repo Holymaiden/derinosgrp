@@ -212,7 +212,6 @@
                                 <th>Panjang</th>
                                 <th>Lebar</th>
                                 <th>Luas</th>
-                                <th>Harga/m</th>
                                 <th>Harga Jual</th>
                                 <th>Status</th>
                                 <th>Bayar</th>
