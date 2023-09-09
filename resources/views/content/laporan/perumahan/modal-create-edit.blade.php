@@ -41,6 +41,7 @@
                                                                                 <th>No</th>
                                                                                 <th>Tanggal</th>
                                                                                 <th>Transaksi</th>
+                                                                                <th>Action</th>
                                                                         </tr>
                                                                 </thead>
                                                                 <tbody>

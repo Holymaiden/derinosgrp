@@ -87,4 +87,20 @@ class PerumahanController extends Controller
       return response()->json(['message' => $e->getMessage()], 500);
     }
   }
+
+  public function destroy($id)
+  {
+    try {
+      $customer = $this->transactionContract->delete($id);
+
+      if ($customer == 0) {
+        return response()->json(['message' => 'Transaksi not found!', 'code' => 404], 404);
+      }
+
+
+      return response()->json(['message' => 'Transaksi has been deleted!', 'code' => 200], 200);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage()], 500);
+    }
+  }
 }

@@ -212,6 +212,7 @@ $(document).ready(function () {
     modal.on("show.bs.modal", function (e) {
         form_modal.attr("action", "PUT");
         form_modal.trigger("reset");
+        form_modal.find("[name='id']").val("");
         table.clear();
 
         var blok = $(e.relatedTarget).data("id").split("-")[0];
@@ -241,6 +242,14 @@ $(document).ready(function () {
                                 "id-ID"
                             ),
                             `Rp. ${t.transaction.toLocaleString("id-ID")}`,
+                            `
+                            <a onclick="edit({id: ${t.id},count: ${t.count},transaction:${t.transaction},transaction_date:'${t.transaction_date}'})" data-toggle="tooltip" class="btn btn-icon btn-warning btn-sm">
+                                <span class="fa fa-edit"></span>
+                            </a>
+
+                            <a href="javascript:void(0)" data-id="${t.id}" data-toggle="tooltip" class="btn btn-icon btn-danger btn-sm" id="btn-delete">
+                                <span class="fa fa-trash"></span>
+                            </a>`,
                         ])
                         .draw();
                 });
@@ -292,6 +301,7 @@ $(document).ready(function () {
             method: "POST",
             data: {
                 _token: form_modal.find("[name='_token']").val(),
+                id: form_modal.find("[name='id']").val(),
                 perumahan: localStorage.getItem("perumahan"),
                 customer: form_modal.find("[name='customer_id']").val(),
                 blok: form_modal.find("[name='kode']").val(),
@@ -357,6 +367,7 @@ $(document).ready(function () {
                                 icon: "success",
                                 confirmButtonText: "Ok",
                             }).then((result) => {
+                                modal.modal("hide");
                                 load_data();
                             });
                         }
@@ -381,3 +392,20 @@ $(document).ready(function () {
         });
     });
 });
+
+function edit(data) {
+    var form_modal = $("#form-create-edit");
+    form_modal.find("[name='id']").val(data.id);
+    form_modal.find("[name='count']").val(data.count);
+    form_modal.find("[name='transaction']").val(data.transaction);
+    console.log(data.transaction_date);
+    var tanggal = new Date(data.transaction_date);
+    var tahun = tanggal.getFullYear();
+    var bulan = String(tanggal.getMonth() + 1).padStart(2, "0");
+    var tanggalnya = String(tanggal.getDate()).padStart(2, "0");
+    var tanggalFormat = tahun + "-" + bulan + "-" + tanggalnya;
+    form_modal
+        .find("[name='transaction_date']")
+        .val(tanggalFormat)
+        .trigger("change");
+}

@@ -74,6 +74,7 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/perumahan-list', 'PerumahanController@paginated')->name('laporan.perumahan-list');
         Route::get('/perumahan-list/customer', 'PerumahanController@customer')->name('laporan.perumahan-list.customer');
         Route::post('/perumahan-list', 'PerumahanController@store')->name('laporan.perumahan-list.store');
+        Route::delete('/perumahan-list/{id}', 'PerumahanController@destroy')->name('laporan.perumahan-list.destroy');
     });
 
     Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {

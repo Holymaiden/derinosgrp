@@ -9,4 +9,6 @@ interface TransactionContract
         public function store(array $request);
 
         public function customer(array $request);
+
+        public function delete($id);
 }
