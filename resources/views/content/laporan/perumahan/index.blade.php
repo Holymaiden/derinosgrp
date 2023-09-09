@@ -179,10 +179,10 @@
                         </div>
                         <!--end::Group actions-->
                         <!--begin::Modal - Adjust Balance-->
-                        @include('content.perumahan.modal-export')
+                        @include('content.laporan.perumahan.modal-export')
                         <!--end::Modal - New Card-->
                         <!--begin::Modal - Add task-->
-                        @include('content.perumahan.modal-create-edit')
+                        @include('content.laporan.perumahan.modal-create-edit')
                         <!--end::Modal - Add task-->
                     </div>
                     <!--end::Card toolbar-->

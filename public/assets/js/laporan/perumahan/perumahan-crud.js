@@ -84,6 +84,13 @@ $(document).ready(function () {
     var modal_submit = modal.find('[data-kt-users-modal-action="submit"]');
     var modal_cancel = modal.find('[data-kt-users-modal-action="cancel"]');
     var modal_close = modal.find('[data-kt-users-modal-action="close"]');
+    var table = $("#kt_datatable_transaction").DataTable({
+        scrollX: true,
+        scrollY: "120px",
+        responsive: true,
+        paging: false,
+        info: false,
+    });
 
     // Modal Close
     modal_close.on("click", function (e) {
@@ -148,59 +155,45 @@ $(document).ready(function () {
     // Validation
     var validation_form = FormValidation.formValidation(form_modal[0], {
         fields: {
-            kode: {
+            customer: {
                 validators: {
                     notEmpty: {
-                        message: "Kode is required",
+                        message: "Customer name is required",
                     },
                 },
             },
-            panjang: {
+            blok: {
                 validators: {
                     notEmpty: {
-                        message: "Panjang is required",
+                        message: "Blok is required",
                     },
                 },
             },
-            lebar: {
+            count: {
                 validators: {
                     notEmpty: {
-                        message: "Lebar is required",
+                        message: "Count is required",
                     },
                 },
             },
-            luas: {
+            transaction: {
                 validators: {
                     notEmpty: {
-                        message: "Luas is required",
+                        message: "Transaction is required",
+                    },
+                    numeric: {
+                        message: "The value is not valid",
                     },
                 },
             },
-            harga_jual: {
+            transaction_date: {
                 validators: {
                     notEmpty: {
-                        message: "Harga jual is required",
+                        message: "Transaction date is required",
                     },
-                },
-            },
-            status_blok_id: {
-                validators: {
-                    notEmpty: {
-                        message: "Status blok is required",
-                    },
-                },
-            },
-            status_bayar: {
-                validators: {
-                    notEmpty: {
-                        message: "Status bayar is required",
-                    },
-                },
-            },
-            keterangan: {
-                validators: {
-                    notEmpty: {
-                        message: "Keterangan is required",
+                    date: {
+                        format: "YYYY-MM-DD",
+                        message: "The date is not valid",
                     },
                 },
             },
@@ -217,55 +210,54 @@ $(document).ready(function () {
 
     // Show modal
     modal.on("show.bs.modal", function (e) {
-        var method = $(e.relatedTarget).data("id").split("-")[0];
+        form_modal.attr("action", "PUT");
+        form_modal.trigger("reset");
+        table.clear();
 
-        if (method == "create") {
-            modal_title.html("Add");
-            form_modal.attr("action", "POST");
-            form_modal.trigger("reset");
-        } else if ((method = "update")) {
-            modal_title.html("Edit");
-            form_modal.attr("action", "PUT");
-            form_modal.trigger("reset");
+        var blok = $(e.relatedTarget).data("id").split("-")[0];
+        var customer_id = $(e.relatedTarget).data("id").split("-")[1];
+        modal_title.html("Transaksi Perumahan " + blok);
 
-            var id = $(e.relatedTarget).data("id").split("-")[1];
+        $.ajax({
+            url: url_name + "/customer",
+            method: "GET",
+            dataType: "json",
+            data: {
+                blok: blok,
+                customer: customer_id,
+            },
+            success: function (data) {
+                var transaction = data.data.transaction;
+                var customer = data.data.customer;
+                form_modal.find("[name='kode']").val(customer.blok);
+                form_modal.find("[name='count']").val(customer.count);
+                form_modal.find("[name='customer_id']").val(customer_id);
 
-            $.ajax({
-                url: url_name + "/" + id,
-                method: "GET",
-                dataType: "json",
-                success: function (data) {
-                    data = data.data;
-                    $("#input-id").val(data.id);
-                    $("#input-kode").val(data.kode);
-                    $("#input-panjang").val(data.panjang);
-                    $("#input-lebar").val(data.lebar);
-                    $("#input-luas").val(data.luas);
-                    $("#input-harga-jual").val(data.harga_jual);
-                    $("#input-status-blok-id")
-                        .val(data.status_blok_id)
-                        .trigger("change");
-                    $("#input-status-bayar")
-                        .val(data.status_bayar)
-                        .trigger("change");
-                    $("#input-keterangan")
-                        .val(data.keterangan)
-                        .trigger("change");
-                },
-                error: function (data) {
-                    var errorsString = "";
-                    $.each(data.responseJSON.message, function (key, value) {
-                        errorsString += value + "<br>";
-                    });
-                    Swal.fire({
-                        title: "Error!",
-                        html: errorsString,
-                        icon: "error",
-                        confirmButtonText: "Ok",
-                    });
-                },
-            });
-        }
+                transaction.forEach((t) => {
+                    table.row
+                        .add([
+                            t.count,
+                            new Date(t.transaction_date).toLocaleDateString(
+                                "id-ID"
+                            ),
+                            `Rp. ${t.transaction.toLocaleString("id-ID")}`,
+                        ])
+                        .draw();
+                });
+            },
+            error: function (data) {
+                var errorsString = "";
+                $.each(data.responseJSON.message, function (key, value) {
+                    errorsString += value + "<br>";
+                });
+                Swal.fire({
+                    title: "Error!",
+                    html: errorsString,
+                    icon: "error",
+                    confirmButtonText: "Ok",
+                });
+            },
+        });
     });
 
     // Modal Submit
@@ -295,77 +287,43 @@ $(document).ready(function () {
 
     // Create and Edit
     function create_edit() {
-        var cek_method = form_modal.attr("action");
-
-        if (cek_method == "post" || cek_method == "POST") {
-            let data_form = form_modal.serializeArray();
-            data_form.push({
-                name: "perumahan",
-                value: localStorage.getItem("perumahan"),
-            });
-            $.ajax({
-                url: url_name,
-                method: "POST",
-                data: data_form,
-                success: function (data) {
-                    if (data.code >= 200) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: data.message,
-                            icon: "success",
-                            confirmButtonText: "Ok",
-                        }).then((result) => {
-                            modal.modal("hide");
-                            load_data();
-                        });
-                    }
-                },
-                error: function (data) {
+        $.ajax({
+            url: url_name,
+            method: "POST",
+            data: {
+                _token: form_modal.find("[name='_token']").val(),
+                perumahan: localStorage.getItem("perumahan"),
+                customer: form_modal.find("[name='customer_id']").val(),
+                blok: form_modal.find("[name='kode']").val(),
+                count: form_modal.find("[name='count']").val(),
+                transaction: form_modal.find("[name='transaction']").val(),
+                transaction_date: form_modal
+                    .find("[name='transaction_date']")
+                    .val(),
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.code >= 200) {
                     Swal.fire({
-                        title: "Error!",
-                        html: data.responseJSON.message,
-                        icon: "error",
+                        title: "Success!",
+                        text: data.message,
+                        icon: "success",
                         confirmButtonText: "Ok",
+                    }).then((result) => {
+                        modal.modal("hide");
+                        load_data();
                     });
-                },
-            });
-        } else if (cek_method == "put" || cek_method == "PUT") {
-            var id = $("#input-id").val();
-            $.ajax({
-                url: url_name + "/" + id,
-                method: "PUT",
-                data: form_modal.serialize(),
-                success: function (data) {
-                    console.log(data);
-                    if (data.code >= 200) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: data.message,
-                            icon: "success",
-                            confirmButtonText: "Ok",
-                        }).then((result) => {
-                            modal.modal("hide");
-                            load_data();
-                        });
-                    }
-                },
-                error: function (data) {
-                    Swal.fire({
-                        title: "Error!",
-                        html: data.responseJSON.message,
-                        icon: "error",
-                        confirmButtonText: "Ok",
-                    });
-                },
-            });
-        } else {
-            Swal.fire({
-                title: "Error!",
-                text: "Method not found",
-                icon: "error",
-                confirmButtonText: "Ok",
-            });
-        }
+                }
+            },
+            error: function (data) {
+                Swal.fire({
+                    title: "Error!",
+                    html: data.responseJSON.message,
+                    icon: "error",
+                    confirmButtonText: "Ok",
+                });
+            },
+        });
     }
 
     // Delete

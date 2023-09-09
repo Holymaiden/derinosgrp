@@ -118,7 +118,9 @@ class PerumahanService extends BaseRepository implements PerumahanContract
         $limit = $request->input('length');
 
         if (empty($request->input('search'))) {
-            $bloks = $this->model->paginate($limit);
+            $bloks = $this->model
+                ->orderBy('kode', 'asc')
+                ->paginate($limit);
         } else {
             $search = $request->input('search');
 
@@ -127,6 +129,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 ->orWhere('harga_jual', 'LIKE', "%{$search}%")
                 ->orWhere('lebar', 'LIKE', "%{$search}%")
                 ->orWhere('luas', 'LIKE', "%{$search}%")
+                ->orderBy('kode', 'asc')
                 ->paginate($limit);
 
             $totalFiltered = $this->model->where('kode', 'LIKE', "%{$search}%")
@@ -155,6 +158,7 @@ class PerumahanService extends BaseRepository implements PerumahanContract
                 $nestedData['keterangan'] = $blok->keterangan;
                 $nestedData['marketing'] = $blok->customer?->marketing?->nama;
                 $nestedData['customer'] = $blok->customer?->nama;
+                $nestedData['customer_id'] = $blok->customer?->id;
                 $nestedData['customer_nik'] = $blok->customer?->nik;
 
                 $data[] = $nestedData;

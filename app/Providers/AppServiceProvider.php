@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
             'MasterPerumahan',
             'Perumahan',
             'Properti',
+            'Transaction',
             'User',
         );
 

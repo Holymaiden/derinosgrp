@@ -72,6 +72,8 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
     Route::group(['prefix' => 'laporan', 'namespace' => 'Laporan'], function () {
         Route::get('/perumahan', 'PerumahanController@index')->name('laporan.perumahan-management');
         Route::get('/perumahan-list', 'PerumahanController@paginated')->name('laporan.perumahan-list');
+        Route::get('/perumahan-list/customer', 'PerumahanController@customer')->name('laporan.perumahan-list.customer');
+        Route::post('/perumahan-list', 'PerumahanController@store')->name('laporan.perumahan-list.store');
     });
 
     Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {

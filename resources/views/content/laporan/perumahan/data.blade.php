@@ -15,7 +15,7 @@
         <td class="d-flex align-items-center">
                 <!--begin::User details-->
                 <div class="d-flex flex-column">
-                        <a class="text-gray-800 text-hover-primary mb-1">{{ $v['customer'] }}</a>
+                        <a class="text-gray-800 text-hover-primary mb-1" id="data-name">{{ $v['customer'] }}</a>
                         <span>{{ $v['customer_nik'] }}</span>
                 </div>
                 <!--begin::User details-->
@@ -33,7 +33,7 @@
                         {{ ucfirst($v['status_bayar']) }}
                 </span>
                 @else
-                <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_add_perumahan" data-id="update-{{ $v['id'] }}">
+                <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_add_perumahan" data-id="{{ $v['kode'] }}-{{ $v['customer_id'] }}">
                         <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                         <span class="svg-icon svg-icon-3">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

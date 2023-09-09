@@ -6,7 +6,7 @@
                         <!--begin::Modal header-->
                         <div class="modal-header" id="kt_modal_add_perumahans_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bold"><span class="form-title-modal"></span> Perumahan</h2>
+                                <h2 class="fw-bold"><span class="form-title-modal"></span></h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
@@ -23,61 +23,48 @@
                         </div>
                         <!--end::Modal header-->
                         <!--begin::Modal body-->
-                        <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                        <div class="modal-body scroll-y mx-5 mx-xl-15 my-5">
                                 <!--begin::Form-->
                                 <form id="form-create-edit" class="form" action="POST">
                                         @csrf
                                         <input type="hidden" name="id" id="input-id" />
                                         <input type="hidden" name="_method" value="POST" />
+                                        <input type="hidden" name="customer_id" />
                                         <!--begin::Scroll-->
                                         <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
-                                                        <!--begin::Label-->
-                                                        <label class="required fw-semibold fs-6 mb-2">Kode</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <input type="text" name="kode" id="input-kode" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Kode" />
-                                                        <!--end::Input-->
+                                                <!--begin::Table-->
+                                                <label class="fw-semibold fs-6 mb-2">Riwayat Transaksi</label>
+                                                <div class="fv-row row">
+                                                        <table id="kt_datatable_transaction" class="table table-striped table-row-bordered gy-5 gs-7">
+                                                                <thead>
+                                                                        <tr class="fw-semibold fs-6 text-muted">
+                                                                                <th>No</th>
+                                                                                <th>Tanggal</th>
+                                                                                <th>Transaksi</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                        </table>
                                                 </div>
-                                                <!--end::Input group-->
+                                                <!--end::Table-->
+                                                <div class="separator my-5"></div>
                                                 <!--begin::Input group-->
                                                 <div class="fv-row row mb-7">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Panjang</label>
+                                                                <label class="required fw-semibold fs-6 mb-2">Kode</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
-                                                                <input type="number" name="panjang" id="input-panjang" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Panjang" />
+                                                                <input type="text" name="kode" id="input-kode" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
                                                                 <!--end::Input-->
                                                         </div>
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Lebar</label>
+                                                                <label class="required fw-semibold fs-6 mb-2">No Transaksi</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
-                                                                <input type="number" name="lebar" id="input-lebar" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Lebar" />
-                                                                <!--end::Input-->
-                                                        </div>
-                                                        <div class="col-4">
-                                                                <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Luas</label>
-                                                                <!--end::Label-->
-                                                                <!--begin::Input-->
-                                                                <input type="number" name="luas" id="input-luas" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Luas" />
-                                                                <!--end::Input-->
-                                                        </div>
-
-                                                </div>
-                                                <!--end::Input group-->
-                                                <!--begin::Input group-->
-                                                <div class="fv-row row mb-7">
-                                                        <div class="col-12">
-                                                                <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Harga Jual</label>
-                                                                <!--end::Label-->
-                                                                <!--begin::Input-->
-                                                                <input type="number" name="harga_jual" id="input-harga-jual" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Harga Jual" />
+                                                                <input type="text" name="count" id="input-count" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
                                                                 <!--end::Input-->
                                                         </div>
                                                 </div>
@@ -86,42 +73,23 @@
                                                 <div class="fv-row row mb-7">
                                                         <div class="col-6">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Status</label>
+                                                                <label class="required fw-semibold fs-6 mb-2">Tanggal</label>
                                                                 <!--end::Label-->
-                                                                <!--begin::Select-->
-                                                                <select name="status_blok_id" id="input-status-blok-id" class="form-select form-select-solid mb-3 mb-lg-0">
-                                                                        <option value="">Pilih Status</option>
-                                                                        @foreach(Helper::getData('status_bloks') as $status)
-                                                                        <option value="{{ $status->id }}">{{ $status->status }}</option>
-                                                                        @endforeach
-                                                                </select>
-                                                                <!--end::Select-->
+                                                                <!--begin::Input-->
+                                                                <input type="date" name="transaction_date" id="input-tanggal" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Tanggal" />
+                                                                <!--end::Input-->
                                                         </div>
                                                         <div class="col-6">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Bayar</label>
+                                                                <label class="required fw-semibold fs-6 mb-2">Tansaksi</label>
                                                                 <!--end::Label-->
-                                                                <!--begin::Select-->
-                                                                <select name="status_bayar" id="input-status-bayar" class="form-select form-select-solid mb-3 mb-lg-0">
-                                                                        <option value="">Pilih Status</option>
-                                                                        <option value="ya">Ya</option>
-                                                                        <option value="tidak">Tidak</option>
-                                                                </select>
-                                                                <!--end::Select-->
+                                                                <!--begin::Input-->
+                                                                <input type="number" name="transaction" id="input-tansaksi" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Tansaksi" />
+                                                                <!--end::Input-->
                                                         </div>
 
                                                 </div>
                                                 <!--end::Input group-->
-                                                <!--begin::Input group-->
-                                                <div class="fv-row row mb-7">
-                                                        <!--begin::Label-->
-                                                        <label class="required fw-semibold fs-6 mb-2">Keterangan</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <textarea name="keterangan" id="input-keterangan" class="form-control form-control-solid mb-3 mb-lg-0"></textarea>
-                                                        <!--end::Input-->
-                                                </div>
-                                                <!--End::Input group-->
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->
