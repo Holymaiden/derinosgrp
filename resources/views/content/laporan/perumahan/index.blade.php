@@ -200,8 +200,8 @@
                                 <th>Kode</th>
                                 <th>Customer</th>
                                 <th>Status</th>
-                                <th>Bayar</th>
-                                <th>Marketing</th>
+                                <th>Lunas</th>
+                                <th>Transaksi</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>

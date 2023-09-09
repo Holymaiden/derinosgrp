@@ -26,13 +26,15 @@
                 <span class="badge badge-{{$v['status_blok_warna']}}"><i class="{{ $v['status_blok_icon'] }} fs-4 me-2" style="color:#fff"></i>{{ $v['status_blok'] }}</span>
         </td>
         <!--end::status_blok=-->
-        <!--begin::status_bayar=-->
+        <!--begin::bayar=-->
         <td>
-                @if($v['status_bayar'] === "ya")
-                <span class="badge badge-success">
+                <span class="badge badge-{{ $v['status_bayar'] == 'ya' ? 'success' : 'danger' }}">
                         {{ ucfirst($v['status_bayar']) }}
                 </span>
-                @else
+        </td>
+        <!--end::bayar=-->
+        <!--begin::status_bayar=-->
+        <td>
                 <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#kt_modal_add_perumahan" data-id="{{ $v['kode'] }}-{{ $v['customer_id'] }}">
                         <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                         <span class="svg-icon svg-icon-3">
@@ -43,14 +45,8 @@
                         </span>
                         <!--end::Svg Icon-->
                 </a>
-                @endif
         </td>
         <!--end::status_bayar=-->
-        <!--begin::marketing=-->
-        <td>
-                <div class="text-gray-800 text-hover-primary">{{ $v['marketing'] }}</div>
-        </td>
-        <!--end::marketing=-->
 </tr>
 <!--end::Table row-->
 @empty
