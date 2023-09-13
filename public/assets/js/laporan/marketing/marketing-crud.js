@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var url_name = "perumahan-list";
+    var url_name = "marketing-list";
 
     // Pagination config
     var $pagination = $("#kt_table_paginate");
@@ -79,8 +79,8 @@ $(document).ready(function () {
 
     // Initiate modal
     var form_modal = $("#form-create-edit");
-    var modal = $("#kt_modal_add_perumahan");
-    var modal_title = $("#kt_modal_add_perumahan .form-title-modal");
+    var modal = $("#kt_modal_add_marketing");
+    var modal_title = $("#kt_modal_add_marketing .form-title-modal");
     var modal_submit = modal.find('[data-kt-users-modal-action="submit"]');
     var modal_cancel = modal.find('[data-kt-users-modal-action="cancel"]');
     var modal_close = modal.find('[data-kt-users-modal-action="close"]');
@@ -216,23 +216,23 @@ $(document).ready(function () {
         table.clear().draw();
 
         var blok = $(e.relatedTarget).data("id").split("-")[0];
-        var customer_id = $(e.relatedTarget).data("id").split("-")[1];
-        modal_title.html("Transaksi Perumahan " + blok);
+        var marketing_id = $(e.relatedTarget).data("id").split("-")[1];
+        modal_title.html("Transaksi Marketing " + blok);
 
         $.ajax({
-            url: url_name + "/customer",
+            url: url_name + "/marketing",
             method: "GET",
             dataType: "json",
             data: {
                 blok: blok,
-                customer: customer_id,
+                marketing: marketing_id,
             },
             success: function (data) {
                 var transaction = data.data.transaction;
-                var customer = data.data.customer;
-                form_modal.find("[name='kode']").val(customer.blok);
-                form_modal.find("[name='count']").val(customer.count);
-                form_modal.find("[name='customer_id']").val(customer_id);
+                var marketing = data.data.marketing;
+                form_modal.find("[name='kode']").val(marketing.blok);
+                form_modal.find("[name='count']").val(marketing.count);
+                form_modal.find("[name='marketing_id']").val(marketing_id);
 
                 transaction.forEach((t) => {
                     table.row

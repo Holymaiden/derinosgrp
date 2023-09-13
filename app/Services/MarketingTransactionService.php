@@ -3,21 +3,19 @@
 namespace App\Services;
 
 use App\Models\Blok;
-use App\Models\Transaction;
+use App\Models\MarketingTransaction;
 use App\Services\BaseRepository;
-use App\Services\Contracts\TransactionContract;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
+use App\Services\Contracts\MarketingTransactionContract;
 
 
-class TransactionService extends BaseRepository implements TransactionContract
+class MarketingTransactionService extends BaseRepository implements MarketingTransactionContract
 {
     /**
      * @var
      */
     protected $model;
 
-    public function __construct(Transaction $transaction)
+    public function __construct(MarketingTransaction $transaction)
     {
         $this->model = $transaction->whereNotNull('id');
     }
@@ -26,7 +24,8 @@ class TransactionService extends BaseRepository implements TransactionContract
     {
         if ($request['id'] === null || empty($request['id'])) {
             // create new one if kode and perumahan is unique
-            $no =  $this->model->where('customer_id', $request['customer'])
+            $no =  $this->model->where('marketing_id', $request['marketing'])
+                ->where('perumahan_id', $request['perumahan'])
                 ->where('blok_id', $request['blok'])
                 ->where('count', $request['count'])
                 ->first();
@@ -39,7 +38,7 @@ class TransactionService extends BaseRepository implements TransactionContract
 
                 $transaction =  $this->model->create([
                     'perumahan_id' => $request['perumahan'],
-                    'customer_id' => $request['customer'],
+                    'marketing_id' => $request['marketing'],
                     'blok_id' => $blok->id,
                     'count' => $request['count'],
                     'transaction_date' => $request['transaction_date'],
@@ -59,7 +58,7 @@ class TransactionService extends BaseRepository implements TransactionContract
             }
         }
 
-        $transaction = Transaction::find($request['id']);
+        $transaction = MarketingTransaction::find($request['id']);
         $blok = Blok::where('kode', $request['blok'])->first();
 
         if (empty($blok))
@@ -76,9 +75,9 @@ class TransactionService extends BaseRepository implements TransactionContract
         return response()->json(['message' => "Transaksi Berhasil Diperbaharui", 'code' => 200], 200);
     }
 
-    public function customer(array $request)
+    public function marketing(array $request)
     {
-        return $this->model->where('customer_id', $request['customer'])->whereHas('blok', function ($query) use ($request) {
+        return $this->model->where('marketing_id', $request['marketing'])->whereHas('blok', function ($query) use ($request) {
             $query->where('kode', $request['blok']);
         })->orderBy('count', 'desc')->get();
     }
