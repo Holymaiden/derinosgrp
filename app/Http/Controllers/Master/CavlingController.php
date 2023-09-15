@@ -32,7 +32,13 @@ class CavlingController extends Controller
   public function data(Request $request)
   {
     try {
-      return $this->cavlingContract->data($request);
+      $data =  $this->cavlingContract->data($request);
+
+      if (empty($data)) {
+        return response()->json(['message' => "Data Tidak Ditemukan"], 404);
+      }
+
+      return response()->json(['message' => "Data Ditemukan", 'data' => $data], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
     }

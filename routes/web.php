@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/data', 'DashboardController@data')->name('dashboard.data');
 
     // Admin
     Route::group(['prefix' => 'master', 'namespace' => 'Master', 'middleware' => ['role:admin']], function () {
