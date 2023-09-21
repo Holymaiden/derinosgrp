@@ -71,6 +71,7 @@ class PerumahanController extends Controller
     try {
       // Validate the value...
       $validatedData = Validator::make($request->all(), [
+        'perumahan' => 'required',
         'blok' => 'required',
         'customer' => 'required',
         'transaction_date' => 'required',

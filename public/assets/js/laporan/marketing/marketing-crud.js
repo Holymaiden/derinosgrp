@@ -303,7 +303,7 @@ $(document).ready(function () {
                 _token: form_modal.find("[name='_token']").val(),
                 id: form_modal.find("[name='id']").val(),
                 perumahan: localStorage.getItem("perumahan"),
-                customer: form_modal.find("[name='customer_id']").val(),
+                marketing: form_modal.find("[name='marketing_id']").val(),
                 blok: form_modal.find("[name='kode']").val(),
                 count: form_modal.find("[name='count']").val(),
                 transaction: form_modal.find("[name='transaction']").val(),
