@@ -17,6 +17,7 @@ class Transaction extends Model
         'count',
         'transaction',
         'transaction_date',
+        'bukti_transfer'
     ];
 
     protected $hidden = [

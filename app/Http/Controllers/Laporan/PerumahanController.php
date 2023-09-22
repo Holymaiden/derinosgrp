@@ -83,7 +83,12 @@ class PerumahanController extends Controller
         return response()->json(['message' => "Terjadi Kesalahan"], 500);
       }
 
-      return $this->transactionContract->store($request->all());
+      $data = $request->all();
+
+      if ($request->hasFile('bukti_transfer'))
+        $data['bukti_transfer'] = $request->file('bukti_transfer');
+
+      return $this->transactionContract->store($data);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }

@@ -6,16 +6,16 @@ use App\Models\Blok;
 use App\Models\Transaction;
 use App\Services\BaseRepository;
 use App\Services\Contracts\TransactionContract;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uploadable;
 
 
 class TransactionService extends BaseRepository implements TransactionContract
 {
+    use Uploadable;
     /**
      * @var
      */
-    protected $model;
+    protected $model, $path = 'uploads/transaksi/';
 
     public function __construct(Transaction $transaction)
     {
@@ -37,6 +37,9 @@ class TransactionService extends BaseRepository implements TransactionContract
                 if (empty($blok))
                     return response()->json(['message' => "Blok Tidak Ditemukan", 'code' => 404], 404);
 
+                if ($request['bukti_transfer'])
+                    $request['bukti_transfer'] = $this->uploadFile($request['bukti_transfer'], $this->path . 'bukti/', null);
+
                 $transaction =  $this->model->create([
                     'perumahan_id' => $request['perumahan'],
                     'customer_id' => $request['customer'],
@@ -44,6 +47,7 @@ class TransactionService extends BaseRepository implements TransactionContract
                     'count' => $request['count'],
                     'transaction_date' => $request['transaction_date'],
                     'transaction' => $request['transaction'],
+                    'bukti_transfer' => $request['bukti_transfer']
                 ]);
 
                 // Check if data is created
@@ -65,9 +69,13 @@ class TransactionService extends BaseRepository implements TransactionContract
         if (empty($blok))
             return response()->json(['message' => "Blok Tidak Ditemukan", 'code' => 404], 404);
 
+        if ($request['bukti_transfer'])
+            $request['bukti_transfer'] = $this->uploadFile($request['bukti_transfer'], $this->path . 'bukti/', null);
+
         $update = $transaction->update([
             'transaction_date' => $request['transaction_date'],
             'transaction' => $request['transaction'],
+            'bukti_transfer' => $request['bukti_transfer'] ?? $transaction->bukti_transfer
         ]);
 
         if (!$update)
