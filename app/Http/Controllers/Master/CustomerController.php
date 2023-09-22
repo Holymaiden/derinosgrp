@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Exports\CustomerExport;
+use App\Exports\LaporanPerumahanExport;
 use App\Http\Controllers\Controller;
+use App\Models\Blok;
+use App\Models\Customer;
+use App\Services\Contracts\CavlingContract;
 use Illuminate\Http\Request;
 use App\Services\Contracts\CustomerContract;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
-  private $customerContract, $title;
+  private $customerContract, $cavlingContract, $title;
 
-  public function __construct(CustomerContract $customerContract)
+  public function __construct(
+    CustomerContract $customerContract,
+    CavlingContract $cavlingContract
+    )
   {
     $this->customerContract = $customerContract;
+    $this->cavlingContract = $cavlingContract;
     $this->title = 'Customers';
   }
   /**
@@ -176,4 +186,6 @@ class CustomerController extends Controller
       return response()->json(['message' => $e->getMessage()], 500);
     }
   }
+
+  
 }

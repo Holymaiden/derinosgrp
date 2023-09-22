@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Exports\PerumahanExport;
 use App\Http\Controllers\Controller;
+use App\Models\MasterPerumahan;
 use Illuminate\Http\Request;
 use App\Services\Contracts\PerumahanContract;
 use Illuminate\Support\Facades\Validator;
-
+// use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 class PerumahanController extends Controller
 {
   private $perumahanContract, $title;
@@ -167,4 +170,6 @@ class PerumahanController extends Controller
       return response()->json(['message' => $e->getMessage()], 500);
     }
   }
+
+  
 }

@@ -76,6 +76,7 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/perumahan-list/customer', 'PerumahanController@customer')->name('laporan.perumahan-list.customer');
         Route::post('/perumahan-list', 'PerumahanController@store')->name('laporan.perumahan-list.store');
         Route::delete('/perumahan-list/{id}', 'PerumahanController@destroy')->name('laporan.perumahan-list.destroy');
+        Route::get('/perumahan-list/export', 'PerumahanController@exportEXCEL')->name('laporan.perumahan-list.export');
 
         Route::get('/marketing', 'MarketingController@index')->name('laporan.marketing-management');
         Route::get('/marketing-list', 'MarketingController@paginated')->name('laporan.marketing-list');

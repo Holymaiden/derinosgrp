@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Laporan;
 
+use App\Exports\LaporanPerumahanExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Contracts\PerumahanContract;
 use App\Services\Contracts\TransactionContract;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PerumahanController extends Controller
 {
@@ -105,6 +107,15 @@ class PerumahanController extends Controller
 
 
       return response()->json(['message' => 'Transaksi has been deleted!', 'code' => 200], 200);
+    } catch (\Exception $e) {
+      return response()->json(['message' => $e->getMessage()], 500);
+    }
+  }
+  public function exportEXCEL(){
+    try {
+      
+      return Excel::download(new LaporanPerumahanExport, 'perumahan.xlsx');
+
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }

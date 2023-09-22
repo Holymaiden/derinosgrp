@@ -41,4 +41,8 @@ class Customer extends Model
     {
         return $this->hasOne('App\Models\Marketing', 'id', 'marketing_id');
     }
+
+    public function bloks(){
+        return $this->hasMany('App\Models\Blok', 'customer_id', 'id');
+    }
 }
