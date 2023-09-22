@@ -1,12 +1,67 @@
+var myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
+
+myDefaultAllowList["kt-tooltip"] = true;
+myDefaultAllowList["kt-popover"] = true;
+
 $(document).ready(function () {
     const url_name = "cavling-list";
 
     getCavlingData();
     getCustomerData();
     getMarketingData();
-    function changeColorCss(id, color) {
+    function changeColorCss(data) {
+        let {
+            id,
+            color,
+            status,
+            harga,
+            customer,
+            customer_telepon,
+            marketing,
+        } = data;
         var element = document.querySelector(`[data-id="${id}"]`);
         element.style.fill = `var(--kt-${color})`;
+        new bootstrap.Popover(element, {
+            html: true,
+            container: "body",
+            trigger: "hover",
+            placement: "top",
+            title: "Blok " + element.getAttribute("data-id"),
+            content: () => {
+                let html = document.createElement("div");
+                html.classList.add("table-responsive");
+                html.innerHTML = `
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Customer</td>
+                                <td>${customer}</td>
+                            </tr>
+                            <tr>
+                                <td>Telepon</td>
+                                <td>: ${customer_telepon}</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing</td>
+                                <td>: ${marketing}</td>
+                            </tr>
+                            <tr>
+                                <td>Harga</td>
+                                <td>: Rp. ${harga}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>: ${status}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+                html.cloneNode(true);
+                return html;
+            },
+
+            sanitize: true,
+        });
     }
 
     function getCavlingData() {
@@ -36,7 +91,15 @@ $(document).ready(function () {
             success: function (response) {
                 var data = response.data;
                 data.forEach(function (element) {
-                    changeColorCss(element.kode, element.status_blok.warna);
+                    changeColorCss({
+                        id: element.kode,
+                        color: element.status_blok?.warna,
+                        status: element.status_blok?.status,
+                        harga: element.harga_jual,
+                        customer: element.customer?.nama ?? "-",
+                        customer_telepon: element.customer?.telepon ?? "-",
+                        marketing: element.customer?.marketing?.nama ?? "-",
+                    });
                 });
             },
         });
