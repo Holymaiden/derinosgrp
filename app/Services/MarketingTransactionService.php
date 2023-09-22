@@ -6,14 +6,16 @@ use App\Models\Blok;
 use App\Models\MarketingTransaction;
 use App\Services\BaseRepository;
 use App\Services\Contracts\MarketingTransactionContract;
+use App\Traits\Uploadable;
 
 
 class MarketingTransactionService extends BaseRepository implements MarketingTransactionContract
 {
+    use Uploadable;
     /**
      * @var
      */
-    protected $model;
+    protected $model, $path = 'uploads/transaksi/';
 
     public function __construct(MarketingTransaction $transaction)
     {
@@ -36,6 +38,9 @@ class MarketingTransactionService extends BaseRepository implements MarketingTra
                 if (empty($blok))
                     return response()->json(['message' => "Blok Tidak Ditemukan", 'code' => 404], 404);
 
+                if ($request['bukti_transfer'])
+                    $request['bukti_transfer'] = $this->uploadFile($request['bukti_transfer'], $this->path . 'marketing/', null);
+
                 $transaction =  $this->model->create([
                     'perumahan_id' => $request['perumahan'],
                     'marketing_id' => $request['marketing'],
@@ -43,6 +48,7 @@ class MarketingTransactionService extends BaseRepository implements MarketingTra
                     'count' => $request['count'],
                     'transaction_date' => $request['transaction_date'],
                     'transaction' => $request['transaction'],
+                    'bukti_transfer' => $request['bukti_transfer']
                 ]);
 
                 // Check if data is created

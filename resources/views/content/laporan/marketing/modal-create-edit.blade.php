@@ -82,13 +82,37 @@
                                                         </div>
                                                         <div class="col-6">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Tansaksi</label>
+                                                                <label class="required fw-semibold fs-6 mb-2">Transaksi</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
-                                                                <input type="number" name="transaction" id="input-tansaksi" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Tansaksi" />
+                                                                <input type="number" name="transaction" id="input-tansaksi" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Transaksi" />
                                                                 <!--end::Input-->
                                                         </div>
 
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row row mb-7">
+                                                        <div class="col-9">
+                                                                <!--begin::Label-->
+                                                                <label class="required fw-semibold fs-6 mb-2">Bukti Transfer</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input type="file" name="bukti_transfer" id="input-bukti_transfer" class="form-control form-control-solid mb-3 mb-lg-0" />
+                                                                <!--end::Input-->
+                                                        </div>
+                                                        <div class="col-3">
+                                                                <!--begin::Button Lihat-->
+                                                                <a href="#" class="btn btn-light-primary mt-8" id="btn-lihat-bukti" target="_blank">
+                                                                        <span class="svg-icon svg-icon-2">
+                                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <path d="M14.4 20V4L19.5 9.5H14Z" fill="currentColor" />
+                                                                                </svg>
+                                                                        </span>
+                                                                        Lihat
+                                                                </a>
+                                                                <!--end::Button Lihat-->
+                                                        </div>
                                                 </div>
                                                 <!--end::Input group-->
                                         </div>

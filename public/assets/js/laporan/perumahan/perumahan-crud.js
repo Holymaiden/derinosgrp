@@ -218,7 +218,11 @@ $(document).ready(function () {
 
         var blok = $(e.relatedTarget).data("id").split("-")[0];
         var customer_id = $(e.relatedTarget).data("id").split("-")[1];
-        modal_title.html("Transaksi Perumahan " + blok);
+        modal_title.html(
+            "Transaksi Perumahan " +
+                blok.charAt(0).toUpperCase() +
+                blok.slice(1)
+        );
 
         $.ajax({
             url: url_name + "/customer",
@@ -410,7 +414,6 @@ $(document).ready(function () {
 });
 
 function edit(data) {
-    console.log(data);
     var form_modal = $("#form-create-edit");
     form_modal.find("[name='id']").val(data.id);
     form_modal.find("[name='count']").val(data.count);

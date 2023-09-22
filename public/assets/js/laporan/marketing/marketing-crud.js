@@ -214,10 +214,15 @@ $(document).ready(function () {
         form_modal.trigger("reset");
         form_modal.find("[name='id']").val("");
         table.clear().draw();
+        $("#btn-lihat-bukti").attr("href", "");
 
         var blok = $(e.relatedTarget).data("id").split("-")[0];
         var marketing_id = $(e.relatedTarget).data("id").split("-")[1];
-        modal_title.html("Transaksi Marketing " + blok);
+        modal_title.html(
+            "Transaksi Marketing " +
+                blok.charAt(0).toUpperCase() +
+                blok.slice(1)
+        );
 
         $.ajax({
             url: url_name + "/marketing",
@@ -243,7 +248,7 @@ $(document).ready(function () {
                             ),
                             `Rp. ${t.transaction.toLocaleString("id-ID")}`,
                             `
-                            <a onclick="edit({id: ${t.id},count: ${t.count},transaction:${t.transaction},transaction_date:'${t.transaction_date}'})" data-toggle="tooltip" class="btn btn-icon btn-warning btn-sm">
+                            <a onclick="edit({id: ${t.id},count: ${t.count},transaction:${t.transaction},transaction_date:'${t.transaction_date}',bukti_transfer:'${t.bukti_transfer}'})" data-toggle="tooltip" class="btn btn-icon btn-warning btn-sm">
                                 <span class="fa fa-edit"></span>
                             </a>
 
@@ -267,6 +272,14 @@ $(document).ready(function () {
                 });
             },
         });
+    });
+
+    // File
+    $("#input-bukti_transfer").on("change", function (event) {
+        $("#btn-lihat-bukti").attr(
+            "href",
+            URL.createObjectURL(event.target.files[0])
+        );
     });
 
     // Modal Submit
@@ -296,21 +309,30 @@ $(document).ready(function () {
 
     // Create and Edit
     function create_edit() {
+        var form_data = new FormData(form_modal[0]);
+        form_data.append("_method", "POST");
+        form_data.append("perumahan", localStorage.getItem("perumahan"));
+        form_data.append("id", form_modal.find("[name='id']").val());
+        form_data.append(
+            "bukti_transfer",
+            $("#input-bukti_transfer").prop("files")[0]
+        );
+        form_data.append("blok", form_modal.find("[name='kode']").val());
+        form_data.append("count", form_modal.find("[name='count']").val());
+        form_data.append(
+            "marketing",
+            form_modal.find("[name='marketing_id']").val()
+        );
         $.ajax({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
             url: url_name,
             method: "POST",
-            data: {
-                _token: form_modal.find("[name='_token']").val(),
-                id: form_modal.find("[name='id']").val(),
-                perumahan: localStorage.getItem("perumahan"),
-                marketing: form_modal.find("[name='marketing_id']").val(),
-                blok: form_modal.find("[name='kode']").val(),
-                count: form_modal.find("[name='count']").val(),
-                transaction: form_modal.find("[name='transaction']").val(),
-                transaction_date: form_modal
-                    .find("[name='transaction_date']")
-                    .val(),
-            },
+            data: form_data,
+            dataType: "json",
+            processData: false,
+            contentType: false,
             success: function (data) {
                 console.log(data);
                 if (data.code >= 200) {
@@ -408,4 +430,8 @@ function edit(data) {
         .find("[name='transaction_date']")
         .val(tanggalFormat)
         .trigger("change");
+    $("#btn-lihat-bukti").attr(
+        "href",
+        "../../uploads/transaksi/marketing/" + data.bukti_transfer
+    );
 }
