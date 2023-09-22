@@ -26,7 +26,10 @@ $(document).ready(function () {
             container: "body",
             trigger: "hover",
             placement: "top",
-            title: "Blok " + element.getAttribute("data-id"),
+            title:
+                "Blok " +
+                element.getAttribute("data-id").charAt(0).toUpperCase() +
+                element.getAttribute("data-id").slice(1),
             content: () => {
                 let html = document.createElement("div");
                 html.classList.add("table-responsive");
@@ -35,7 +38,7 @@ $(document).ready(function () {
                         <tbody>
                             <tr>
                                 <td>Customer</td>
-                                <td>${customer}</td>
+                                <td>: ${customer}</td>
                             </tr>
                             <tr>
                                 <td>Telepon</td>
@@ -47,7 +50,9 @@ $(document).ready(function () {
                             </tr>
                             <tr>
                                 <td>Harga</td>
-                                <td>: Rp. ${harga}</td>
+                                <td>: Rp. ${harga
+                                    .toString()
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</td>
                             </tr>
                             <tr>
                                 <td>Status</td>
