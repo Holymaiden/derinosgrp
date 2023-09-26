@@ -20,7 +20,10 @@ $(document).ready(function () {
             marketing,
         } = data;
         var element = document.querySelector(`[data-id="${id}"]`);
-        element.style.fill = `var(--kt-${color})`;
+        var colorHex = getComputedStyle(element).getPropertyValue(
+            "--kt-" + color
+        );
+        element.style.fill = colorHex;
         new bootstrap.Popover(element, {
             html: true,
             container: "body",
@@ -138,15 +141,6 @@ $(document).ready(function () {
                 });
             },
         });
-
-        //get data-d ketika d clik
-        // polygon.forEach(function (element) {
-        //     element.addEventListener("click", function () {
-        //         var id = element.getAttribute("data-id");
-        //         $("#input-id").val(id);
-        //         modal.modal("show");
-        //     });
-        // });
     }
 
     function getCustomerData() {
@@ -400,3 +394,20 @@ $(document).ready(function () {
         });
     }
 });
+
+// SVG To PNG
+function downloadSVG() {
+    var svg = document.querySelector("#svg_cavling");
+    console.log(svg);
+    var svg_blob = new Blob([svg.outerHTML], {
+        type: "image/svg+xml",
+    });
+    var svg_url = URL.createObjectURL(svg_blob);
+    var img = new Image();
+    img.src = svg_url;
+    // download file
+    var a = document.createElement("a");
+    a.href = svg_url;
+    a.download = "Denah-Blok.svg";
+    a.click();
+}
