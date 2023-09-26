@@ -44,6 +44,7 @@
                         <!--end::Menu wrapper-->
                         <!--begin::Navbar-->
                         <div class="app-navbar flex-shrink-0">
+                                @if (Auth::user()->role == 'admin')
                                 <!--begin::Quick links-->
                                 <div class="app-navbar-item ms-1 ms-lg-3">
                                         <!--begin::Menu wrapper-->
@@ -62,6 +63,7 @@
                                         <!--end::Menu wrapper-->
                                 </div>
                                 <!--end::Quick links-->
+                                @endif
                                 <!--begin::Theme mode-->
                                 <div class="app-navbar-item ms-1 ms-lg-3">
                                         <!--begin::Menu toggle-->

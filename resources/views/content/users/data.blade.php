@@ -1,4 +1,7 @@
 @forelse($data as $v)
+@php
+$warna = ['admin' => 'warning', 'user' => 'primary', 'visitor' => 'success'];
+@endphp
 <!--begin::Table row-->
 <tr>
         <!--begin::Checkbox-->
@@ -18,7 +21,7 @@
         <!--end::User=-->
         <!--begin::Role=-->
         <td>
-                <div class="badge badge-{{ $v['role'] == 'admin' ? 'warning' : 'primary' }} fw-bold">{{ ucfirst($v['role']) }}</div>
+                <div class="badge badge-{{ $warna[$v['role']] }} fw-bold">{{ ucfirst($v['role']) }}</div>
         </td>
         <!--end::Role=-->
         <!--begin::Perumahan=-->
