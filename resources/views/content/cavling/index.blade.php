@@ -71,18 +71,36 @@
             <!--end::Page title-->
             <!--begin::Card header-->
             <div class="justify-content-end">
-                <button type="button" class="btn btn-primary" onclick="downloadSVG()">
-                    <span class="svg-icon svg-icon-2 svg-icon-white me-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <style>
-                                svg {
-                                    fill: #ffffff
-                                }
-                            </style>
-                            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z" />
-                        </svg>
-                    </span>
+                <!--begin::Toggle-->
+                <button type="button" class="btn btn-primary rotate" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" data-kt-menu-offset="30px, 30px">
+                    <i class="fa-solid fa-share" style="color: #ffffff;"></i>
                 </button>
+                <!--end::Toggle-->
+                <!--begin::Menu-->
+                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-auto min-w-200 mw-300px" data-kt-menu="true">
+                    <!--begin::Menu item-->
+                    <div class="menu-item px-3">
+                        <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">Share</div>
+                    </div>
+                    <!--end::Menu item-->
+                    <!--begin::Menu item-->
+                    <div class="menu-item px-3">
+                        <a onclick="downloadSVG()" class="menu-link px-3">
+                            <i class="fa-solid fa-download me-1" style="color: #009ef7;"></i>
+                            Download
+                        </a>
+                    </div>
+                    <!--end::Menu item-->
+                    <!--begin::Menu item-->
+                    <div class="menu-item px-3">
+                        <a onclick="downloadWhatsApp()" class="menu-link px-3">
+                            <i class="fa-brands fa-whatsapp me-1" style="color: #50cd89;"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+                    <!--end::Menu item-->
+                </div>
+                <!--end::Menu-->
             </div>
         </div>
         <!--end::Toolbar container-->
@@ -102,42 +120,42 @@
                 </div>
                 <h2 class="text-center">Keterangan :</h2>
                 <div class="div row mx-2">
-                    <div class="col-2">
+                    <div class="col-sm-12 col-md-6 col-lg-2">
                         <div class="p-3 mb-2 bg-light text-black">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">Kosong</font>
                             </font>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-sm-12 col-md-6 col-lg-2">
                         <div class="p-3 mb-2 bg-success text-white">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">Booking</font>
                             </font>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-sm-12 col-md-6 col-lg-2">
                         <div class="p-3 mb-2 bg-primary text-white">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">Proses Berkas</font>
                             </font>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-sm-12 col-md-6 col-lg-2">
                         <div class="p-3 mb-2 bg-danger text-white">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">Sudah Akad</font>
                             </font>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-sm-12 col-md-6 col-lg-2">
                         <div class="p-3 mb-2 bg-warning text-white">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">Cash/Lunas</font>
                             </font>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-sm-12 col-md-6 col-lg-2">
                         <div class="p-3 mb-2 bg-info text-white">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">SP3K</font>

@@ -398,7 +398,6 @@ $(document).ready(function () {
 // SVG To PNG
 function downloadSVG() {
     var svg = document.querySelector("#svg_cavling");
-    console.log(svg);
     var svg_blob = new Blob([svg.outerHTML], {
         type: "image/svg+xml",
     });
@@ -410,4 +409,33 @@ function downloadSVG() {
     a.href = svg_url;
     a.download = "Denah-Blok.svg";
     a.click();
+}
+
+function downloadWhatsApp() {
+    var svg = document.querySelector("#svg_cavling");
+    var svg_blob = new Blob([svg.outerHTML], {
+        type: "image/svg+xml",
+    });
+    var svg_url = URL.createObjectURL(svg_blob);
+    const img = new Image();
+
+    // convert to png
+    img.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        canvg(canvas, svg.outerHTML);
+
+        canvas.toBlob(function (blob) {
+            // To WhatsApp
+            window.open(
+                `https://api.whatsapp.com/send?text=${encodeURIComponent(
+                    "Denah Blok 3"
+                )}&image=${encodeURIComponent(blob)}`
+            );
+        }, "image/png");
+    };
+
+    img.src = svg_url;
 }
