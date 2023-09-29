@@ -80,6 +80,7 @@ $(document).ready(function () {
     // Initiate modal
     var form_modal = $("#form-create-edit");
     var modal = $("#kt_modal_add_perumahan");
+    var modal_invoice = $("#kt_modal_invoice_perumahan");
     var modal_title = $("#kt_modal_add_perumahan .form-title-modal");
     var modal_submit = modal.find('[data-kt-users-modal-action="submit"]');
     var modal_cancel = modal.find('[data-kt-users-modal-action="cancel"]');
@@ -274,6 +275,10 @@ $(document).ready(function () {
         });
     });
 
+    modal_invoice.on("show.bs.modal", function (e) {
+       console.log(e);
+    })
+
     // File
     $("#input-bukti_transfer").on("change", function (event) {
         $("#btn-lihat-bukti").attr(
@@ -411,6 +416,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    
 });
 
 function edit(data) {

@@ -397,18 +397,39 @@ $(document).ready(function () {
 
 // SVG To PNG
 function downloadSVG() {
-    var svg = document.querySelector("#svg_cavling");
-    var svg_blob = new Blob([svg.outerHTML], {
+    var ket_cavling = document.querySelector("#ket_cavling");
+    var svg_cavling = document.querySelector("#svg_cavling");
+    
+    // Create a new SVG element
+    var combinedSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+    // Set attributes for the combined SVG (adjust width and height as needed)
+    combinedSVG.setAttribute("width", "400");
+    combinedSVG.setAttribute("height", "200");
+
+    // Append the content of the first SVG
+    combinedSVG.innerHTML = svg_cavling.outerHTML;
+
+    // Append the content of the second SVG
+    combinedSVG.innerHTML +=  ket_cavling.outerHTML;
+
+    // Add the content of the combined SVG to the DOM
+    document.body.appendChild(combinedSVG);
+    // console.log(document.body.appendChild(combinedSVG));
+
+    document.body.appendChild(combinedSVG);
+    
+    var svgBlob = new Blob([combinedSVG.outerHTML], {
         type: "image/svg+xml",
-    });
-    var svg_url = URL.createObjectURL(svg_blob);
-    var img = new Image();
-    img.src = svg_url;
-    // download file
+
+    })
+    var svgUrl = URL.createObjectURL(svgBlob);
     var a = document.createElement("a");
-    a.href = svg_url;
-    a.download = "Denah-Blok.svg";
+    a.href = svgUrl;
+    var tgl = new Date();
+    a.download = "Denah-Cavling-" + tgl.getDate() + "-" + (tgl.getMonth() + 1) + "-" + tgl.getFullYear() + ".svg";
     a.click();
+
 }
 
 function downloadWhatsApp() {

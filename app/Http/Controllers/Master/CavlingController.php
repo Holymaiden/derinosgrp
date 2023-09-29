@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Contracts\CavlingContract;
 use App\Services\Contracts\CustomerContract;
 use App\Services\Contracts\MarketingContract;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 
 class CavlingController extends Controller
@@ -105,4 +106,6 @@ class CavlingController extends Controller
       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
     }
   }
+
+  
 }

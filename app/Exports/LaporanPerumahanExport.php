@@ -60,7 +60,7 @@ class LaporanPerumahanExport implements FromCollection, WithHeadings, WithMappin
         return [
             $data->id,
             $data->customer->nama ?? '',
-            $data->kode,
+            strtoupper($data->kode),
             $data->customer->marketing->nama ?? '',
             $data->status_blok->status,
             $data->keterangan
