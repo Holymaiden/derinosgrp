@@ -91,9 +91,9 @@ class CustomerService extends BaseRepository implements CustomerContract
         $nik =  $this->model->where('nik', $request['nik'])->first();
 
         if (empty($nik)) {
-            // Upload Bukti Transfer
-            if ($request['bukti_transfer'])
-                $request['bukti_transfer'] = $this->uploadFile($request['bukti_transfer'], $this->path . 'perumahan/', null);
+            // Upload Nik
+            if ($request['ktp'])
+                $request['ktp'] = $this->uploadFile($request['ktp'], $this->path . 'ktp/', null);
 
             $customer =  $this->model->create([
                 'perumahan_id' => $request['perumahan'],

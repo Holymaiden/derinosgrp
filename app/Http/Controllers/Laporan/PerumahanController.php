@@ -120,23 +120,4 @@ class PerumahanController extends Controller
       return response()->json(['message' => $e->getMessage()], 500);
     }
   }
-
-  public function invoice(Request $request){
-    try {
-      $data = $request->all();
-      if (!$data['customer'] || !$data['blok'])
-        return response()->json(['message' => "Customer Tidak Ditemukan"], 500);
-
-      $transaction = $this->transactionContract->customer($data);
-
-      $customer = [
-        'blok' => $data['blok'],
-        'count' => count($transaction) === 0 ? 0 + 1 : count($transaction) + 1,
-      ];
-
-      return response()->json(['message' => 'Success!', 'code' => 200, 'data' => ['transaction' => $transaction, 'customer' => $customer]], 200);
-    } catch (\Exception $e) {
-      return response()->json(['message' => $e->getMessage()], 500);
-    }
-  }
 }

@@ -318,9 +318,4 @@ class PerumahanService extends BaseRepository implements PerumahanContract
 
         return response()->json(['message' => "Blok Berhasil Diupdate", 'code' => 200], 200);
     }
-
-    public function exportEXCEL()
-    {
-        // return Excel::download(new BlokExport, 'blok.xlsx');
-    }
 }
