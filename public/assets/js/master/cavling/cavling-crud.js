@@ -114,8 +114,9 @@ $(document).ready(function () {
     }
 
     function polygonClick() {
-        //get tag polygon
         var polygon = document.querySelectorAll("polygon");
+        var path = document.querySelectorAll("path[data-id]");
+        polygon = [...polygon, ...path];
         $.ajax({
             type: "GET",
             url: "cavling-kode",
@@ -399,9 +400,12 @@ $(document).ready(function () {
 function downloadSVG() {
     var ket_cavling = document.querySelector("#ket_cavling");
     var svg_cavling = document.querySelector("#svg_cavling");
-    
+
     // Create a new SVG element
-    var combinedSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    var combinedSVG = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+    );
 
     // Set attributes for the combined SVG (adjust width and height as needed)
     combinedSVG.setAttribute("width", "400");
@@ -411,25 +415,30 @@ function downloadSVG() {
     combinedSVG.innerHTML = svg_cavling.outerHTML;
 
     // Append the content of the second SVG
-    combinedSVG.innerHTML +=  ket_cavling.outerHTML;
+    combinedSVG.innerHTML += ket_cavling.outerHTML;
 
     // Add the content of the combined SVG to the DOM
     document.body.appendChild(combinedSVG);
     // console.log(document.body.appendChild(combinedSVG));
 
     document.body.appendChild(combinedSVG);
-    
+
     var svgBlob = new Blob([combinedSVG.outerHTML], {
         type: "image/svg+xml",
-
-    })
+    });
     var svgUrl = URL.createObjectURL(svgBlob);
     var a = document.createElement("a");
     a.href = svgUrl;
     var tgl = new Date();
-    a.download = "Denah-Cavling-" + tgl.getDate() + "-" + (tgl.getMonth() + 1) + "-" + tgl.getFullYear() + ".svg";
+    a.download =
+        "Denah-Cavling-" +
+        tgl.getDate() +
+        "-" +
+        (tgl.getMonth() + 1) +
+        "-" +
+        tgl.getFullYear() +
+        ".svg";
     a.click();
-
 }
 
 function downloadWhatsApp() {

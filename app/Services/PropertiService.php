@@ -77,7 +77,7 @@ class PropertiService extends BaseRepository implements PropertiContract
             $properti =  $this->model->create([
                 'nama_perumahan' => $request['nama_perumahan'],
                 'alamat' => $request['alamat'],
-                'url_maps' => 'Belum Ada'
+                'url_maps' => strtolower(str_replace(' ', '-', $request['nama_perumahan']))
             ]);
 
             // Check if data is created
@@ -110,7 +110,6 @@ class PropertiService extends BaseRepository implements PropertiContract
 
         $dataNew['nama_perumahan'] = $request['nama_perumahan'];
         $dataNew['alamat'] = $request['alamat'];
-        $dataNew['url_maps'] = 'Belum Ada';
 
         $update = $dataOld->update($dataNew);
 
