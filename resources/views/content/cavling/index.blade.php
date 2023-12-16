@@ -13,7 +13,6 @@
     <script src="{{ asset('assets/plugins/custom/jquery/jquery-3.7.0.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-    
 @endpush
 
 @push('javascript-vendor')
@@ -126,9 +125,9 @@
 
                     <div class="card-body py-4 cavling-data">
                     </div>
-                    {{-- <div id="ket-cavling">
+                    <div id="ket-cavling">
                         <h2 class="text-center">Keterangan :</h2>
-                        <div class="div row mx-2">
+                        <div class="row mx-2">
                             <div class="col-sm-12 col-md-6 col-lg-2">
                                 <div class="p-3 mb-2 bg-light text-black">
                                     <font style="vertical-align: inherit;">
@@ -172,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!--end::Card body-->
                 </div>
                 <!--end::Card-->
