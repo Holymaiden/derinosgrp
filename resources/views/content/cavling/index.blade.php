@@ -125,7 +125,7 @@
 
                     <div class="card-body py-4 cavling-data">
                     </div>
-                    <div id="ket-cavling">
+                    <div>
                         <h2 class="text-center">Keterangan :</h2>
                         <div class="row mx-2">
                             <div class="col-sm-12 col-md-6 col-lg-2">

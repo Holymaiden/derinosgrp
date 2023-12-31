@@ -480,30 +480,3 @@
 
     </svg>
 </div>
-{{-- <svg id="ket_cavling" xmlns="http://www.w3.org/2000/svg" width="800" height="200">
-    <!-- Background rectangle -->
-    <rect width="100%" height="100%" fill="white" />
-
-    <!-- Text -->
-    <text x="10" y="40" font-family="Arial" font-size="18" fill="black"
-        font-weight="bold">Keterangan :</text>
-
-    <!-- Rectangles -->
-    <rect x="10" y="60" width="30" height="30" fill="rgb(245, 248, 250)" />
-    <text x="50" y="85" font-family="Arial" font-size="14" fill="black">Kosong</text>
-
-    <rect x="110" y="60" width="30" height="30" fill="rgb(80, 205, 137)" />
-    <text x="150" y="85" font-family="Arial" font-size="14" fill="black">Booking</text>
-
-    <rect x="210" y="60" width="30" height="30" fill="rgb(0, 158, 247)" />
-    <text x="250" y="85" font-family="Arial" font-size="14" fill="black">Proses Berkas</text>
-
-    <rect x="350" y="60" width="30" height="30" fill="rgb(241, 65, 108)" />
-    <text x="390" y="85" font-family="Arial" font-size="14" fill="black">Sudah Akad</text>
-
-    <rect x="480" y="60" width="30" height="30" fill="rgb(255, 199, 0)" />
-    <text x="520" y="85" font-family="Arial" font-size="14" fill="black">Cash/Lunas</text>
-
-    <rect x="610" y="60" width="30" height="30" fill="rgb(114, 57, 234)" />
-    <text x="650" y="85" font-family="Arial" font-size="14" fill="black">SP3K</text>
-</svg> --}}
