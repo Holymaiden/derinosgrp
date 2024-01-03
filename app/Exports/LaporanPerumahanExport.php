@@ -36,8 +36,9 @@ class LaporanPerumahanExport implements FromCollection, WithHeadings, WithMappin
     public function headings(): array
     {
         $today = Carbon::now()->format('d-m-Y');
+        $data = MasterPerumahan::find($this->perumahan_id);
         return [
-            ['DAFTAR BERKAS PROSES PERUMAHAN ARRAIN RESIDENCE 2 BANK BTN KC MAKASSAR'],
+            ['DAFTAR BERKAS PROSES PERUMAHAN ' . strtoupper($data->nama_perumahan) . ' BANK BTN KC MAKASSAR'],
             [''],
             [
                 '',
