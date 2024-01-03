@@ -111,11 +111,11 @@ class PerumahanController extends Controller
       return response()->json(['message' => $e->getMessage()], 500);
     }
   }
-  public function exportEXCEL(){
+  public function exportEXCEL(Request $request)
+  {
     try {
-      
-      return Excel::download(new LaporanPerumahanExport, 'perumahan.xlsx');
-
+      $perumahan_id = $request->all()['perumahan'];
+      return Excel::download(new LaporanPerumahanExport($perumahan_id), 'perumahan.xlsx');
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage()], 500);
     }

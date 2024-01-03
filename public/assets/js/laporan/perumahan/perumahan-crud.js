@@ -276,8 +276,8 @@ $(document).ready(function () {
     });
 
     modal_invoice.on("show.bs.modal", function (e) {
-       console.log(e);
-    })
+        console.log(e);
+    });
 
     // File
     $("#input-bukti_transfer").on("change", function (event) {
@@ -416,8 +416,6 @@ $(document).ready(function () {
             }
         });
     });
-
-    
 });
 
 function edit(data) {
@@ -438,4 +436,10 @@ function edit(data) {
         "href",
         "../../uploads/transaksi/bukti/" + data.bukti_transfer
     );
+}
+
+function exportPerumahan(link) {
+    let perumahan = localStorage.getItem("perumahan");
+    link = link + "?perumahan=" + perumahan;
+    window.open(link, "_blank");
 }

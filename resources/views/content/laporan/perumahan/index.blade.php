@@ -166,8 +166,7 @@
                                         <div class="d-flex justify-content-end">
                                             <button type="reset"
                                                 class="btn btn-light btn-active-light-primary fw-semibold me-2 px-6"
-                                                data-kt-menu-dismiss="true"
-                                                data-kt-user-table-filter="reset">Reset</button>
+                                                data-kt-menu-dismiss="true" data-kt-user-table-filter="reset">Reset</button>
                                             <button type="submit" id="apply-filter"
                                                 class="btn btn-primary fw-semibold px-6" data-kt-menu-dismiss="true"
                                                 data-kt-user-table-filter="filter">Apply</button>
@@ -180,17 +179,17 @@
                                 <!--end::Filter-->
                                 <!--begin::Export-->
                                 {{-- <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_export_perumahans"> --}}
-                                <a href="{{ route('laporan.perumahan-list.export') }}">
+                                <a onclick="exportPerumahan('{{ route('laporan.perumahan-list.export') }}')">
                                     <button type="button" class="btn btn-primary" id="btn-export">
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                         <span class="svg-icon svg-icon-2">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <rect opacity="0.5" x="11.364" y="20.364" width="16"
-                                                    height="2" rx="1" transform="rotate(-90 11.364 20.364)"
+                                                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2"
+                                                    rx="1" transform="rotate(-90 11.364 20.364)"
                                                     fill="currentColor" />
-                                                <rect x="4.36396" y="11.364" width="16" height="2"
-                                                    rx="1" fill="currentColor" />
+                                                <rect x="4.36396" y="11.364" width="16" height="2" rx="1"
+                                                    fill="currentColor" />
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->Export</button>

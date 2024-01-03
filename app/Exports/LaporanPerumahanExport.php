@@ -18,13 +18,18 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 class LaporanPerumahanExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithColumnFormatting, WithEvents
 {
+    public $perumahan_id;
+    public function __construct($perumahan_id)
+    {
+        $this->perumahan_id = $perumahan_id;
+    }
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        $data = Blok::with(['status_blok', 'customer.marketing'])->get();
-        
+        $data = Blok::where('perumahan_id', $this->perumahan_id)->with(['status_blok', 'customer.marketing'])->get();
+
         return $data;
     }
 
@@ -42,7 +47,7 @@ class LaporanPerumahanExport implements FromCollection, WithHeadings, WithMappin
                 'Tgl Update : ',
                 $today,
             ],
-            [   
+            [
                 'NO',
                 'NAMA USER',
                 'BLOK',
@@ -55,7 +60,7 @@ class LaporanPerumahanExport implements FromCollection, WithHeadings, WithMappin
 
     public function map($data): array
     {
-        
+
 
         return [
             $data->id,
@@ -88,7 +93,7 @@ class LaporanPerumahanExport implements FromCollection, WithHeadings, WithMappin
         ];
     }
 
-    
+
     public function registerEvents(): array
     {
         return [
