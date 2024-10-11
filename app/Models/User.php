@@ -52,6 +52,14 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
+        if (str_contains($role, '|')) {
+            $roles = explode('|', $role);
+            foreach ($roles as $r) {
+                if ($this->role == $r) {
+                    return true;
+                }
+            }
+        }
         return $this->role == $role;
     }
 }

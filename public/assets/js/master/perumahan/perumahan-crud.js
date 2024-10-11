@@ -176,13 +176,6 @@ $(document).ready(function () {
                     },
                 },
             },
-            harga_permeter: {
-                validators: {
-                    notEmpty: {
-                        message: "Harga per meter is required",
-                    },
-                },
-            },
             harga_jual: {
                 validators: {
                     notEmpty: {
@@ -248,7 +241,6 @@ $(document).ready(function () {
                     $("#input-panjang").val(data.panjang);
                     $("#input-lebar").val(data.lebar);
                     $("#input-luas").val(data.luas);
-                    $("#input-harga-permeter").val(data.harga_permeter);
                     $("#input-harga-jual").val(data.harga_jual);
                     $("#input-status-blok-id")
                         .val(data.status_blok_id)

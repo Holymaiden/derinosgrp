@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Exports\PerumahanExport;
 use App\Http\Controllers\Controller;
+use App\Models\MasterPerumahan;
 use Illuminate\Http\Request;
 use App\Services\Contracts\PerumahanContract;
 use Illuminate\Support\Facades\Validator;
-
+// use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 class PerumahanController extends Controller
 {
   private $perumahanContract, $title;
@@ -60,7 +63,6 @@ class PerumahanController extends Controller
         'panjang' => 'required|numeric',
         'lebar' => 'required|numeric',
         'luas' => 'required|numeric',
-        'harga_permeter' => 'required|numeric',
         'harga_jual' => 'required|numeric',
         'keterangan' => 'required',
         'status_blok_id' => 'required',
@@ -130,7 +132,6 @@ class PerumahanController extends Controller
         'panjang' => 'required|numeric',
         'lebar' => 'required|numeric',
         'luas' => 'required|numeric',
-        'harga_permeter' => 'required|numeric',
         'harga_jual' => 'required|numeric',
         'keterangan' => 'required',
         'status_blok_id' => 'required',
@@ -169,4 +170,6 @@ class PerumahanController extends Controller
       return response()->json(['message' => $e->getMessage()], 500);
     }
   }
+
+  
 }

@@ -72,15 +72,7 @@
                                                 <!--end::Input group-->
                                                 <!--begin::Input group-->
                                                 <div class="fv-row row mb-7">
-                                                        <div class="col-6">
-                                                                <!--begin::Label-->
-                                                                <label class="required fw-semibold fs-6 mb-2">Harga/m</label>
-                                                                <!--end::Label-->
-                                                                <!--begin::Input-->
-                                                                <input type="number" name="harga_permeter" id="input-harga-permeter" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Harga/m" />
-                                                                <!--end::Input-->
-                                                        </div>
-                                                        <div class="col-6">
+                                                        <div class="col-12">
                                                                 <!--begin::Label-->
                                                                 <label class="required fw-semibold fs-6 mb-2">Harga Jual</label>
                                                                 <!--end::Label-->

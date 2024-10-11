@@ -30,9 +30,11 @@ class AppServiceProvider extends ServiceProvider
             'Cavling',
             'Customer',
             'Marketing',
+            'MarketingTransaction',
             'MasterPerumahan',
             'Perumahan',
             'Properti',
+            'Transaction',
             'User',
         );
 

@@ -18,4 +18,10 @@ class Marketing extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function transaction($blok_id)
+    {
+        // where marketing id same and blok id same
+        return $this->hasMany('App\Models\MarketingTransaction', 'marketing_id', 'id')->where('blok_id', $blok_id)->get();
+    }
 }

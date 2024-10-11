@@ -97,7 +97,29 @@
                                                                         <!--begin::Label-->
                                                                         <label class="form-check-label" for="input-role">
                                                                                 <div class="fw-bold text-gray-800">User</div>
-                                                                                <div class="text-gray-600">Just a user with no specific permissions</div>
+                                                                                <div class="text-gray-600">Can only access manajemen and laporan menu</div>
+                                                                        </label>
+                                                                        <!--end::Label-->
+                                                                </div>
+                                                                <!--end::Radio-->
+                                                        </div>
+                                                        <!--end::Input row-->
+                                                        <!--end::Roles-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="mb-7">
+                                                        <!--begin::Input row-->
+                                                        <div class="d-flex fv-row">
+                                                                <!--begin::Radio-->
+                                                                <div class="form-check form-check-custom form-check-solid">
+                                                                        <!--begin::Input-->
+                                                                        <input class="form-check-input me-3" name="role" type="radio" value="visitor" />
+                                                                        <!--end::Input-->
+                                                                        <!--begin::Label-->
+                                                                        <label class="form-check-label" for="input-role">
+                                                                                <div class="fw-bold text-gray-800">Visitor</div>
+                                                                                <div class="text-gray-600">Can only access manajemen menu</div>
                                                                         </label>
                                                                         <!--end::Label-->
                                                                 </div>

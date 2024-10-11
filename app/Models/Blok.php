@@ -17,7 +17,6 @@ class Blok extends Model
         'panjang',
         'lebar',
         'luas',
-        'harga_permeter',
         'harga_jual',
         'status_blok_id',
         'status_bayar',

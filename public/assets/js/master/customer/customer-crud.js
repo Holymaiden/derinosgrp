@@ -201,22 +201,6 @@ $(document).ready(function () {
             },
             ktp: {
                 validators: {
-                    notEmpty: {
-                        message: "KTP is required",
-                    },
-                    file: {
-                        extension: "jpg,jpeg,png",
-                        type: "image/jpeg,image/png",
-                        message:
-                            "Please upload a valid file with jpg, jpeg, png extension",
-                    },
-                },
-            },
-            kk: {
-                validators: {
-                    notEmpty: {
-                        message: "KK is required",
-                    },
                     file: {
                         extension: "jpg,jpeg,png",
                         type: "image/jpeg,image/png",
@@ -316,13 +300,22 @@ $(document).ready(function () {
     // Create and Edit
     function create_edit() {
         var cek_method = form_modal.attr("action");
-        var form_data = new FormData(form_modal[0]);
-        form_data.append("perumahan", localStorage.getItem("perumahan"));
+        let formData = new FormData(form_modal[0]);
+        formData.append("ktp", $("#input-ktp").prop("files")[0]);
+        formData.append("perumahan", localStorage.getItem("perumahan"));
+
         if (cek_method == "post" || cek_method == "POST") {
+            formData.append("_method", "POST");
             $.ajax({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
                 url: url_name,
                 method: "POST",
-                data: form_data,
+                data: formData,
+                dataType: "json",
                 processData: false,
                 contentType: false,
                 success: function (data) {
@@ -339,13 +332,9 @@ $(document).ready(function () {
                     }
                 },
                 error: function (data) {
-                    var errorsString = "";
-                    $.each(data.responseJSON.message, function (key, value) {
-                        errorsString += value + "<br>";
-                    });
                     Swal.fire({
                         title: "Error!",
-                        html: errorsString,
+                        html: data.responseJSON.message,
                         icon: "error",
                         confirmButtonText: "Ok",
                     });
@@ -353,10 +342,17 @@ $(document).ready(function () {
             });
         } else if (cek_method == "put" || cek_method == "PUT") {
             var id = $("#input-id").val();
+            formData.append("_method", "PUT");
             $.ajax({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
                 url: url_name + "/" + id,
-                method: "PUT",
-                data: form_data,
+                method: "POST",
+                data: formData,
+                dataType: "json",
                 processData: false,
                 contentType: false,
                 success: function (data) {
@@ -374,13 +370,9 @@ $(document).ready(function () {
                     }
                 },
                 error: function (data) {
-                    var errorsString = "";
-                    $.each(data.responseJSON.message, function (key, value) {
-                        errorsString += value + "<br>";
-                    });
                     Swal.fire({
                         title: "Error!",
-                        html: errorsString,
+                        html: data.responseJSON.message,
                         icon: "error",
                         confirmButtonText: "Ok",
                     });

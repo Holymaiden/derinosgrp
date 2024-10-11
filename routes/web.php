@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/data', 'DashboardController@data')->name('dashboard.data');
 
     // Admin
     Route::group(['prefix' => 'master', 'namespace' => 'Master', 'middleware' => ['role:admin']], function () {
@@ -67,6 +68,21 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/perumahan-list/{id}', 'PerumahanController@show')->name('perumahan-list.show');
         Route::put('/perumahan-list/{id}', 'PerumahanController@update')->name('perumahan-list.update');
         Route::delete('/perumahan-list/{id}', 'PerumahanController@destroy')->name('perumahan-list.destroy');
+    });
+
+    Route::group(['prefix' => 'laporan', 'namespace' => 'Laporan', 'middleware' => ['role:admin|user']], function () {
+        Route::get('/perumahan', 'PerumahanController@index')->name('laporan.perumahan-management');
+        Route::get('/perumahan-list', 'PerumahanController@paginated')->name('laporan.perumahan-list');
+        Route::get('/perumahan-list/customer', 'PerumahanController@customer')->name('laporan.perumahan-list.customer');
+        Route::post('/perumahan-list', 'PerumahanController@store')->name('laporan.perumahan-list.store');
+        Route::delete('/perumahan-list/{id}', 'PerumahanController@destroy')->name('laporan.perumahan-list.destroy');
+        Route::get('/perumahan-list/export', 'PerumahanController@exportEXCEL')->name('laporan.perumahan-list.export');
+
+        Route::get('/marketing', 'MarketingController@index')->name('laporan.marketing-management');
+        Route::get('/marketing-list', 'MarketingController@paginated')->name('laporan.marketing-list');
+        Route::get('/marketing-list/marketing', 'MarketingController@marketing')->name('laporan.marketing-list.marketing');
+        Route::post('/marketing-list', 'MarketingController@store')->name('laporan.marketing-list.store');
+        Route::delete('/marketing-list/{id}', 'MarketingController@destroy')->name('laporan.marketing-list.destroy');
     });
 
     Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {

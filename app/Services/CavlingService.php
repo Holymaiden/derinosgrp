@@ -30,13 +30,7 @@ class CavlingService extends BaseRepository implements CavlingContract
 
     public function data(Request $request)
     {
-        $data = $this->model->where('perumahan_id', $request->perumahan)->with(['status_blok'])->get();
-
-        if (empty($data)) {
-            return response()->json(['message' => "Data Tidak Ditemukan"], 404);
-        }
-
-        return response()->json(['message' => "Data Ditemukan", 'data' => $data], 200);
+        return $this->model->where('perumahan_id', $request->perumahan)->with(['status_blok', 'customer'])->get();
     }
 
     public function getKode(Request $request)

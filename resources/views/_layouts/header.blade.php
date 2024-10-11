@@ -18,7 +18,7 @@
                 <!--begin::Mobile logo-->
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                         <a href="{{ route('dashboard') }}" class="d-lg-none">
-                                <img alt="Logo" src="{{ asset('assets/media/logos/default-small.svg') }}" class="h-30px" />
+                                <img alt="Logo" src="{{ asset('assets/media/logos/icon.svg') }}" class="h-30px" />
                         </a>
                 </div>
                 <!--end::Mobile logo-->
@@ -44,6 +44,7 @@
                         <!--end::Menu wrapper-->
                         <!--begin::Navbar-->
                         <div class="app-navbar flex-shrink-0">
+                                @if (Auth::user()->role == 'admin')
                                 <!--begin::Quick links-->
                                 <div class="app-navbar-item ms-1 ms-lg-3">
                                         <!--begin::Menu wrapper-->
@@ -62,6 +63,7 @@
                                         <!--end::Menu wrapper-->
                                 </div>
                                 <!--end::Quick links-->
+                                @endif
                                 <!--begin::Theme mode-->
                                 <div class="app-navbar-item ms-1 ms-lg-3">
                                         <!--begin::Menu toggle-->

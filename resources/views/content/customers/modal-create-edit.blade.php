@@ -28,7 +28,6 @@
                                 <form id="form-create-edit" class="form" action="POST">
                                         @csrf
                                         <input type="hidden" name="id" id="input-id" />
-                                        <input type="hidden" name="_method" value="POST" />
                                         <!--begin::Scroll-->
                                         <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                                 <!--begin::Input group-->
@@ -101,7 +100,7 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Telepon</label>
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
-                                                        <input type="number" name="telepon" id="input-telepon" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="081234567890" />
+                                                        <input type="text" name="telepon" id="input-telepon" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="081234567890" />
                                                         <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->
@@ -132,16 +131,6 @@
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
                                                         <input type="file" name="ktp" id="input-ktp" class="form-control form-control-solid mb-3 mb-lg-0" />
-                                                        <!--end::Input-->
-                                                </div>
-                                                <!--end::Input File-->
-                                                <!--begin::Input File-->
-                                                <div class="fv-row mb-7">
-                                                        <!--begin::Label-->
-                                                        <label class="required fw-bold fs-6 mb-2">Kartu Keluarga</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <input type="file" name="kk" id="input-kk" class="form-control form-control-solid mb-3 mb-lg-0" />
                                                         <!--end::Input-->
                                                 </div>
                                                 <!--end::Input File-->

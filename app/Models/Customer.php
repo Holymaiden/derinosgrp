@@ -24,7 +24,6 @@ class Customer extends Model
         'email',
         'pekerjaan',
         'ktp',
-        'kk',
         'marketing_id',
     ];
 

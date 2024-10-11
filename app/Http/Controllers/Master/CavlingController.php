@@ -6,17 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Services\Contracts\CavlingContract;
 use App\Services\Contracts\CustomerContract;
 use App\Services\Contracts\MarketingContract;
+use App\Services\Contracts\PropertiContract;
 use Illuminate\Http\Request;
 
 class CavlingController extends Controller
 {
-  private $cavlingContract, $customerContract, $marketingContract, $title;
+  private $title, $cavlingContract, $customerContract, $marketingContract, $propertiContract;
 
-  public function __construct(CavlingContract $cavlingContract, CustomerContract $customerContract, MarketingContract $marketingContract)
+  public function __construct(CavlingContract $cavlingContract, CustomerContract $customerContract, MarketingContract $marketingContract, PropertiContract $propertiContract)
   {
     $this->cavlingContract = $cavlingContract;
     $this->customerContract = $customerContract;
     $this->marketingContract = $marketingContract;
+    $this->propertiContract = $propertiContract;
     $this->title = 'Cavling';
   }
   /**
@@ -32,16 +34,28 @@ class CavlingController extends Controller
   public function data(Request $request)
   {
     try {
-      return $this->cavlingContract->data($request);
+      $data =  $this->cavlingContract->data($request);
+
+      if (empty($data)) {
+        return response()->json(['message' => "Data Tidak Ditemukan"], 404);
+      }
+
+      return response()->json(['message' => "Data Ditemukan", 'data' => $data], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
     }
   }
 
-  public function cavling()
+  public function cavling(Request $request)
   {
     try {
-      $view = view('content.cavling.data')->render();
+      $data =  $this->propertiContract->find($request->perumahan);
+
+      if (empty($data)) {
+        return response()->json(['message' => "Data Tidak Ditemukan"], 404);
+      }
+
+      $view = view('content.cavling.map.' . $data->url_maps)->render();
       return response()->json(['html' => $view, 'message' => 'Success!'], 200);
     } catch (\Exception $e) {
       return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 500);
