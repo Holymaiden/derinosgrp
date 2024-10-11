@@ -396,7 +396,6 @@ $(document).ready(function () {
     }
 });
 
-<<<<<<< HEAD
 // SVG
 function downloadSVG() {
     let svg_cavling = document.querySelector("#svg_cavling");
@@ -405,16 +404,7 @@ function downloadSVG() {
 
     // Create a new SVG element
     let combinedSVG = document.createElementNS(
-=======
-// SVG To PNG
-function downloadSVG() {
-    var svg_cavling = document.querySelector("#svg_cavling");
-    var ket_cavling =
-        "<svg id='ket_cavling' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd'> <!-- Background rectangle --><rect width='100%' height='100%' fill='white' /><!-- Text --><text x='10' y='40' font-family='Arial' font-size='18' fill='black' font-weight='bold'>Keterangan :</text><!-- Rectangles --><rect x='10' y='60' width='30' height='30' fill='rgb(245, 248, 250)' /><text x='50' y='85' font-family='Arial' font-size='14' fill='black'>Kosong</text><rect x='110' y='60' width='30' height='30' fill='rgb(80, 205, 137)' /><text x='150' y='85' font-family='Arial' font-size='14' fill='black'>Booking</text><rect x='210' y='60' width='30' height='30' fill='rgb(0, 158, 247)' /><text x='250' y='85' font-family='Arial' font-size='14' fill='black'>Proses Berkas</text><rect x='350' y='60' width='30' height='30' fill='rgb(241, 65, 108)' /><text x='390' y='85' font-family='Arial' font-size='14' fill='black'>Sudah Akad</text><rect x='480' y='60' width='30' height='30' fill='rgb(255, 199, 0)' /><text x='520' y='85' font-family='Arial' font-size='14' fill='black'>Cash/Lunas</text><rect x='610' y='60' width='30' height='30' fill='rgb(114, 57, 234)' /><text x='650' y='85' font-family='Arial' font-size='14' fill='black'>SP3K</text></svg>";
 
-    // Create a new SVG element
-    var combinedSVG = document.createElementNS(
->>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
         "http://www.w3.org/2000/svg",
         "svg"
     );
@@ -435,15 +425,7 @@ function downloadSVG() {
 
     document.body.appendChild(combinedSVG);
 
-<<<<<<< HEAD
-    let svgBlob = new Blob([combinedSVG.outerHTML], {
-        type: "image/svg+xml",
-    });
-    let svgUrl = URL.createObjectURL(svgBlob);
-    let a = document.createElement("a");
-    a.href = svgUrl;
-    let tgl = new Date();
-=======
+
     var svgBlob = new Blob([combinedSVG.outerHTML], {
         type: "image/svg+xml",
     });
@@ -451,7 +433,6 @@ function downloadSVG() {
     var a = document.createElement("a");
     a.href = svgUrl;
     var tgl = new Date();
->>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
     a.download =
         "Denah-Cavling-" +
         tgl.getDate() +
@@ -463,47 +444,45 @@ function downloadSVG() {
     a.click();
 }
 
-<<<<<<< HEAD
-function downloadPNG() {
-    // dom-to-image library
+// function downloadPNG() {
+//     // dom-to-image library
 
-    let svgElement = document.getElementsByClassName("cavling-data")[0];
+//     let svgElement = document.getElementsByClassName("cavling-data")[0];
 
-    let ket_cavling =
-        "<svg id='ket_cavling' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd'> <!-- Background rectangle --><rect width='100%' height='100%' fill='white' /><!-- Text --><text x='10' y='40' font-family='Arial' font-size='18' fill='black' font-weight='bold'>Keterangan :</text><!-- Rectangles --><rect x='10' y='60' width='30' height='30' fill='rgb(245, 248, 250)' /><text x='50' y='85' font-family='Arial' font-size='14' fill='black'>Kosong</text><rect x='110' y='60' width='30' height='30' fill='rgb(80, 205, 137)' /><text x='150' y='85' font-family='Arial' font-size='14' fill='black'>Booking</text><rect x='210' y='60' width='30' height='30' fill='rgb(0, 158, 247)' /><text x='250' y='85' font-family='Arial' font-size='14' fill='black'>Proses Berkas</text><rect x='350' y='60' width='30' height='30' fill='rgb(241, 65, 108)' /><text x='390' y='85' font-family='Arial' font-size='14' fill='black'>Sudah Akad</text><rect x='480' y='60' width='30' height='30' fill='rgb(255, 199, 0)' /><text x='520' y='85' font-family='Arial' font-size='14' fill='black'>Cash/Lunas</text><rect x='610' y='60' width='30' height='30' fill='rgb(114, 57, 234)' /><text x='650' y='85' font-family='Arial' font-size='14' fill='black'>SP3K</text></svg>";
+//     let ket_cavling =
+//         "<svg id='ket_cavling' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd'> <!-- Background rectangle --><rect width='100%' height='100%' fill='white' /><!-- Text --><text x='10' y='40' font-family='Arial' font-size='18' fill='black' font-weight='bold'>Keterangan :</text><!-- Rectangles --><rect x='10' y='60' width='30' height='30' fill='rgb(245, 248, 250)' /><text x='50' y='85' font-family='Arial' font-size='14' fill='black'>Kosong</text><rect x='110' y='60' width='30' height='30' fill='rgb(80, 205, 137)' /><text x='150' y='85' font-family='Arial' font-size='14' fill='black'>Booking</text><rect x='210' y='60' width='30' height='30' fill='rgb(0, 158, 247)' /><text x='250' y='85' font-family='Arial' font-size='14' fill='black'>Proses Berkas</text><rect x='350' y='60' width='30' height='30' fill='rgb(241, 65, 108)' /><text x='390' y='85' font-family='Arial' font-size='14' fill='black'>Sudah Akad</text><rect x='480' y='60' width='30' height='30' fill='rgb(255, 199, 0)' /><text x='520' y='85' font-family='Arial' font-size='14' fill='black'>Cash/Lunas</text><rect x='610' y='60' width='30' height='30' fill='rgb(114, 57, 234)' /><text x='650' y='85' font-family='Arial' font-size='14' fill='black'>SP3K</text></svg>";
 
-    // Add ket cavling to bottom of svg
-    svgElement.innerHTML += ket_cavling;
-    svgElement.style.backgroundColor = "white";
+//     // Add ket cavling to bottom of svg
+//     svgElement.innerHTML += ket_cavling;
+//     svgElement.style.backgroundColor = "white";
 
-    domtoimage
-        .toPng(svgElement, {
-            height: 1200,
-            width: 1200,
-        })
-        .then((dataUrl) => {
-            // set background to white
-            let imgData = dataUrl;
-            let a = document.createElement("a");
-            a.href = imgData;
-            let tgl = new Date();
-            a.download =
-                "Denah-Cavling-" +
-                tgl.getDate() +
-                "-" +
-                (tgl.getMonth() + 1) +
-                "-" +
-                tgl.getFullYear() +
-                ".png";
-            a.click();
+//     domtoimage
+//         .toPng(svgElement, {
+//             height: 1200,
+//             width: 1200,
+//         })
+//         .then((dataUrl) => {
+//             // set background to white
+//             let imgData = dataUrl;
+//             let a = document.createElement("a");
+//             a.href = imgData;
+//             let tgl = new Date();
+//             a.download =
+//                 "Denah-Cavling-" +
+//                 tgl.getDate() +
+//                 "-" +
+//                 (tgl.getMonth() + 1) +
+//                 "-" +
+//                 tgl.getFullYear() +
+//                 ".png";
+//             a.click();
 
-            // Remove ket cavling from bottom of svg
-            document.getElementById("ket_cavling").remove();
-        })
-        .catch((error) => {
-            console.error("oops, something went wrong", error);
-        });
-=======
+//             // Remove ket cavling from bottom of svg
+//             document.getElementById("ket_cavling").remove();
+//         })
+//         .catch((error) => {
+//             console.error("oops, something went wrong", error);
+//         });
 function downloadWhatsApp() {
     var svg = document.querySelector("#svg_cavling");
     var svg_blob = new Blob([svg.outerHTML], {
@@ -531,5 +510,4 @@ function downloadWhatsApp() {
     };
 
     img.src = svg_url;
->>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
 }

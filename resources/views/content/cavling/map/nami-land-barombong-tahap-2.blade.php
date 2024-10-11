@@ -1,12 +1,8 @@
 <div class="embed-responsive embed-responsive-1by1">
     <svg id="svg_cavling" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
         style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd; transform: rotate(59deg);"
-<<<<<<< HEAD
         viewBox="0 0 1169.67 1199.78" xmlns:xlink="http://www.w3.org/1999/xlink">
-=======
-        viewBox="0 0 1169.67 1199.78" xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
->>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
+
         <defs>
             <style type="text/css">
                 <![CDATA[
