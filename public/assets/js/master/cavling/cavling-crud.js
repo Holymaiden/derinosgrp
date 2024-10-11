@@ -396,6 +396,7 @@ $(document).ready(function () {
     }
 });
 
+<<<<<<< HEAD
 // SVG
 function downloadSVG() {
     let svg_cavling = document.querySelector("#svg_cavling");
@@ -404,6 +405,16 @@ function downloadSVG() {
 
     // Create a new SVG element
     let combinedSVG = document.createElementNS(
+=======
+// SVG To PNG
+function downloadSVG() {
+    var svg_cavling = document.querySelector("#svg_cavling");
+    var ket_cavling =
+        "<svg id='ket_cavling' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd'> <!-- Background rectangle --><rect width='100%' height='100%' fill='white' /><!-- Text --><text x='10' y='40' font-family='Arial' font-size='18' fill='black' font-weight='bold'>Keterangan :</text><!-- Rectangles --><rect x='10' y='60' width='30' height='30' fill='rgb(245, 248, 250)' /><text x='50' y='85' font-family='Arial' font-size='14' fill='black'>Kosong</text><rect x='110' y='60' width='30' height='30' fill='rgb(80, 205, 137)' /><text x='150' y='85' font-family='Arial' font-size='14' fill='black'>Booking</text><rect x='210' y='60' width='30' height='30' fill='rgb(0, 158, 247)' /><text x='250' y='85' font-family='Arial' font-size='14' fill='black'>Proses Berkas</text><rect x='350' y='60' width='30' height='30' fill='rgb(241, 65, 108)' /><text x='390' y='85' font-family='Arial' font-size='14' fill='black'>Sudah Akad</text><rect x='480' y='60' width='30' height='30' fill='rgb(255, 199, 0)' /><text x='520' y='85' font-family='Arial' font-size='14' fill='black'>Cash/Lunas</text><rect x='610' y='60' width='30' height='30' fill='rgb(114, 57, 234)' /><text x='650' y='85' font-family='Arial' font-size='14' fill='black'>SP3K</text></svg>";
+
+    // Create a new SVG element
+    var combinedSVG = document.createElementNS(
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
         "http://www.w3.org/2000/svg",
         "svg"
     );
@@ -424,6 +435,7 @@ function downloadSVG() {
 
     document.body.appendChild(combinedSVG);
 
+<<<<<<< HEAD
     let svgBlob = new Blob([combinedSVG.outerHTML], {
         type: "image/svg+xml",
     });
@@ -431,6 +443,15 @@ function downloadSVG() {
     let a = document.createElement("a");
     a.href = svgUrl;
     let tgl = new Date();
+=======
+    var svgBlob = new Blob([combinedSVG.outerHTML], {
+        type: "image/svg+xml",
+    });
+    var svgUrl = URL.createObjectURL(svgBlob);
+    var a = document.createElement("a");
+    a.href = svgUrl;
+    var tgl = new Date();
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
     a.download =
         "Denah-Cavling-" +
         tgl.getDate() +
@@ -442,6 +463,7 @@ function downloadSVG() {
     a.click();
 }
 
+<<<<<<< HEAD
 function downloadPNG() {
     // dom-to-image library
 
@@ -481,4 +503,33 @@ function downloadPNG() {
         .catch((error) => {
             console.error("oops, something went wrong", error);
         });
+=======
+function downloadWhatsApp() {
+    var svg = document.querySelector("#svg_cavling");
+    var svg_blob = new Blob([svg.outerHTML], {
+        type: "image/svg+xml",
+    });
+    var svg_url = URL.createObjectURL(svg_blob);
+    const img = new Image();
+
+    // convert to png
+    img.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        canvg(canvas, svg.outerHTML);
+
+        canvas.toBlob(function (blob) {
+            // To WhatsApp
+            window.open(
+                `https://api.whatsapp.com/send?text=${encodeURIComponent(
+                    "Denah Blok 3"
+                )}&image=${encodeURIComponent(blob)}`
+            );
+        }, "image/png");
+    };
+
+    img.src = svg_url;
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
 }

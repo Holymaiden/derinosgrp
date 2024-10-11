@@ -32,12 +32,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
+<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
         integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
         integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
 @endpush
 
 @section('content')
@@ -98,18 +102,32 @@
                         <!--begin::Menu item-->
                         <div class="menu-item px-3">
                             <a onclick="downloadSVG()" class="menu-link px-3">
+<<<<<<< HEAD
                                 <i class="fa-solid fa-file me-1" style="color: #009ef7;"></i>
                                 SVG
+=======
+                                <i class="fa-solid fa-download me-1" style="color: #009ef7;"></i>
+                                Download
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
                             </a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
+<<<<<<< HEAD
                         <div class="menu-item px-3">
                             <a onclick="downloadPNG()" class="menu-link px-3">
                                 <i class="fa-solid fa-image me-1" style="color: #50cd89;"></i>
                                 PNG
                             </a>
                         </div>
+=======
+                        {{-- <div class="menu-item px-3">
+                            <a onclick="downloadWhatsApp()" class="menu-link px-3">
+                                <i class="fa-brands fa-whatsapp me-1" style="color: #50cd89;"></i>
+                                WhatsApp
+                            </a>
+                        </div> --}}
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
                         <!--end::Menu item-->
                     </div>
                     <!--end::Menu-->
@@ -160,6 +178,7 @@
                                         <font style="vertical-align: inherit;">Sudah Akad</font>
                                     </font>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-2">
                                 <div class="p-3 mb-2 bg-warning text-white">
@@ -175,6 +194,23 @@
                                     </font>
                                 </div>
                             </div>
+=======
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <div class="p-3 mb-2 bg-warning text-white">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Cash/Lunas</font>
+                                    </font>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <div class="p-3 mb-2 bg-info text-white">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">SP3K</font>
+                                    </font>
+                                </div>
+                            </div>
+>>>>>>> 930f168b511bd39b90b76ec47e7ab8a94dfdccf8
                         </div>
                     </div>
                     <!--end::Card body-->
