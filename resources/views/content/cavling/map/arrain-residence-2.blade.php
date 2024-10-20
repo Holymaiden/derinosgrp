@@ -1,5 +1,6 @@
-<svg id="svg_cavling" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
-    {{-- width="279.4mm" height="165.1mm" --}} version="1.1"
+<svg id="svg_cavling" 
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    version="1.1"
     style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
     viewBox="0 0 27940 16510">
     <defs>

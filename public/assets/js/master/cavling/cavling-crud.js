@@ -5,10 +5,11 @@ myDefaultAllowList["kt-popover"] = true;
 
 $(document).ready(function () {
     const url_name = "cavling-list";
-
+    console.log(url_name);
     getCavlingData();
     getCustomerData();
     getMarketingData();
+
     function changeColorCss(data) {
         let {
             id,
@@ -19,7 +20,11 @@ $(document).ready(function () {
             customer_telepon,
             marketing,
         } = data;
+        console.log(data);
         var element = document.querySelector(`[data-id="${id}"]`);
+        console.log('id = ', id);
+        console.log('element = ', element);
+        console.log('color = ', color);
         var colorHex = getComputedStyle(element).getPropertyValue(
             "--kt-" + color
         );
