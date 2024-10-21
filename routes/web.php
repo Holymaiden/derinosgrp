@@ -16,18 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-Route::get('/tes', function () {
-    return view('tes2');
-})->name('home');
-Route::get('/1', function () {
-    return view('content.cavling.map.nami-land-barombong-tahap-1');
-})->name('home');
-Route::get('/2', function () {
-    return view('content.cavling.map.nami-land-barombong-tahap-2');
-})->name('home');
-Route::get('/3', function () {
-    return view('content.cavling.map.nami-land-barombong-tahap-3');
-})->name('home');
+// Route::get('/tes', function () {
+//     return view('tes2');
+// })->name('home');
+// Route::get('/1', function () {
+//     return view('content.cavling.map.nami-land-barombong-tahap-1');
+// })->name('home');
+// Route::get('/2', function () {
+//     return view('content.cavling.map.nami-land-barombong-tahap-2');
+// })->name('home');
+// Route::get('/3', function () {
+//     return view('content.cavling.map.nami-land-barombong-tahap-3');
+// })->name('home');
 
 Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');

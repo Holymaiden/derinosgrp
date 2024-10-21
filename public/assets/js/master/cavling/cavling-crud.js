@@ -20,11 +20,11 @@ $(document).ready(function () {
             customer_telepon,
             marketing,
         } = data;
-        console.log(data);
+        // console.log(data);
         var element = document.querySelector(`[data-id="${id}"]`);
-        console.log('id = ', id);
-        console.log('element = ', element);
-        console.log('color = ', color);
+        // console.log('id = ', id);
+        // console.log('element = ', element);
+        // console.log('color = ', color);
         var colorHex = getComputedStyle(element).getPropertyValue(
             "--kt-" + color
         );

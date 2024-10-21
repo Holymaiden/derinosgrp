@@ -1,4 +1,4 @@
-<svg id="svg_cavling" 
+{{-- <svg id="svg_cavling" 
     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
     version="1.1"
     style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
@@ -505,4 +505,4 @@
 
     <rect x="610" y="60" width="30" height="30" fill="rgb(114, 57, 234)" />
     <text x="650" y="85" font-family="Arial" font-size="14" fill="black">SP3K</text>
-</svg>
+</svg> --}}
