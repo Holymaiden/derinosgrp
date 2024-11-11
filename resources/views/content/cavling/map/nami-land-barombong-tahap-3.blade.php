@@ -60,6 +60,45 @@
                 ]]>
             </style>
         </defs>
+        {{-- <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str7 {stroke:#7EED37;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.309804}
+    .str4 {stroke:#A9E565;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.800000}
+    .str0 {stroke:black;stroke-width:5.29;stroke-miterlimit:2.61313}
+    .str1 {stroke:black;stroke-width:5.29;stroke-miterlimit:2.61313}
+    .str2 {stroke:black;stroke-width:2.28;stroke-miterlimit:2.61313}
+    .str6 {stroke:#7EED37;stroke-width:2.28;stroke-miterlimit:2.61313}
+    .str3 {stroke:#FEE292;stroke-width:2.28;stroke-miterlimit:2.61313}
+    .str5 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str13 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str11 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str8 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str12 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str10 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str9 {stroke:black;stroke-width:0.26;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .fil1 {fill:none}
+    .fil4 {fill:none;fill-rule:nonzero}
+    .fil7 {fill:none;fill-rule:nonzero}
+    .fil5 {fill:none;fill-rule:nonzero}
+    .fil2 {fill:#BAEB84}
+    .fil3 {fill:#BAEB84}
+    .fil9 {fill:#E6E6E6}
+    .fil0 {fill:#FFE292}
+    .fil8 {fill:black;fill-rule:nonzero}
+    .fil6 {fill:#7EED37;fill-rule:nonzero;fill-opacity:0.309804}
+   ]]>
+  </style>
+    <clipPath id="id0">
+     <path d="M450.69 3009.04l1561.53 609.37 408.21 -1436.85 1048.98 -2181.56 1086 410.99 578.49 399.46 -1240.46 3030.92 -356.24 784.39 759.31 339.47 -1036.07 2546.08 -2107.85 -848.6 -1152.61 -1199.19 207.4 -408.26 -202.16 -261.32 445.45 -1784.9z"/>
+    </clipPath>
+    <clipPath id="id1">
+     <rect x="4567.59" y="878.44" width="81.42" height="43.75"/>
+    </clipPath>
+    <clipPath id="id2">
+     <rect x="4616.2" y="608.64" width="76.56" height="139.76"/>
+    </clipPath>
+ </defs> --}}
     <g id="Layer_x0020_1">
         <metadata id="CorelCorpID_0Corel-Layer"/>
             <g id="_1893108536272">

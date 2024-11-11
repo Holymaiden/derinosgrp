@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-// Route::get('/tes', function () {
-//     return view('tes2');
-// })->name('home');
+Route::get('/tes3', function () {
+    return view('tes3');
+})->name('home');
 // Route::get('/1', function () {
 //     return view('content.cavling.map.nami-land-barombong-tahap-1');
 // })->name('home');
