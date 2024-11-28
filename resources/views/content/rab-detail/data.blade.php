@@ -1,7 +1,4 @@
 @forelse($data as $v)
-    @php
-        $warna = ['admin' => 'warning', 'user' => 'primary', 'visitor' => 'success', 'worker' => 'info'];
-    @endphp
     <!--begin::Table row-->
     <tr>
         <!--begin::Checkbox-->
@@ -9,31 +6,28 @@
             <span class="text-gray-800">{{ ++$i }}</span>
         </td>
         <!--end::Checkbox-->
-        <!--begin::User=-->
-        <td class="d-flex align-items-center">
-            <!--begin::User details-->
-            <div class="d-flex flex-column">
-                <a href="../../demo1/dist/apps/user-management/users/view.html"
-                    class="text-gray-800 text-hover-primary mb-1">{{ $v['name'] }}</a>
-                <span>{{ $v['email'] }}</span>
-            </div>
-            <!--begin::User details-->
-        </td>
-        <!--end::User=-->
-        <!--begin::Role=-->
         <td>
-            <div class="badge badge-{{ $warna[$v['role']] }} fw-bold">{{ ucfirst($v['role']) }}</div>
+            <div class="badge badge-light fw-bold">{{ ucfirst($v->masterRab?->name ?? '-') }}</div>
         </td>
-        <!--end::Role=-->
-        <!--begin::Perumahan=-->
         <td>
-            <div class="badge badge-light fw-bold">{{ $v['perumahan'] ? ucfirst($v['perumahan']) : 'Semua' }}</div>
+            <div class="text-gray-800 text-hover-primary">{{ $v->amount ?? 0 }}</div>
         </td>
-        <!--end::Perumahan=-->
+        <td>
+            <div class="text-gray-800 text-hover-primary text-capitalize">{{ $v->unit }}</div>
+        </td>
+        <td>
+            <div class="text-gray-800 text-hover-primary">{{ Helper::tranformToIDR($v->price ?? 0) }}</div>
+        </td>
+        <td>
+            <div class="text-gray-800 text-hover-primary">{{ Helper::tranformToIDR($v->total ?? 0) }}</div>
+        </td>
+        <td>
+            <div class="text-gray-800 text-hover-primary">{{ $v->noted ?? '-' }}</div>
+        </td>
         <!--begin::Action=-->
         <td class="text-end">
             <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" data-id="update-{{ $v['id'] }}">
+                data-bs-toggle="modal" data-bs-target="#kt_modal_add_perumahan" data-id="update-{{ $v->id }}">
                 <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                 <span class="svg-icon svg-icon-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -48,7 +42,7 @@
                 </span>
                 <!--end::Svg Icon-->
             </a>
-            <a href="javascript:void(0)" data-id="{{ $v['id'] }}" data-toggle="tooltip"
+            <a href="javascript:void(0)" data-id="{{ $v->id }}" data-toggle="tooltip"
                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" id="btn-delete">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                 <span class="svg-icon svg-icon-3">
@@ -72,6 +66,6 @@
     <!--end::Table row-->
 @empty
     <tr>
-        <td colspan="4" class="d-flex align-items-center">No data available</td>
+        <td colspan="8" class="d-flex align-items-center">No data available</td>
     </tr>
 @endforelse

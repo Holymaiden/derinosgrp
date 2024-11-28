@@ -33,6 +33,11 @@ class CavlingService extends BaseRepository implements CavlingContract
         return $this->model->where('perumahan_id', $request->perumahan)->with(['status_blok', 'customer'])->get();
     }
 
+    public function detail($perumahan_id, $blok)
+    {
+        return $this->model->where(['perumahan_id' => $perumahan_id, 'kode' => $blok])->with(['status_blok', 'customer', 'progressDetail'])->first();
+    }
+
     public function getKode(Request $request)
     {
         $data = $this->model->where('perumahan_id', $request->perumahan)->select('kode')->get();

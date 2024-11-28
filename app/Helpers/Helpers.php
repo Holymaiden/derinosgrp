@@ -40,4 +40,32 @@ class Helpers
 
                 return isset($data) ? $data : null;
         }
+
+        public static function getStatus($status)
+        {
+                $data = null;
+                switch ($status) {
+                        case 'planned':
+                                $data = 'Direncanakan';
+                                break;
+                        case 'on_going':
+                                $data = 'Proses';
+                                break;
+                        case 'done':
+                                $data = 'Selesai';
+                                break;
+                        case 'delayed':
+                                $data = 'Terlambat';
+                                break;
+                        default:
+                                $data = 'Tidak Diketahui';
+                                break;
+                }
+                return $data;
+        }
+
+        public static function tranformToIDR($param)
+        {
+                return 'Rp ' . number_format($param, 0, ',', '.');
+        }
 }

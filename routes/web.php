@@ -16,18 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-Route::get('/tes3', function () {
-    return view('tes3');
-})->name('home');
-// Route::get('/1', function () {
-//     return view('content.cavling.map.nami-land-barombong-tahap-1');
-// })->name('home');
-// Route::get('/2', function () {
-//     return view('content.cavling.map.nami-land-barombong-tahap-2');
-// })->name('home');
-// Route::get('/3', function () {
-//     return view('content.cavling.map.nami-land-barombong-tahap-3');
-// })->name('home');
 
 Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
@@ -54,6 +42,13 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/user-list/{id}', 'UserController@show')->name('user-list.show');
         Route::put('/user-list/{id}', 'UserController@update')->name('user-list.update');
         Route::delete('/user-list/{id}', 'UserController@destroy')->name('user-list.destroy');
+
+        Route::get('/master-rab-management', 'MasterRabController@index')->name('master-rab-management');
+        Route::get('/master-rab-list', 'MasterRabController@paginated')->name('master-rab-list');
+        Route::post('/master-rab-list', 'MasterRabController@store')->name('master-rab-list.store');
+        Route::get('/master-rab-list/{id}', 'MasterRabController@show')->name('master-rab-list.show');
+        Route::put('/master-rab-list/{id}', 'MasterRabController@update')->name('master-rab-list.update');
+        Route::delete('/master-rab-list/{id}', 'MasterRabController@destroy')->name('master-rab-list.destroy');
     });
 
     //User
@@ -80,6 +75,22 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/perumahan-list/{id}', 'PerumahanController@show')->name('perumahan-list.show');
         Route::put('/perumahan-list/{id}', 'PerumahanController@update')->name('perumahan-list.update');
         Route::delete('/perumahan-list/{id}', 'PerumahanController@destroy')->name('perumahan-list.destroy');
+
+        Route::get('/progress-pembangunan-management', 'ProgresPembangunanController@index')->name('progress-pembangunan-management');
+        Route::get('/progress-pembangunan-management/detail/{id}', 'ProgresPembangunanController@detail')->name('progress-pembangunan-list.detail');
+        Route::get('/progress-pembangunan-list', 'ProgresPembangunanController@data')->name('progress-pembangunan-list');
+        Route::get('/progress-pembangunan-list/{id}', 'ProgresPembangunanController@show')->name('progress-pembangunan-list.show');
+
+        Route::get('/rab-management', 'RabController@index')->name('rab-management');
+        Route::get('/rab-list', 'RabController@paginated')->name('rab-list');
+
+        Route::get('/rab-detail-management/{blok}', 'RabDetailController@index')->name('rab-detail-management');
+        Route::get('/rab-detail-list', 'RabDetailController@paginated')->name('rab-detail-list');
+        Route::post('/rab-detail-list', 'RabDetailController@store')->name('rab-detail-list.store');
+        Route::get('/rab-detail-list/{id}', 'RabDetailController@show')->name('rab-detail-list.show');
+        Route::put('/rab-detail-list/{id}', 'RabDetailController@update')->name('rab-detail-list.update');
+        Route::delete('/rab-detail-list/{id}', 'RabDetailController@destroy')->name('rab-detail-list.destroy');
+        Route::get('/rab-detail-list-export', 'RabDetailController@export')->name('rab-detail-list.export');
     });
 
     Route::group(['prefix' => 'laporan', 'namespace' => 'Laporan', 'middleware' => ['role:admin|user']], function () {
@@ -95,6 +106,13 @@ Route::group(['prefix' => 'dashboard',  'namespace' => 'App\Http\Controllers',  
         Route::get('/marketing-list/marketing', 'MarketingController@marketing')->name('laporan.marketing-list.marketing');
         Route::post('/marketing-list', 'MarketingController@store')->name('laporan.marketing-list.store');
         Route::delete('/marketing-list/{id}', 'MarketingController@destroy')->name('laporan.marketing-list.destroy');
+
+        Route::get('/progres-pembangunan', 'ProgressBlockController@index')->name('laporan.progres-blok-management');
+        Route::get('/progres-pembangunan-list', 'ProgressBlockController@paginated')->name('laporan.progres-blok-list');
+        Route::get('/progres-pembangunan-list/progress', 'ProgressBlockController@progress')->name('laporan.progres-blok-list.progress');
+        Route::post('/progres-pembangunan-list', 'ProgressBlockController@store')->name('laporan.progres-blok-list.store');
+        Route::delete('/progres-pembangunan-list/{id}', 'ProgressBlockController@destroy')->name('laporan.progres-blok-list.destroy');
+        Route::get('/progres-pembangunan-list/export', 'ProgressBlockController@exportEXCEL')->name('laporan.progres-blok-list.export');
     });
 
     Route::group(['prefix' => 'profile', 'namespace' => 'Profile'], function () {

@@ -1,7 +1,4 @@
 @forelse($data as $v)
-    @php
-        $warna = ['admin' => 'warning', 'user' => 'primary', 'visitor' => 'success', 'worker' => 'info'];
-    @endphp
     <!--begin::Table row-->
     <tr>
         <!--begin::Checkbox-->
@@ -9,31 +6,15 @@
             <span class="text-gray-800">{{ ++$i }}</span>
         </td>
         <!--end::Checkbox-->
-        <!--begin::User=-->
-        <td class="d-flex align-items-center">
-            <!--begin::User details-->
-            <div class="d-flex flex-column">
-                <a href="../../demo1/dist/apps/user-management/users/view.html"
-                    class="text-gray-800 text-hover-primary mb-1">{{ $v['name'] }}</a>
-                <span>{{ $v['email'] }}</span>
-            </div>
-            <!--begin::User details-->
-        </td>
-        <!--end::User=-->
-        <!--begin::Role=-->
+        <!--begin::Nama=-->
         <td>
-            <div class="badge badge-{{ $warna[$v['role']] }} fw-bold">{{ ucfirst($v['role']) }}</div>
+            <div class="text-gray-800 text-hover-primary">{{ $v['name'] }}</div>
         </td>
-        <!--end::Role=-->
-        <!--begin::Perumahan=-->
-        <td>
-            <div class="badge badge-light fw-bold">{{ $v['perumahan'] ? ucfirst($v['perumahan']) : 'Semua' }}</div>
-        </td>
-        <!--end::Perumahan=-->
+        <!--end::Nama=-->
         <!--begin::Action=-->
         <td class="text-end">
             <a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                data-bs-toggle="modal" data-bs-target="#kt_modal_add_user" data-id="update-{{ $v['id'] }}">
+                data-bs-toggle="modal" data-bs-target="#kt_modal_add_marketing" data-id="update-{{ $v['id'] }}">
                 <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                 <span class="svg-icon svg-icon-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -72,6 +53,6 @@
     <!--end::Table row-->
 @empty
     <tr>
-        <td colspan="4" class="d-flex align-items-center">No data available</td>
+        <td colspan="3" class="d-flex align-items-center">No data available</td>
     </tr>
 @endforelse
